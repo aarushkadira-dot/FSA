@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Redirecting…</title>
+  </head>
+  <body>
+    <script>
+      // GitHub Pages serves this 404 for unknown routes. Try to load the
+      // real SPA index.html from the site's base and inject it so the
+      // client-side router (BrowserRouter with basename) can handle the path.
+      (function () {
+        var base = '/FSA/'; // keep in sync with vite.config.ts/base and BrowserRouter basename
+        fetch(base + 'index.html')
+          .then(function (res) {
+            if (!res.ok) {
+              // fallback: navigate to base root
+              window.location.replace(base);
+              return null;
+            }
+            return res.text();
+          })
+          .then(function (html) {
+            if (html) {
+              // Replace current document with fetched index.html so the
+              // SPA scripts run and BrowserRouter can route based on the
+              // original pathname (GitHub serves this file at the original URL).
+              document.open();
+              document.write(html);
+              document.close();
+            }
+          })
+          .catch(function () {
+            window.location.replace(base);
+          });
+      })();
+    </script>
+  </body>
+</html>

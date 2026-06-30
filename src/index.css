@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 46% 98%;
+    --foreground: 217 31% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 217 31% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 217 31% 16%;
+
+    --primary: 214 88% 45%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 30% 94%;
+    --secondary-foreground: 217 31% 16%;
+
+    --muted: 214 30% 92%;
+    --muted-foreground: 217 17% 44%;
+
+    --accent: 196 87% 43%;
+    --accent-foreground: 210 40% 98%;
+
+    --gold: 43 94% 53%;
+    --gold-foreground: 215 34% 17%;
+
+    --success: 146 64% 39%;
+    --success-foreground: 210 40% 98%;
+
+    --destructive: 0 83% 58%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 27% 86%;
+    --input: 214 27% 86%;
+    --ring: 214 88% 45%;
+
+    --radius: 0.9rem;
+
+    --gradient-primary: linear-gradient(130deg, hsl(214 88% 45%) 0%, hsl(196 87% 43%) 45%, hsl(218 84% 56%) 100%);
+    --gradient-hero: radial-gradient(circle at 20% 20%, hsl(196 87% 43% / 0.34), transparent 40%), radial-gradient(circle at 85% 10%, hsl(214 88% 45% / 0.28), transparent 35%), linear-gradient(140deg, hsl(217 77% 24%) 0%, hsl(214 88% 40%) 50%, hsl(196 87% 39%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(196 87% 43%) 0%, hsl(214 88% 45%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(43 94% 53%) 0%, hsl(33 93% 56%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(210 46% 99%) 0%, hsl(210 42% 96%) 100%);
+
+    --shadow-sm: 0 1px 2px hsl(218 30% 15% / 0.04);
+    --shadow-md: 0 8px 24px hsl(218 30% 15% / 0.08);
+    --shadow-lg: 0 18px 36px hsl(218 30% 15% / 0.12);
+    --shadow-elegant: 0 20px 46px hsl(214 88% 45% / 0.23);
+    --shadow-glow: 0 0 0 1px hsl(214 88% 45% / 0.16), 0 24px 56px hsl(214 88% 45% / 0.24);
+    --shadow-gold: 0 0 0 1px hsl(43 94% 53% / 0.14), 0 18px 44px hsl(43 94% 53% / 0.24);
+    --shadow-card: 0 16px 34px hsl(217 33% 15% / 0.08);
+
+    --transition-smooth: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Manrope", "Segoe UI", sans-serif;
+    background-image: radial-gradient(circle at 0% 0%, hsl(196 87% 43% / 0.11), transparent 33%), radial-gradient(circle at 100% 12%, hsl(214 88% 45% / 0.1), transparent 28%), linear-gradient(180deg, hsl(var(--background)) 0%, hsl(210 39% 97%) 45%, hsl(210 39% 96%) 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Space Grotesk", "Manrope", sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: hsl(214 88% 45% / 0.2);
+    color: hsl(217 31% 16%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  .surface-panel {
+    @apply rounded-3xl border border-white/60 bg-white/85 shadow-lg backdrop-blur;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em];
+  }
+
+  .fsa-grid {
+    background-image: linear-gradient(hsl(214 27% 86% / 0.45) 1px, transparent 1px), linear-gradient(90deg, hsl(214 27% 86% / 0.45) 1px, transparent 1px);
+    background-size: 26px 26px;
+  }
+
+  .soft-lift {
+    transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 320ms cubic-bezier(0.2, 0.8, 0.2, 1), border-color 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .soft-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card);
+  }
+
+  .grain-overlay {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .grain-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.16;
+    background-image: radial-gradient(hsl(215 25% 25% / 0.28) 0.65px, transparent 0.65px);
+    background-size: 3px 3px;
+  }
+}
