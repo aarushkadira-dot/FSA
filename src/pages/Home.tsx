@@ -4,17 +4,21 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ArrowRight,
+  ArrowUpRight,
   BookOpen,
   CalendarDays,
+  Clock,
   HandHeart,
   Heart,
   MapPin,
+  Mic,
   ShieldCheck,
   Sparkles,
   Users,
 } from "lucide-react";
 import event1 from "@/assets/event1.png";
-import event2 from "@/assets/event2.png";
+import summit1 from "@/assets/summit1.jpg";
+import summit2 from "@/assets/summit2.jpg";
 
 interface Project {
   id: string;
@@ -32,16 +36,16 @@ interface Project {
 
 const FEATURED_EVENT: Project = {
   id: "event-innovators-2025",
-  title: "Future Innovators Expo",
+  title: "Future Scholars Summit",
   description:
-    "Past event recap: hands-on STEM stations, creative challenges, and a school supply drive that served students at Bugg Elementary.",
+    "Past event recap: student teams, nonprofits, and researchers pitched their ideas to community and state leaders, including Mayor TJ Cawley, Rep. Maria Cervania, and Councilwoman Sarika Bansal.",
   goal_amount: 0,
   current_amount: 0,
   category: "events",
   status: "past",
-  school_name: "Cedar Fork Community Center",
+  school_name: null,
   student_count: null,
-  image_url: "/future innovators expo.png?v=3",
+  image_url: summit1,
   creator_id: "system",
 };
 
@@ -143,92 +147,90 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-subtle pb-16 pt-32">
+      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-subtle pb-20 pt-32">
         <div className="absolute inset-0 fsa-grid opacity-20" />
         <div className="container relative z-10 mx-auto px-6">
-          <div className="grid items-start gap-10 lg:grid-cols-12">
-            <div className="space-y-7 lg:col-span-6 xl:col-span-7">
-              <p className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+          <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">
+            {/* LEFT — message + actions */}
+            <div className="flex flex-col">
+              <p className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                 <Sparkles className="h-4 w-4" />
                 Future Scholars Association
               </p>
 
-              <div className="space-y-5">
-                <h1 className="max-w-3xl text-4xl font-bold leading-[1.02] text-foreground sm:text-5xl md:text-6xl">
-                  Built by students.
-                  <br />
-                  Backed by community.
-                  <br />
-                  <span className="text-primary">Focused on classrooms.</span>
-                </h1>
-                <p className="max-w-2xl text-lg text-muted-foreground md:text-xl">
-                  We connect real school needs with people ready to help. No fluff, no middle steps, just direct support for
-                  teachers and students.
-                </p>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.05] text-foreground sm:text-5xl md:text-6xl">
+                Built by students.
+                <br />
+                Backed by community.
+                <br />
+                <span className="text-primary">Focused on classrooms.</span>
+              </h1>
+
+              <p className="mt-5 max-w-xl text-lg text-muted-foreground md:text-xl">
+                We connect real school needs with people ready to help — no fluff, no middle steps,
+                just direct support for teachers and students.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link to="/projects" className="sm:w-auto">
+                  <Button size="lg" className="h-12 w-full rounded-full px-7 text-base sm:w-auto">
+                    Explore Projects
+                    <ArrowRight className="ml-1 h-4 w-4" />
+                  </Button>
+                </Link>
+                <Link to="/submit-project" className="sm:w-auto">
+                  <Button size="lg" variant="outline" className="h-12 w-full rounded-full px-7 text-base sm:w-auto">
+                    Submit a Campaign
+                  </Button>
+                </Link>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl border border-slate-200 bg-white/90 p-4">
+              <div className="mt-auto grid gap-3 pt-10 sm:grid-cols-2">
+                <div className="rounded-2xl border border-slate-200 bg-white p-4">
                   <ShieldCheck className="mb-2 h-5 w-5 text-primary" />
                   <p className="font-semibold text-foreground">Reviewed campaigns</p>
                   <p className="text-sm text-muted-foreground">Every project is checked before it appears on the platform.</p>
                 </div>
-                <div className="rounded-2xl border border-slate-200 bg-white/90 p-4">
+                <div className="rounded-2xl border border-slate-200 bg-white p-4">
                   <HandHeart className="mb-2 h-5 w-5 text-primary" />
                   <p className="font-semibold text-foreground">Transparent updates</p>
                   <p className="text-sm text-muted-foreground">Supporters can follow campaign progress and outcomes.</p>
                 </div>
               </div>
-
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Link to="/projects">
-                  <Button size="lg" className="h-12 rounded-full px-7 text-base">
-                    Explore Projects
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link to="/submit-project">
-                  <Button size="lg" variant="outline" className="h-12 rounded-full px-7 text-base">
-                    Submit a Campaign
-                  </Button>
-                </Link>
-              </div>
             </div>
 
-            <div className="space-y-4 lg:col-span-6 xl:col-span-5">
-              <Card className="grain-overlay overflow-hidden rounded-[1.75rem] border border-slate-200 bg-slate-950 text-white shadow-card">
-                <div className="aspect-[16/11] overflow-hidden">
-                  <img src={event1} alt="Students at Future Scholars event" className="h-full w-full object-cover" />
-                </div>
-                <CardContent className="space-y-3 p-5">
+            {/* RIGHT — featured visual + recap */}
+            <div className="flex flex-col gap-4">
+              <Card className="relative flex-1 overflow-hidden rounded-[1.75rem] border border-slate-200 shadow-card">
+                <img
+                  src={event1}
+                  alt="Students at a Future Scholars classroom event"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-slate-950/55" />
+                <div className="relative flex h-full min-h-[300px] flex-col justify-end p-6 text-white">
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold">Local Impact</p>
-                  <h2 className="text-2xl font-bold">From Cary volunteers to classroom results</h2>
-                  <p className="text-sm text-white/75">Our events and drives are run by local students, families, and mentors.</p>
-                </CardContent>
+                  <h2 className="mt-2 text-2xl font-bold leading-snug">From Cary volunteers to classroom results</h2>
+                  <p className="mt-1 max-w-md text-sm text-white/80">
+                    Our events and drives are run by local students, families, and mentors.
+                  </p>
+                </div>
               </Card>
 
-              <div className="grid grid-cols-2 gap-4">
-                <Card className="soft-lift overflow-hidden rounded-2xl border-slate-200 bg-white/95">
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img src={event2} alt="FSA school support event" className="h-full w-full object-cover" />
-                  </div>
-                  <CardContent className="p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Since Sep 2025</p>
-                    <p className="mt-1 text-sm font-semibold">School partnerships in motion</p>
+              <Link to="/events/scholars-drive" className="block">
+                <Card className="soft-lift rounded-2xl border-slate-200 bg-white">
+                  <CardContent className="flex items-center justify-between gap-4 p-5">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Past Event · Recap</p>
+                      <p className="mt-1 text-lg font-bold text-foreground">Future Scholars Summit</p>
+                      <p className="mt-0.5 text-sm text-muted-foreground">March 1, 2026 · 10:00am – 12:00pm</p>
+                    </div>
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                      <ArrowUpRight className="h-5 w-5" />
+                    </span>
                   </CardContent>
                 </Card>
-                <Card className="soft-lift rounded-2xl border-slate-200 bg-white/95">
-                  <CardContent className="flex h-full flex-col justify-center p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Past Event</p>
-                    <p className="mt-2 text-lg font-bold">Future Innovators Expo</p>
-                    <p className="mt-1 text-sm text-muted-foreground">January 17, 2026 • Cedar Fork Community Center</p>
-                    <Link to="/events/scholars-drive" className="mt-4 inline-flex items-center text-sm font-semibold text-primary">
-                      Event recap
-                      <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
-                  </CardContent>
-                </Card>
-              </div>
+              </Link>
             </div>
           </div>
         </div>
@@ -260,56 +262,77 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto px-6">
-          <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Past Event</p>
-              <h2 className="mt-2 text-3xl font-bold text-foreground md:text-4xl">{FEATURED_EVENT.title}</h2>
-              <p className="mt-2 max-w-3xl text-muted-foreground">{FEATURED_EVENT.description}</p>
-            </div>
-            <Link to="/events/scholars-drive">
-              <Button variant="outline" className="rounded-full">
-                Full Event Recap
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
+          <div className="mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">From our events</p>
+            <h2 className="mt-2 text-3xl font-bold text-foreground md:text-4xl">A look back at the summit</h2>
           </div>
 
-          <Card className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card">
-            <div className="grid lg:grid-cols-2">
-              <div className="relative min-h-[280px]">
+          <Card className="overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-card">
+            <div className="grid items-stretch lg:grid-cols-2">
+              {/* Image side */}
+              <div className="relative min-h-[320px] lg:min-h-[480px]">
                 <img
-                  src={FEATURED_EVENT.image_url ?? event1}
-                  alt={FEATURED_EVENT.title}
-                  className="h-full w-full object-cover"
+                  src={summit2}
+                  alt="Future Scholars Summit attendees and guests of honor"
+                  className="absolute inset-0 h-full w-full object-cover"
                 />
+                <div className="absolute inset-0 bg-slate-950/55" />
+                <span className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-gold backdrop-blur">
+                  <span className="h-1.5 w-1.5 rounded-full bg-gold" />
+                  Past Event · Recap
+                </span>
+                <div className="absolute inset-x-6 bottom-6">
+                  <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/70">
+                    Guests of honor
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2">
+                    {["TJ", "MC", "SB"].map((initials) => (
+                      <span
+                        key={initials}
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-primary text-sm font-bold text-white ring-2 ring-white/40"
+                      >
+                        {initials}
+                      </span>
+                    ))}
+                    <span className="ml-1 text-sm font-medium text-white/85">+ several more leaders</span>
+                  </div>
+                </div>
               </div>
-              <CardContent className="flex flex-col justify-center gap-5 p-8 md:p-10">
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <CalendarDays className="mb-2 h-4 w-4 text-primary" />
-                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Date</p>
-                    <p className="font-semibold">January 17, 2026</p>
-                  </div>
-                  <div className="rounded-xl border border-slate-200 bg-slate-50 p-3">
-                    <MapPin className="mb-2 h-4 w-4 text-primary" />
-                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Location</p>
-                    <p className="font-semibold">Cedar Fork Community Center</p>
-                  </div>
+
+              {/* Content side */}
+              <div className="flex flex-col justify-between gap-8 p-8 md:p-12">
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-bold text-foreground md:text-4xl">Future Scholars Summit</h3>
+                  <p className="text-lg leading-relaxed text-muted-foreground">
+                    Student teams, nonprofits, and researchers pitched their boldest ideas live to a panel of
+                    community and state leaders — including Mayor TJ Cawley, Rep. Maria Cervania, and
+                    Councilwoman Sarika Bansal.
+                  </p>
                 </div>
-                <p className="text-muted-foreground">
-                  This event featured build challenges, robotics demos, and a school-supply drive that directly supported Bugg Elementary.
-                </p>
-                <div>
-                  <Link to="/events/scholars-drive">
-                    <Button className="rounded-full px-6">
-                      View Event Recap
-                      <ArrowRight className="h-4 w-4" />
-                    </Button>
-                  </Link>
+
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {[
+                    { icon: CalendarDays, label: "Date", value: "March 1, 2026" },
+                    { icon: Clock, label: "Time", value: "10:00 – 12:00" },
+                    { icon: Mic, label: "Format", value: "Pitch summit" },
+                  ].map(({ icon: Icon, label, value }) => (
+                    <div key={label} className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                      <Icon className="mb-2 h-4 w-4 text-primary" />
+                      <p className="text-[0.65rem] uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
+                      <p className="font-semibold text-foreground">{value}</p>
+                    </div>
+                  ))}
                 </div>
-              </CardContent>
+
+                <Link to="/events/scholars-drive" className="block">
+                  <Button size="lg" className="w-full rounded-full px-6 sm:w-auto">
+                    View full recap
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </Card>
         </div>
@@ -349,7 +372,7 @@ const Home = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/15 to-accent/10 text-primary">
+                      <div className="flex h-full items-center justify-center bg-primary/10 text-primary">
                         <BookOpen className="h-8 w-8" />
                       </div>
                     )}

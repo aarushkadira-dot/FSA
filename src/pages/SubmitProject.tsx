@@ -83,7 +83,7 @@ const SubmitProject = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-secondary/10 pt-24 pb-16">
+    <div className="min-h-screen bg-background pt-24 pb-16">
       <div className="container mx-auto px-6 max-w-3xl">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-primary rounded-full mb-4">

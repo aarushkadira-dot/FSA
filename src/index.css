@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -42,11 +42,12 @@
 
     --radius: 0.9rem;
 
-    --gradient-primary: linear-gradient(130deg, hsl(214 88% 45%) 0%, hsl(196 87% 43%) 45%, hsl(218 84% 56%) 100%);
-    --gradient-hero: radial-gradient(circle at 20% 20%, hsl(196 87% 43% / 0.34), transparent 40%), radial-gradient(circle at 85% 10%, hsl(214 88% 45% / 0.28), transparent 35%), linear-gradient(140deg, hsl(217 77% 24%) 0%, hsl(214 88% 40%) 50%, hsl(196 87% 39%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(196 87% 43%) 0%, hsl(214 88% 45%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(43 94% 53%) 0%, hsl(33 93% 56%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(210 46% 99%) 0%, hsl(210 42% 96%) 100%);
+    /* Flat (solid) "gradients" — kept as single-color linear-gradients so bg-clip-text still works */
+    --gradient-primary: linear-gradient(hsl(214 88% 45%), hsl(214 88% 45%));
+    --gradient-hero: linear-gradient(hsl(217 70% 22%), hsl(217 70% 22%));
+    --gradient-accent: linear-gradient(hsl(196 87% 43%), hsl(196 87% 43%));
+    --gradient-gold: linear-gradient(hsl(43 94% 53%), hsl(43 94% 53%));
+    --gradient-subtle: linear-gradient(hsl(210 44% 97%), hsl(210 44% 97%));
 
     --shadow-sm: 0 1px 2px hsl(218 30% 15% / 0.04);
     --shadow-md: 0 8px 24px hsl(218 30% 15% / 0.08);
@@ -77,9 +78,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Manrope", "Segoe UI", sans-serif;
-    background-image: radial-gradient(circle at 0% 0%, hsl(196 87% 43% / 0.11), transparent 33%), radial-gradient(circle at 100% 12%, hsl(214 88% 45% / 0.1), transparent 28%), linear-gradient(180deg, hsl(var(--background)) 0%, hsl(210 39% 97%) 45%, hsl(210 39% 96%) 100%);
-    background-attachment: fixed;
+    font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -90,7 +89,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Space Grotesk", "Manrope", sans-serif;
+    font-family: "Bricolage Grotesque", "Plus Jakarta Sans", sans-serif;
     letter-spacing: -0.02em;
   }
 
@@ -119,8 +118,8 @@
   }
 
   .fsa-grid {
-    background-image: linear-gradient(hsl(214 27% 86% / 0.45) 1px, transparent 1px), linear-gradient(90deg, hsl(214 27% 86% / 0.45) 1px, transparent 1px);
-    background-size: 26px 26px;
+    background-image: radial-gradient(hsl(214 27% 86% / 0.55) 1.1px, transparent 1.4px);
+    background-size: 24px 24px;
   }
 
   .soft-lift {

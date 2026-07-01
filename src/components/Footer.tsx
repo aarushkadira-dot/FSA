@@ -36,7 +36,7 @@ const Footer = () => {
       {/* Dark section */}
       <div className="relative overflow-hidden bg-[hsl(217,54%,11%)] text-slate-200">
         <div className="absolute inset-0 fsa-grid opacity-[0.07]" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-px bg-primary/30" />
 
         <div className="relative z-10 mx-auto max-w-[1440px] px-6 py-14">
           <div className="grid grid-cols-1 gap-12 md:grid-cols-12">

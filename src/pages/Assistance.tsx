@@ -32,21 +32,21 @@ const Assistance = () => {
       icon: DollarSign,
       title: "Financial Support",
       description: "Scholarships and emergency funds to help cover tuition, books, and living expenses.",
-      gradient: "from-gold/10 to-gold/5",
+      gradient: "bg-gold/10",
       iconColor: "text-gold",
     },
     {
       icon: BookOpen,
       title: "Academic Mentorship",
       description: "One-on-one tutoring and study support from experienced mentors.",
-      gradient: "from-accent/10 to-accent/5",
+      gradient: "bg-accent/10",
       iconColor: "text-accent",
     },
     {
       icon: Users,
       title: "Career Guidance",
       description: "Resume reviews, interview prep, and professional networking opportunities.",
-      gradient: "from-primary/10 to-primary/5",
+      gradient: "bg-primary/10",
       iconColor: "text-primary",
     },
   ];
@@ -82,17 +82,14 @@ const Assistance = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center bg-gradient-to-br from-primary/5 via-accent/5 to-gold/5">
+      <div className="min-h-screen pt-20 flex items-center justify-center bg-secondary/40">
         <Card className="max-w-2xl mx-6 p-12 text-center space-y-8 border-2 border-accent/50 shadow-glow animate-slide-up relative overflow-hidden">
           {/* Decorative Elements */}
-          <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-accent opacity-10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-gold opacity-10 rounded-full blur-3xl" />
           
           <div className="relative">
             <div className="w-24 h-24 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-2 shadow-glow">
               <CheckCircle2 className="w-14 h-14 text-accent-foreground animate-scale-in" />
             </div>
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-32 bg-accent/20 rounded-full blur-2xl animate-pulse" />
           </div>
 
           <div className="space-y-4">
@@ -146,8 +143,6 @@ const Assistance = () => {
         </div>
 
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-gold rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -203,7 +198,7 @@ const Assistance = () => {
                 }}
               >
                 {/* Blob Background */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${type.gradient} opacity-50 group-hover:opacity-70 transition-opacity`} 
+                <div className={`absolute inset-0 ${type.gradient} opacity-50 group-hover:opacity-70 transition-opacity`} 
                      style={{ 
                        clipPath: "polygon(0% 10%, 10% 0%, 90% 5%, 100% 20%, 95% 90%, 85% 100%, 10% 95%, 0% 80%)" 
                      }} />
@@ -283,7 +278,7 @@ const Assistance = () => {
       </section>
 
       {/* Application Form - Wizard Style */}
-      <section className="py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-gold/5 relative overflow-hidden">
+      <section className="py-24 bg-secondary/40 relative overflow-hidden">
         {/* Grid Pattern */}
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">

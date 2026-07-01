@@ -86,8 +86,6 @@ const Team = () => {
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-hero overflow-hidden">
         <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 right-20 w-96 h-96 bg-gold rounded-full blur-3xl animate-float" />
-          <div className="absolute bottom-20 left-20 w-96 h-96 bg-accent rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }} />
         </div>
 
         <div className="container mx-auto px-6 relative z-10">
@@ -279,7 +277,7 @@ const Team = () => {
       )}
 
       {/* Join Team CTA */}
-      <section className="py-24 relative overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5">
+      <section className="py-24 relative overflow-hidden bg-primary/5">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-8 animate-slide-up">
             <h2 className="text-4xl md:text-5xl font-bold">

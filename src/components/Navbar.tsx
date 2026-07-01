@@ -40,8 +40,8 @@ const Navbar = () => {
           className={cn(
             "mt-3 rounded-2xl border px-4 py-3 transition-all duration-300",
             scrolled
-              ? "border-slate-200/90 bg-white/92 shadow-card backdrop-blur-xl"
-              : "border-white/70 bg-white/78 shadow-sm backdrop-blur-md",
+              ? "border-slate-200 bg-white shadow-card"
+              : "border-slate-200 bg-white shadow-sm",
           )}
         >
           <div className="flex items-center justify-between gap-3">

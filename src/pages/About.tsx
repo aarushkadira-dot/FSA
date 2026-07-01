@@ -167,7 +167,7 @@ const milestones = [
     highlight:
       "This marked the beginning of our journey to create meaningful educational opportunities for underserved communities.",
     metric: "Day One",
-    color: "from-blue-500 to-cyan-400",
+    color: "bg-blue-500",
     icon: Award,
   },
   {
@@ -178,7 +178,7 @@ const milestones = [
     highlight:
       "Securing Bugg Elementary as our first partner was a key step in turning our vision into tangible impact.",
     metric: "1 partner school",
-    color: "from-emerald-500 to-teal-400",
+    color: "bg-emerald-500",
     icon: BookOpen,
   },
   {
@@ -189,7 +189,7 @@ const milestones = [
     highlight:
       "His involvement strengthened our organizational strategy and provided valuable mentorship as we prepared to expand our programs and reach more students.",
     metric: "Advisory board",
-    color: "from-orange-500 to-amber-400",
+    color: "bg-orange-500",
     icon: Users,
   },
   {
@@ -200,7 +200,7 @@ const milestones = [
     highlight:
       "The Future Innovators Expo featured hands-on STEM challenge stations including paper airplane contests, slime chemistry, bridge building, and a live robotics demonstration. Combined with a school supply drive benefiting Bugg Elementary, this event provided Title I students with both resources and inspiration to thrive academically, marking a major milestone in bringing our mission to life.",
     metric: "294 students",
-    color: "from-rose-500 to-pink-400",
+    color: "bg-rose-500",
     icon: Sparkles,
   },
 ];
@@ -263,7 +263,7 @@ const About = () => {
       content: (
         <div>
           <div className="mb-6">
-            <div className={`inline-flex items-center gap-3 bg-gradient-to-br ${milestone.color} rounded-full px-4 py-2 mb-4`}>
+            <div className={`inline-flex items-center gap-3 ${milestone.color} rounded-full px-4 py-2 mb-4`}>
               <Icon className="h-5 w-5 text-white" />
               <span className="text-sm font-bold text-white uppercase tracking-wider">
                 {milestone.metric}
@@ -392,9 +392,9 @@ const About = () => {
       <section 
         ref={missionRef}
         id="mission"
-        className="bg-gradient-to-b from-background via-primary/5 to-background py-12 relative overflow-hidden"
+        className="bg-background py-12 relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />
+        <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
         
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
@@ -457,8 +457,8 @@ const About = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="bg-gradient-to-b from-primary/5 to-background py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 pointer-events-none" />
+      <section className="bg-background py-16 md:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
         
         <div className="container mx-auto px-6 mb-[68px]">
           <div className="max-w-3xl mx-auto text-center">

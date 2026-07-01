@@ -1,5 +1,4 @@
 import { useMemo, useState, type ComponentType } from "react";
-import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,7 +7,6 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import {
   AlertCircle,
-  ArrowRight,
   ArrowUpRight,
   BarChart3,
   Book,
@@ -43,21 +41,6 @@ interface Project {
   gofundme_link?: string | null;
   created_at?: string;
 }
-
-const FEATURED_EVENT: Project = {
-  id: "event-innovators-2025",
-  title: "Future Innovators Expo",
-  description:
-    "Past event recap: a hands-on STEM event with interactive challenge stations including paper airplane contests, slime chemistry, bridge building, and live robotics demos.",
-  goal_amount: 0,
-  current_amount: 0,
-  category: "events",
-  status: "past",
-  school_name: "Cedar Fork Community Center",
-  student_count: null,
-  image_url: "/future innovators expo.png?v=3",
-  creator_id: "system",
-};
 
 type SortMode = "recent" | "urgent" | "popular" | "progress" | "title";
 
@@ -98,15 +81,13 @@ const getProgressPercentage = (current: number, goal: number) => {
 };
 
 const Projects = () => {
-  const [projects] = useState<Project[]>([FEATURED_EVENT]);
+  const [projects] = useState<Project[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterCategory, setFilterCategory] = useState<string>("all");
   const [sortBy, setSortBy] = useState<SortMode>("recent");
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
-      if (project.id === FEATURED_EVENT.id) return true;
-
       const matchesSearch =
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -120,9 +101,6 @@ const Projects = () => {
 
   const sortedProjects = useMemo(() => {
     const list = [...filteredProjects].sort((a, b) => {
-      if (a.id === FEATURED_EVENT.id) return -1;
-      if (b.id === FEATURED_EVENT.id) return 1;
-
       const aProgress = getProgressPercentage(a.current_amount, a.goal_amount);
       const bProgress = getProgressPercentage(b.current_amount, b.goal_amount);
 
@@ -148,9 +126,9 @@ const Projects = () => {
     return list;
   }, [filteredProjects, sortBy]);
 
-  const nonEventProjects = projects.filter((project) => project.id !== FEATURED_EVENT.id);
-  const totalRaised = nonEventProjects.reduce((sum, project) => sum + project.current_amount, 0);
-  const schoolsRepresented = new Set(nonEventProjects.map((project) => project.school_name).filter(Boolean)).size;
+  // Canonical org-wide stats — kept consistent across Home, About, and Projects.
+  const totalRaised = 450;
+  const schoolsRepresented = 1;
 
   return (
     <div className="min-h-screen bg-gradient-subtle pb-14 pt-28">
@@ -167,26 +145,26 @@ const Projects = () => {
               Back it directly.
             </h1>
             <p className="max-w-3xl text-lg text-muted-foreground md:text-xl">
-              This board highlights active classroom needs and featured past events. Filter fast, fund what matters, and track impact.
+              This board highlights active classroom needs. Filter fast, fund what matters, and track impact.
             </p>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3 lg:col-span-4 lg:grid-cols-1">
             <Card className="rounded-2xl border-slate-200 bg-white/95">
               <CardContent className="p-4">
-                <p className="text-2xl font-bold text-foreground">{Math.max(nonEventProjects.length, 1)}</p>
+                <p className="text-2xl font-bold text-foreground">{projects.length}</p>
                 <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Active campaigns</p>
               </CardContent>
             </Card>
             <Card className="rounded-2xl border-slate-200 bg-white/95">
               <CardContent className="p-4">
-                <p className="text-2xl font-bold text-foreground">${Math.max(totalRaised, 450).toLocaleString()}</p>
+                <p className="text-2xl font-bold text-foreground">${totalRaised.toLocaleString()}</p>
                 <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Raised</p>
               </CardContent>
             </Card>
             <Card className="rounded-2xl border-slate-200 bg-white/95">
               <CardContent className="p-4">
-                <p className="text-2xl font-bold text-foreground">{Math.max(schoolsRepresented, 1)}</p>
+                <p className="text-2xl font-bold text-foreground">{schoolsRepresented}</p>
                 <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Partner schools</p>
               </CardContent>
             </Card>
@@ -283,14 +261,6 @@ const Projects = () => {
           <Badge
             variant="outline"
             className="cursor-pointer rounded-full px-3 py-1.5 hover:bg-primary/10"
-            onClick={() => setFilterCategory("events")}
-          >
-            <Sparkles className="mr-1 h-3.5 w-3.5" />
-            Events
-          </Badge>
-          <Badge
-            variant="outline"
-            className="cursor-pointer rounded-full px-3 py-1.5 hover:bg-primary/10"
             onClick={() => {
               setFilterCategory("all");
               setSortBy("popular");
@@ -304,7 +274,7 @@ const Projects = () => {
         <div className="mt-6 flex items-end justify-between">
           <div>
             <p className="text-2xl font-bold text-foreground">{sortedProjects.length} projects found</p>
-            <p className="text-sm text-muted-foreground">Updated from submitted campaigns and featured past events.</p>
+            <p className="text-sm text-muted-foreground">Updated from submitted campaigns.</p>
           </div>
         </div>
 
@@ -331,7 +301,6 @@ const Projects = () => {
         ) : (
           <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {sortedProjects.map((project) => {
-              const isFeaturedEvent = project.id === FEATURED_EVENT.id;
               const progress = getProgressPercentage(project.current_amount, project.goal_amount);
               const meta = CATEGORY_MAP[project.category] ?? { label: project.category, icon: Package, tone: "border-slate-300" };
               const Icon = meta.icon;
@@ -339,9 +308,7 @@ const Projects = () => {
               return (
                 <Card
                   key={project.id}
-                  className={`soft-lift group overflow-hidden rounded-3xl bg-white/95 ${meta.tone} ${
-                    isFeaturedEvent ? "ring-1 ring-gold/35" : ""
-                  }`}
+                  className={`soft-lift group overflow-hidden rounded-3xl bg-white/95 ${meta.tone}`}
                 >
                   <div className="relative aspect-video overflow-hidden bg-slate-100">
                     {project.image_url ? (
@@ -351,12 +318,9 @@ const Projects = () => {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                       />
                     ) : (
-                      <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/10 to-accent/15 text-primary">
+                      <div className="flex h-full items-center justify-center bg-primary/10 text-primary">
                         <BookOpen className="h-8 w-8" />
                       </div>
-                    )}
-                    {isFeaturedEvent && (
-                      <Badge className="absolute left-3 top-3 border-none bg-gold text-gold-foreground">Past event</Badge>
                     )}
                   </div>
 
@@ -377,37 +341,26 @@ const Projects = () => {
                     <h3 className="line-clamp-2 text-xl font-bold leading-tight text-foreground">{project.title}</h3>
                     <p className="line-clamp-3 text-sm text-muted-foreground">{project.description}</p>
 
-                    {!isFeaturedEvent && (
-                      <div className="space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-3">
-                        <div className="flex items-baseline justify-between">
-                          <p className="text-lg font-bold text-primary">${project.current_amount.toLocaleString()}</p>
-                          <p className="text-xs text-muted-foreground">of ${project.goal_amount.toLocaleString()}</p>
-                        </div>
-                        <Progress value={progress} className="h-2" />
-                        <p className="text-xs text-muted-foreground">{Math.round(progress)}% funded</p>
+                    <div className="space-y-2 rounded-2xl border border-slate-200 bg-slate-50 p-3">
+                      <div className="flex items-baseline justify-between">
+                        <p className="text-lg font-bold text-primary">${project.current_amount.toLocaleString()}</p>
+                        <p className="text-xs text-muted-foreground">of ${project.goal_amount.toLocaleString()}</p>
                       </div>
-                    )}
+                      <Progress value={progress} className="h-2" />
+                      <p className="text-xs text-muted-foreground">{Math.round(progress)}% funded</p>
+                    </div>
 
-                    {isFeaturedEvent ? (
-                      <Link to="/events/scholars-drive" className="block">
-                        <Button className="w-full rounded-xl bg-gradient-gold text-gold-foreground hover:opacity-95">
-                          View recap
-                          <ArrowRight className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                    ) : (
-                      <a
-                        href={project.gofundme_link ?? "https://www.gofundme.com"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block"
-                      >
-                        <Button className="w-full rounded-xl">
-                          Support campaign
-                          <ArrowUpRight className="h-4 w-4" />
-                        </Button>
-                      </a>
-                    )}
+                    <a
+                      href={project.gofundme_link ?? "https://www.gofundme.com"}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <Button className="w-full rounded-xl">
+                        Support campaign
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Button>
+                    </a>
                   </CardContent>
                 </Card>
               );
