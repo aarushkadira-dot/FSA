@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -49,70 +49,6 @@ const FEATURED_EVENT: Project = {
   creator_id: "system",
 };
 
-type AnimatedNumberProps = {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  duration?: number;
-  format?: (value: number) => string;
-};
-
-const AnimatedNumber = ({ value, prefix = "", suffix = "", duration = 1200, format }: AnimatedNumberProps) => {
-  const displayRef = useRef<HTMLSpanElement>(null);
-  const frameRef = useRef<number>();
-  const hasAnimatedRef = useRef(false);
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    const element = displayRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimatedRef.current) {
-            hasAnimatedRef.current = true;
-            const start = performance.now();
-
-            const animate = (currentTime: number) => {
-              const elapsed = currentTime - start;
-              const progress = Math.min(elapsed / duration, 1);
-              const currentValue = Math.round(progress * value);
-              setDisplayValue(currentValue);
-
-              if (progress < 1) {
-                frameRef.current = requestAnimationFrame(animate);
-              } else {
-                setDisplayValue(value);
-              }
-            };
-
-            frameRef.current = requestAnimationFrame(animate);
-          }
-        });
-      },
-      { threshold: 0.35 },
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-    };
-  }, [duration, value]);
-
-  const formattedValue = format ? format(displayValue) : displayValue.toLocaleString();
-
-  return (
-    <span ref={displayRef}>
-      {prefix}
-      {formattedValue}
-      {suffix}
-    </span>
-  );
-};
-
 const Home = () => {
   const [projects] = useState<Project[]>([FEATURED_EVENT]);
 
@@ -141,7 +77,6 @@ const Home = () => {
       prefix: "$",
       label: "Raised So Far",
       description: "Community-supported funding",
-      format: (value: number) => value.toLocaleString(),
     },
   ];
 
@@ -249,7 +184,8 @@ const Home = () => {
                     </div>
                     <div>
                       <p className="text-3xl font-bold text-foreground">
-                        <AnimatedNumber value={stat.value} prefix={stat.prefix} format={stat.format} />
+                        {stat.prefix}
+                        {stat.value.toLocaleString()}
                       </p>
                       <p className="mt-1 font-semibold text-foreground">{stat.label}</p>
                       <p className="mt-1 text-sm text-muted-foreground">{stat.description}</p>
