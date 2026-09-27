@@ -9,6 +9,7 @@ const columns = [
       { label: "Find a Classroom", to: "/projects" },
       { label: "Find a School", to: "/find-school" },
       { label: "Teachers", to: "/submit-project" },
+      { label: "Start a Chapter", to: "/start-a-chapter" },
       { label: "Request Assistance", to: "/assistance" },
     ],
   },

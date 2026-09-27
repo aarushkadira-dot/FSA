@@ -18,6 +18,8 @@ import NotFound from "./pages/NotFound";
 import ScholarsDriveEvent from "./pages/ScholarsDriveEvent";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import StartChapter from "./pages/StartChapter";
+import { START_CHAPTER_PATH } from "./lib/links";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +31,7 @@ const AppRoutes = () => (
     <Route path="/projects/:id" element={<ProjectDetail />} />
     <Route path="/submit-project" element={<SubmitProject />} />
     <Route path="/team" element={<Team />} />
+    <Route path={START_CHAPTER_PATH} element={<StartChapter />} />
     <Route path="/find-school" element={<FindSchool />} />
     <Route path="/assistance" element={<Assistance />} />
     <Route path="/events/scholars-drive" element={<ScholarsDriveEvent />} />

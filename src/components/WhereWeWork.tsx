@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { START_CHAPTER_PATH } from "@/lib/links";
 import { CHAPTERS, PARTNER_SCHOOLS } from "@/data/organization";
 
 const WhereWeWork = ({ className }: { className?: string }) => (
@@ -30,6 +33,14 @@ const WhereWeWork = ({ className }: { className?: string }) => (
             </li>
           ))}
         </ul>
+        <Button
+          asChild
+          size="lg"
+          variant="outline"
+          className="mt-6 border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+        >
+          <Link to={START_CHAPTER_PATH}>Start a chapter</Link>
+        </Button>
       </div>
     </div>
   </section>
