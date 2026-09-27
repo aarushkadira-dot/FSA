@@ -105,8 +105,6 @@ const ClassroomRequests = () => {
     return matchesSearch && (school === "all" || request.school === school) && (grade === "all" || request.grade === grade);
   });
 
-  const openCountFor = (name: string) => openRequests.filter((request) => request.school === name).length;
-
   return (
     <>
       {/* Open requests */}
@@ -207,32 +205,8 @@ const ClassroomRequests = () => {
         </section>
       )}
 
-      {/* Partner schools */}
-      <section className="border-t border-border py-12 md:py-16">
-        <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our partner schools</h2>
-          <p className="mt-2 text-lg text-muted-foreground">Title I elementary schools in Wake County, North Carolina.</p>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {PARTNER_SCHOOLS.map((name) => {
-              const count = openCountFor(name);
-              return (
-                <li key={name} className="rounded-lg border border-border bg-secondary p-5">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="text-lg font-semibold text-foreground">{name}</p>
-                    <span className="shrink-0 rounded-md bg-white px-2.5 py-1 text-sm font-medium text-primary">Title I</span>
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    {count === 0 ? "No open requests" : count === 1 ? "1 open request" : `${count} open requests`}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </section>
-
       {/* Where your money goes */}
-      <section className="border-t border-border bg-secondary py-12 md:py-16">
+      <section className="border-t border-border py-12 md:py-16">
         <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">Where your money goes</h2>
