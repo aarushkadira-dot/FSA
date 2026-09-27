@@ -41,24 +41,22 @@ const Team = () => {
       image: "/joshua.jpg",
     },
     {
-      name: "Saatvik Santosh",
-      role: "Vice President",
-      bio: "Vice President and lead architect behind FSA's digital ecosystem, pairing strategic leadership with polished execution to scale outreach, fundraising, and student impact.",
-      image: "/saatvik.jpg",
+      name: "Pihu Khadkad",
+      role: "Partnerships & Social Media Manager",
+      bio: "Builds FSA's partnerships with schools and organizations and runs our social media.",
+      image: undefined as string | undefined,
     },
     {
-      name: "Ketav Karthikeyan",
-      role: "Community and Partnership Manager",
-      bio: "Building meaningful relationships and strategic partnerships to expand our reach and community impact.",
-      image: "/ketav.jpg",
-      position: "object-top",
+      name: "Arvin Gupta",
+      role: "Website Manager",
+      bio: "Builds and maintains the FSA website.",
+      image: undefined as string | undefined,
     },
     {
-      name: "Aarit Srivastava",
-      role: "Social Media Co-Manager",
-      bio: "Supporting social media strategy and content creation to expand FSA's digital presence and community engagement.",
-      image: "/aarit.jpg",
-      position: "object-top",
+      name: "Aaron Gim",
+      role: "Community Outreach Manager",
+      bio: "Connects FSA with families, schools and community groups, and organizes outreach events.",
+      image: undefined as string | undefined,
     },
   ];
 
@@ -135,11 +133,25 @@ const Team = () => {
                     
                     {/* Profile Image */}
                     <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-elegant">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${member.position || ''}`}
-                      />
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${"position" in member ? member.position : ""}`}
+                        />
+                      ) : (
+                        // No photo yet: show initials until one is added
+                        <div
+                          role="img"
+                          aria-label={member.name}
+                          className="flex h-full w-full items-center justify-center bg-primary text-3xl font-bold text-primary-foreground"
+                        >
+                          {member.name
+                            .split(" ")
+                            .map((part) => part[0])
+                            .join("")}
+                        </div>
+                      )}
                     </div>
                   </div>
 
