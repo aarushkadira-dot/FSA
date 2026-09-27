@@ -1,6 +1,7 @@
 import { Calendar as CalendarIcon, Clock, Mic, ArrowLeft, ArrowUpRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { CLASSROOMS_PATH } from "@/lib/links";
 import summit1 from "@/assets/summit1.jpg";
 import summit2 from "@/assets/summit2.jpg";
 import summit3 from "@/assets/summit3.jpg";
@@ -265,7 +266,7 @@ const ScholarsDriveEvent = () => {
             A heartfelt thank you to our guests, presenters, and everyone who joined us in
             championing the next generation of scholars.
           </p>
-          <Link to="/classrooms" className="relative mt-10 inline-block">
+          <Link to={CLASSROOMS_PATH} className="relative mt-10 inline-block">
             <Button
               size="lg"
               className="rounded-full bg-white px-8 text-primary hover:bg-white/90"

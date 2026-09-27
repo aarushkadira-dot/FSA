@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
+import { CLASSROOMS_PATH, DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import { titleOneSchools } from "@/data/titleOneSchools";
 import { CHAPTERS, PARTNER_SCHOOLS } from "@/data/organization";
 import WhereWeWork from "@/components/WhereWeWork";
@@ -136,7 +136,7 @@ const Home = () => {
                 Requests from Title I teachers we work with.
               </p>
             </div>
-            <Link to="/classrooms" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+            <Link to={CLASSROOMS_PATH} className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
               See all requests
               <ArrowRight className="h-4 w-4" />
             </Link>

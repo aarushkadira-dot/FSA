@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Classrooms from "./pages/Classrooms";
 import SubmitProject from "./pages/SubmitProject";
 import Team from "./pages/Team";
 import FindSchool from "./pages/FindSchool";
@@ -18,7 +17,7 @@ import ScholarsDriveEvent from "./pages/ScholarsDriveEvent";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import StartChapter from "./pages/StartChapter";
-import { CLASSROOMS_PATH, START_CHAPTER_PATH } from "./lib/links";
+import { CLASSROOMS_PATH, FIND_SCHOOL_PATH, START_CHAPTER_PATH } from "./lib/links";
 
 const queryClient = new QueryClient();
 
@@ -26,13 +25,13 @@ const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
-    <Route path={CLASSROOMS_PATH} element={<Classrooms />} />
-    {/* Old campaign-board URLs */}
+    {/* Classroom requests now live on the Find a School page */}
+    <Route path="/classrooms" element={<Navigate to={CLASSROOMS_PATH} replace />} />
     <Route path="/projects/*" element={<Navigate to={CLASSROOMS_PATH} replace />} />
     <Route path="/submit-project" element={<SubmitProject />} />
     <Route path="/team" element={<Team />} />
     <Route path={START_CHAPTER_PATH} element={<StartChapter />} />
-    <Route path="/find-school" element={<FindSchool />} />
+    <Route path={FIND_SCHOOL_PATH} element={<FindSchool />} />
     <Route path="/assistance" element={<Assistance />} />
     <Route path="/events/scholars-drive" element={<ScholarsDriveEvent />} />
     <Route path="/privacy-policy" element={<PrivacyPolicy />} />

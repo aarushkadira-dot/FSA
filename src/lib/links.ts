@@ -1,6 +1,8 @@
 import { CONTACT_EMAIL } from "@/lib/forms";
 
-export const CLASSROOMS_PATH = "/classrooms";
+export const FIND_SCHOOL_PATH = "/find-school";
+// Classroom requests live on the Find a School page, below the map.
+export const CLASSROOMS_PATH = `${FIND_SCHOOL_PATH}#classrooms`;
 // Site-wide Donate buttons point at the classroom list until the GoFundMe link is added below.
 export const DONATE_PATH = CLASSROOMS_PATH;
 export const TEACHER_REQUEST_PATH = "/submit-project";

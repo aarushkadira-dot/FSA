@@ -84,7 +84,7 @@ const RequestCard = ({ request }: { request: ClassroomRequest }) => {
   );
 };
 
-const Classrooms = () => {
+const ClassroomRequests = () => {
   const [search, setSearch] = useState("");
   const [school, setSchool] = useState("all");
   const [grade, setGrade] = useState("all");
@@ -108,25 +108,21 @@ const Classrooms = () => {
   const openCountFor = (name: string) => openRequests.filter((request) => request.school === name).length;
 
   return (
-    <div>
-      {/* Header */}
-      <section className="border-b border-border bg-secondary">
-        <div className="container mx-auto flex flex-col gap-6 px-4 py-12 sm:px-6 md:flex-row md:items-end md:justify-between md:py-16">
-          <div>
-            <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Find a classroom</h1>
-            {openRequests.length > 0 && (
-              <p className="mt-3 text-lg text-muted-foreground">
-                {openRequests.length === 1 ? "1 open request" : `${openRequests.length} open requests`}
-              </p>
-            )}
-          </div>
-          <DonateButton href={donationHref()} className="h-11 px-8 text-base" />
-        </div>
-      </section>
-
+    <>
       {/* Open requests */}
-      <section className="py-12 md:py-16">
+      <section id="classrooms" className="scroll-mt-20 border-t border-border bg-secondary py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6">
+          <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 className="text-3xl font-bold text-foreground md:text-4xl">Find a classroom</h2>
+              {openRequests.length > 0 && (
+                <p className="mt-2 text-lg text-muted-foreground">
+                  {openRequests.length === 1 ? "1 open request" : `${openRequests.length} open requests`}
+                </p>
+              )}
+            </div>
+            {openRequests.length > 0 && <DonateButton href={donationHref()} className="h-11 px-8 text-base" />}
+          </div>
           {showFilters && (
             <div className="mb-8 grid gap-3 md:grid-cols-12">
               <div className="relative md:col-span-6">
@@ -155,8 +151,8 @@ const Classrooms = () => {
           )}
 
           {openRequests.length === 0 ? (
-            <div className="rounded-lg border border-border bg-secondary p-8 md:p-10">
-              <h2 className="text-2xl font-semibold text-foreground">There are no open requests right now.</h2>
+            <div className="rounded-lg border border-border bg-white p-8 md:p-10">
+              <h3 className="text-2xl font-semibold text-foreground">There are no open requests right now.</h3>
               <p className="mt-2 max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 Our partner teachers are putting together their next requests. You can donate now to help fund what
                 they need, or, if you teach at one of our partner schools, send us your request.
@@ -173,7 +169,7 @@ const Classrooms = () => {
               </div>
             </div>
           ) : visibleRequests.length === 0 ? (
-            <div className="rounded-lg border border-border bg-secondary p-8">
+            <div className="rounded-lg border border-border bg-white p-8">
               <p className="text-lg font-semibold text-foreground">No requests match those filters.</p>
               <button
                 type="button"
@@ -212,7 +208,7 @@ const Classrooms = () => {
       )}
 
       {/* Partner schools */}
-      <section className="border-t border-border bg-secondary py-12 md:py-16">
+      <section className="border-t border-border py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6">
           <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our partner schools</h2>
           <p className="mt-2 text-lg text-muted-foreground">Title I elementary schools in Wake County, North Carolina.</p>
@@ -220,10 +216,10 @@ const Classrooms = () => {
             {PARTNER_SCHOOLS.map((name) => {
               const count = openCountFor(name);
               return (
-                <li key={name} className="rounded-lg border border-border bg-white p-5">
+                <li key={name} className="rounded-lg border border-border bg-secondary p-5">
                   <div className="flex items-start justify-between gap-3">
                     <p className="text-lg font-semibold text-foreground">{name}</p>
-                    <span className="shrink-0 rounded-md bg-secondary px-2.5 py-1 text-sm font-medium text-primary">Title I</span>
+                    <span className="shrink-0 rounded-md bg-white px-2.5 py-1 text-sm font-medium text-primary">Title I</span>
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
                     {count === 0 ? "No open requests" : count === 1 ? "1 open request" : `${count} open requests`}
@@ -236,7 +232,7 @@ const Classrooms = () => {
       </section>
 
       {/* Where your money goes */}
-      <section className="py-12 md:py-16">
+      <section className="border-t border-border bg-secondary py-12 md:py-16">
         <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">Where your money goes</h2>
@@ -270,8 +266,8 @@ const Classrooms = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
-export default Classrooms;
+export default ClassroomRequests;

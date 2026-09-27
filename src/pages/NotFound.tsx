@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { CLASSROOMS_PATH } from "@/lib/links";
 import { ArrowLeft, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -26,7 +27,7 @@ const NotFound = () => {
               Back Home
             </Button>
           </Link>
-          <Link to="/classrooms">
+          <Link to={CLASSROOMS_PATH}>
             <Button variant="outline" className="rounded-full px-6">
               <Search className="h-4 w-4" />
               Find a classroom
