@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -12,9 +13,6 @@ const navLinks = [
   { name: "Team", path: "/team" },
 ];
 
-// No donation processor yet; point Donate at the classroom list until one exists.
-const DONATE_PATH = "/projects";
-const TEACHER_PATH = "/submit-project";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +50,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Link to={TEACHER_PATH} className="text-[0.95rem] font-medium text-foreground/80 hover:text-primary">
+          <Link to={TEACHER_REQUEST_PATH} className="text-[0.95rem] font-medium text-foreground/80 hover:text-primary">
             Teachers: Request Supplies
           </Link>
           <Button asChild className="bg-gold px-5 font-semibold text-gold-foreground hover:bg-gold/90">
@@ -87,7 +85,7 @@ const Navbar = () => {
                 {link.name}
               </NavLink>
             ))}
-            <Link to={TEACHER_PATH} className="py-3 text-base font-medium text-foreground">
+            <Link to={TEACHER_REQUEST_PATH} className="py-3 text-base font-medium text-foreground">
               Teachers: Request Supplies
             </Link>
             <Button asChild className="mb-3 mt-1 bg-gold font-semibold text-gold-foreground hover:bg-gold/90">
