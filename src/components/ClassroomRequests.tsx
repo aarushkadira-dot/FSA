@@ -207,7 +207,7 @@ const ClassroomRequests = () => {
 
       {/* Where your money goes */}
       <section className="border-t border-border py-12 md:py-16">
-        <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-2">
+        <div className="container mx-auto grid grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold text-foreground md:text-4xl">Where your money goes</h2>
             <ol className="mt-8 space-y-6">
@@ -234,7 +234,11 @@ const ClassroomRequests = () => {
             <p className="mt-3 text-lg leading-relaxed text-white/85">
               Tell us what your classroom needs. We will turn it into a request and raise the money to cover it.
             </p>
-            <Button asChild size="lg" className="mt-6 bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+            <Button
+              asChild
+              size="lg"
+              className="mt-6 h-auto min-h-11 whitespace-normal bg-gold py-3 text-base font-semibold text-gold-foreground hover:bg-gold/90"
+            >
               <Link to={TEACHER_REQUEST_PATH}>Submit a classroom request</Link>
             </Button>
           </div>

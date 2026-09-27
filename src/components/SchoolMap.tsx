@@ -34,6 +34,23 @@ const formatGrades = (span: string) =>
 const PARTNER_IDS = new Set(PARTNER_SCHOOL_LOCATIONS.map((partner) => partner.id));
 const TITLE_I_BY_ID = new Map(titleOneSchools.map((school) => [school.id, school]));
 
+const BLOCKED_MESSAGE =
+  "Location is blocked for this site. To use Near me, click the icon to the left of the web address, set Location to Allow, then press Near me again. You can also search by city or county.";
+
+const milesBetween = (lat1: number, lng1: number, lat2: number, lng2: number) => {
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return 3958.8 * 2 * Math.asin(Math.sqrt(a));
+};
+
+const closestSchools = (lat: number, lng: number, count = 5) =>
+  titleOneSchools
+    .map((school) => ({ school, miles: milesBetween(lat, lng, school.coordinates[1], school.coordinates[0]) }))
+    .sort((a, b) => a.miles - b.miles)
+    .slice(0, count);
+
 type Selected =
   | { kind: "school"; school: School }
   | { kind: "partner"; partner: (typeof PARTNER_SCHOOL_LOCATIONS)[number] };
@@ -55,6 +72,7 @@ const SchoolMap = () => {
   const [displayedSchools, setDisplayedSchools] = useState<School[]>([]);
   const [searchName, setSearchName] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
+  const [nearest, setNearest] = useState<{ school: School; miles: number }[]>([]);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isInitialMount = useRef(true);
 
@@ -86,6 +104,7 @@ const SchoolMap = () => {
         : null;
 
     if (match) {
+      setNearest([]);
       setMapCenter(anchorOf(match));
       setZoom(13);
       setSelected(match);
@@ -122,43 +141,64 @@ const SchoolMap = () => {
     updateVisibleSchools(mapCenter[0], mapCenter[1], zoom, immediate);
   }, [mapCenter, zoom, updateVisibleSchools]);
 
-  const requestLocation = useCallback(() => {
-    if (!navigator.geolocation) {
+  const showLocation = useCallback((lat: number, lng: number) => {
+    const here: [number, number] = [lat, lng];
+    setUserLocation(here);
+    setMapCenter(here);
+    setZoom(12);
+    setSelected(null);
+    setNearest(closestSchools(lat, lng));
+    setLocationStatus("granted");
+    setMessage({ text: "Showing Title I schools near you.", tone: "info" });
+  }, []);
+
+  // Only ever called from the button, so the browser's permission prompt appears
+  // right after the visitor asks for it.
+  const requestLocation = useCallback(async () => {
+    if (!window.isSecureContext || !navigator.geolocation) {
       setLocationStatus("error");
-      setMessage({ text: "Your browser doesn't support location services.", tone: "error" });
+      setMessage({ text: "Your browser can't share your location here. Search by city or county instead.", tone: "error" });
       return;
     }
 
-    setLocationStatus("requesting");
-    setMessage({ text: "Finding schools near you…", tone: "info" });
+    // If the site is already blocked, say how to unblock it instead of failing silently.
+    try {
+      const permission = await navigator.permissions?.query({ name: "geolocation" });
+      if (permission?.state === "denied") {
+        setLocationStatus("denied");
+        setMessage({ text: BLOCKED_MESSAGE, tone: "error" });
+        return;
+      }
+    } catch {
+      // Permissions API not available (older Safari); fall through to the request.
+    }
 
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const next: [number, number] = [position.coords.latitude, position.coords.longitude];
-        setUserLocation(next);
-        setMapCenter(next);
-        setZoom(11);
-        setLocationStatus("granted");
-        setMessage({ text: "Showing schools near you.", tone: "info" });
-      },
-      (error) => {
-        const denied = error.code === error.PERMISSION_DENIED;
-        setLocationStatus(denied ? "denied" : "error");
+    setLocationStatus("requesting");
+    setMessage({ text: "Finding your location… If your browser asks, choose Allow.", tone: "info" });
+
+    const onError = (error: GeolocationPositionError) => {
+      if (error.code === error.PERMISSION_DENIED) {
+        setLocationStatus("denied");
+        setMessage({ text: BLOCKED_MESSAGE, tone: "error" });
+      } else {
+        setLocationStatus("error");
         setMessage({
-          text: denied
-            ? "Location access is off. You can still search or move the map to browse schools."
-            : "We couldn't find your location. Please try again.",
+          text:
+            error.code === error.TIMEOUT
+              ? "Finding your location took too long. Try again, or search by city or county."
+              : "We couldn't get your location. Check that location services are on for your device and browser, or search by city or county.",
           tone: "error",
         });
-      },
-      { enableHighAccuracy: false, timeout: 5000, maximumAge: 60000 },
-    );
-  }, []);
+      }
+    };
 
-  useEffect(() => {
-    const timer = setTimeout(requestLocation, 500);
-    return () => clearTimeout(timer);
-  }, [requestLocation]);
+    navigator.geolocation.getCurrentPosition(
+      (position) => showLocation(position.coords.latitude, position.coords.longitude),
+      onError,
+      // Wi-Fi/IP location is plenty for "schools near me" and much faster than GPS.
+      { enableHighAccuracy: false, timeout: 20000, maximumAge: 5 * 60 * 1000 },
+    );
+  }, [showLocation]);
 
   return (
     <section className="py-10 md:py-12">
@@ -315,6 +355,46 @@ const SchoolMap = () => {
           Title I schools for the {TITLE_I_SCHOOL_YEAR} school year, from NC DPI school report card data, plus partner
           schools that became Title I in 2025–26. Locations from the U.S. Department of Education (NCES).
         </p>
+
+        {nearest.length > 0 && (
+          <div className="mt-8">
+            <h2 className="text-xl font-semibold text-foreground">Closest Title I schools to you</h2>
+            <ol className="mt-3 divide-y divide-border rounded-lg border border-border">
+              {nearest.map(({ school, miles }) => (
+                <li key={school.id}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMapCenter([school.coordinates[1], school.coordinates[0]]);
+                      setZoom(14);
+                      setSelected(
+                        PARTNER_IDS.has(school.id)
+                          ? { kind: "partner", partner: PARTNER_SCHOOL_LOCATIONS.find((p) => p.id === school.id)! }
+                          : { kind: "school", school },
+                      );
+                    }}
+                    className="flex w-full items-center justify-between gap-4 px-4 py-3 text-left hover:bg-secondary"
+                  >
+                    <span>
+                      <span className="font-semibold text-foreground">{school.name}</span>
+                      {PARTNER_IDS.has(school.id) && (
+                        <span className="ml-2 inline-block whitespace-nowrap rounded bg-gold/20 px-1.5 py-0.5 text-xs font-semibold text-foreground">
+                          FSA partner
+                        </span>
+                      )}
+                      <span className="block text-sm text-muted-foreground">
+                        {school.address} · Grades {formatGrades(school.grades)}
+                      </span>
+                    </span>
+                    <span className="shrink-0 text-sm font-medium text-muted-foreground">
+                      {miles < 10 ? miles.toFixed(1) : Math.round(miles)} mi
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </div>
     </section>
   );
