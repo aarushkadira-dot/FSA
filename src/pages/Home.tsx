@@ -7,14 +7,11 @@ import classroomPhoto from "@/assets/event1.png";
 import suppliesPhoto from "@/assets/event2.png";
 import summitPhoto from "@/assets/summit4.jpg";
 
-const MISSION_STATEMENT =
-  "The Future Scholars Association is a student-run nonprofit working to make sure every student in a Title I school has the supplies they need to learn. We partner directly with teachers to find out what their classrooms are missing, raise the money to cover it, and get those supplies into students' hands.";
-
 const trustPoints = [
   { title: "501(c)(3) nonprofit", detail: "Donations are tax-deductible." },
   { title: "Run by students", detail: "A student board leads every drive." },
   { title: "Teacher-requested", detail: "We fund what classrooms ask for." },
-  { title: "Partner school", detail: "Bugg Magnet Elementary, Raleigh" },
+  { title: "6 partner schools", detail: "Title I schools including Bugg Magnet Elementary" },
 ];
 
 const steps = [
@@ -34,9 +31,9 @@ const steps = [
 
 const impact = [
   { value: "294", label: "students reached" },
-  { value: "$450", label: "raised for classrooms" },
-  { value: "1", label: "Title I partner school" },
-  { value: "2025", label: "year founded" },
+  { value: "$1,450", label: "raised for classrooms" },
+  { value: "6", label: "Title I partner schools" },
+  { value: "4", label: "chapters" },
 ];
 
 const Home = () => {
@@ -80,20 +77,6 @@ const Home = () => {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="py-16 md:py-20">
-        <div className="container mx-auto max-w-4xl px-4 sm:px-6">
-          <h2 className="text-lg font-semibold text-primary">Our mission</h2>
-          <p className="mt-4 text-2xl font-medium leading-snug text-foreground md:text-3xl md:leading-snug">
-            {MISSION_STATEMENT}
-          </p>
-          <Link to="/about" className="mt-6 inline-flex items-center gap-1 font-semibold text-primary hover:underline">
-            Read our story
-            <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
       </section>
 
