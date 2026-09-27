@@ -60,7 +60,7 @@ const Home = () => {
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary">
-                <Link to={TEACHER_REQUEST_PATH}>Teachers: Request Supplies</Link>
+                <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
               </Button>
             </div>
           </div>

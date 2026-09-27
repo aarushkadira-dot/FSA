@@ -49,10 +49,14 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden items-center gap-4 lg:flex">
-          <Link to={TEACHER_REQUEST_PATH} className="text-[0.95rem] font-medium text-foreground/80 hover:text-primary">
-            Teachers: Request Supplies
-          </Link>
+        <div className="hidden items-center gap-3 lg:flex">
+          <Button
+            asChild
+            variant="outline"
+            className="border-primary px-5 font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+          >
+            <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
+          </Button>
           <Button asChild className="bg-gold px-5 font-semibold text-gold-foreground hover:bg-gold/90">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
@@ -85,12 +89,18 @@ const Navbar = () => {
                 {link.name}
               </NavLink>
             ))}
-            <Link to={TEACHER_REQUEST_PATH} className="py-3 text-base font-medium text-foreground">
-              Teachers: Request Supplies
-            </Link>
-            <Button asChild className="mb-3 mt-1 bg-gold font-semibold text-gold-foreground hover:bg-gold/90">
-              <Link to={DONATE_PATH}>Donate</Link>
-            </Button>
+            <div className="grid grid-cols-2 gap-3 pb-3 pt-4">
+              <Button
+                asChild
+                variant="outline"
+                className="border-primary font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+              >
+                <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
+              </Button>
+              <Button asChild className="bg-gold font-semibold text-gold-foreground hover:bg-gold/90">
+                <Link to={DONATE_PATH}>Donate</Link>
+              </Button>
+            </div>
           </div>
         </div>
       )}

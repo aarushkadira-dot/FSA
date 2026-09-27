@@ -8,7 +8,7 @@ const columns = [
     links: [
       { label: "Find a Classroom", to: "/projects" },
       { label: "Find a School", to: "/find-school" },
-      { label: "Teachers: Request Supplies", to: "/submit-project" },
+      { label: "Teachers", to: "/submit-project" },
       { label: "Request Assistance", to: "/assistance" },
     ],
   },
