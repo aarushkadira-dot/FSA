@@ -6,7 +6,7 @@ export const PARTNER_SCHOOLS = [
   "Forest Pines Drive Elementary",
   "Fuller Magnet Elementary",
   "Kingswood Elementary",
-];
+] as const;
 
 export const CHAPTERS = [
   { name: "Charlotte", region: "North Carolina" },

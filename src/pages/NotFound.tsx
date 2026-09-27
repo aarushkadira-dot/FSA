@@ -26,10 +26,10 @@ const NotFound = () => {
               Back Home
             </Button>
           </Link>
-          <Link to="/projects">
+          <Link to="/classrooms">
             <Button variant="outline" className="rounded-full px-6">
               <Search className="h-4 w-4" />
-              Browse Projects
+              Find a classroom
             </Button>
           </Link>
         </div>

@@ -136,7 +136,7 @@ const Home = () => {
                 Requests from Title I teachers we work with.
               </p>
             </div>
-            <Link to="/projects" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+            <Link to="/classrooms" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
               See all requests
               <ArrowRight className="h-4 w-4" />
             </Link>

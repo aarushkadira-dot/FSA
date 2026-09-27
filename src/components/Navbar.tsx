@@ -7,7 +7,7 @@ import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
-  { name: "Find a Classroom", path: "/projects" },
+  { name: "Find a Classroom", path: "/classrooms" },
   { name: "Find a School", path: "/find-school" },
   { name: "About", path: "/about" },
   { name: "Team", path: "/team" },

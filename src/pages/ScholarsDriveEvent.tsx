@@ -265,12 +265,12 @@ const ScholarsDriveEvent = () => {
             A heartfelt thank you to our guests, presenters, and everyone who joined us in
             championing the next generation of scholars.
           </p>
-          <Link to="/projects" className="relative mt-10 inline-block">
+          <Link to="/classrooms" className="relative mt-10 inline-block">
             <Button
               size="lg"
               className="rounded-full bg-white px-8 text-primary hover:bg-white/90"
             >
-              Explore our projects
+              Find a classroom
               <ArrowUpRight className="h-4 w-4" />
             </Button>
           </Link>

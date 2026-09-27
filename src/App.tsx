@@ -2,14 +2,13 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
-import ProjectDetail from "./pages/ProjectDetail";
+import Classrooms from "./pages/Classrooms";
 import SubmitProject from "./pages/SubmitProject";
 import Team from "./pages/Team";
 import FindSchool from "./pages/FindSchool";
@@ -19,7 +18,7 @@ import ScholarsDriveEvent from "./pages/ScholarsDriveEvent";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import StartChapter from "./pages/StartChapter";
-import { START_CHAPTER_PATH } from "./lib/links";
+import { CLASSROOMS_PATH, START_CHAPTER_PATH } from "./lib/links";
 
 const queryClient = new QueryClient();
 
@@ -27,8 +26,9 @@ const AppRoutes = () => (
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/about" element={<About />} />
-    <Route path="/projects" element={<Projects />} />
-    <Route path="/projects/:id" element={<ProjectDetail />} />
+    <Route path={CLASSROOMS_PATH} element={<Classrooms />} />
+    {/* Old campaign-board URLs */}
+    <Route path="/projects/*" element={<Navigate to={CLASSROOMS_PATH} replace />} />
     <Route path="/submit-project" element={<SubmitProject />} />
     <Route path="/team" element={<Team />} />
     <Route path={START_CHAPTER_PATH} element={<StartChapter />} />
