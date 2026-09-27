@@ -7,6 +7,9 @@ import classroomPhoto from "@/assets/event1.png";
 import suppliesPhoto from "@/assets/event2.png";
 import summitPhoto from "@/assets/summit4.jpg";
 
+const MISSION_STATEMENT =
+  "The Future Scholars Association is a student-run nonprofit working to make sure every student in a Title I school has the supplies they need to learn. We partner directly with teachers to find out what their classrooms are missing, raise the money to cover it, and get those supplies into students' hands.";
+
 const trustPoints = [
   { title: "501(c)(3) nonprofit", detail: "Donations are tax-deductible." },
   { title: "Run by students", detail: "A student board leads every drive." },
@@ -68,15 +71,29 @@ const Home = () => {
           />
         </div>
 
-        <div className="border-t border-border bg-white">
+        <div className="bg-navy text-white">
           <ul className="container mx-auto grid grid-cols-2 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-4">
             {trustPoints.map((point) => (
               <li key={point.title} className="border-l-4 border-gold pl-4">
-                <p className="font-semibold text-foreground">{point.title}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{point.detail}</p>
+                <p className="font-semibold">{point.title}</p>
+                <p className="mt-1 text-sm text-white/80">{point.detail}</p>
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Mission */}
+      <section className="py-16 md:py-20">
+        <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+          <h2 className="text-lg font-semibold text-primary">Our mission</h2>
+          <p className="mt-4 text-2xl font-medium leading-snug text-foreground md:text-3xl md:leading-snug">
+            {MISSION_STATEMENT}
+          </p>
+          <Link to="/about" className="mt-6 inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+            Read our story
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </section>
 
