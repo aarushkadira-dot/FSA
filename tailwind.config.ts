@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Lexend", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
+        sans: ["Atkinson Hyperlegible Next", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
