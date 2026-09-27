@@ -312,8 +312,8 @@ const SchoolMap = () => {
           </PigeonMap>
         </div>
         <p className="mt-3 text-xs text-muted-foreground">
-          Title I schools for the {TITLE_I_SCHOOL_YEAR} school year, from NC DPI school report card data. Locations from
-          the U.S. Department of Education (NCES).
+          Title I schools for the {TITLE_I_SCHOOL_YEAR} school year, from NC DPI school report card data, plus partner
+          schools that became Title I in 2025–26. Locations from the U.S. Department of Education (NCES).
         </p>
       </div>
     </section>

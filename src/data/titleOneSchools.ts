@@ -2,6 +2,7 @@
 // Title I schools in North Carolina, 2024-25 school year.
 // Title I status, names and addresses: NC DPI School Report Card data (rcd_location.title_i).
 // Coordinates: NCES Common Core of Data school directory (2024-25).
+// Also includes schools confirmed Title I by FSA for a newer year (TITLE_I_OVERRIDES in the script).
 
 export type SchoolType = "elementary" | "middle" | "high" | "combined";
 
@@ -1549,9 +1550,11 @@ export const titleOneSchools: School[] = [
   {"id": "920417", "name": "Forest Pines Drive Elementary", "type": "elementary", "grades": "PK:05", "address": "11455 Forest Pines Drive, Raleigh, NC 27614", "county": "Wake", "charter": false, "coordinates": [-78.54708, 35.95323]},
   {"id": "920413", "name": "Forestville Road Elementary", "type": "elementary", "grades": "PK:05", "address": "100 Lawson Ridge Road, Knightdale, NC 27545", "county": "Wake", "charter": false, "coordinates": [-78.482, 35.8103]},
   {"id": "920415", "name": "Fox Road Elementary", "type": "elementary", "grades": "0K:05", "address": "7101 Fox Rd, Raleigh, NC 27616", "county": "Wake", "charter": false, "coordinates": [-78.5555, 35.8728]},
+  {"id": "920416", "name": "Fuller Elementary", "type": "elementary", "grades": "PK:05", "address": "806 Calloway Drive, Raleigh, NC 27610", "county": "Wake", "charter": false, "coordinates": [-78.62445, 35.75466]},
   {"id": "920440", "name": "Green Elementary", "type": "elementary", "grades": "PK:05", "address": "5307 Six Forks Road, Raleigh, NC 27609", "county": "Wake", "charter": false, "coordinates": [-78.64355, 35.85423]},
   {"id": "920451", "name": "Harris Creek Elementary", "type": "elementary", "grades": "PK:05", "address": "3829 Forestville Road, Raleigh, NC 27616", "county": "Wake", "charter": false, "coordinates": [-78.5121, 35.8732]},
   {"id": "920446", "name": "Hodge Road Elementary", "type": "elementary", "grades": "PK:05", "address": "2128 Mingo Bluff Boulevard, Knightdale, NC 27545", "county": "Wake", "charter": false, "coordinates": [-78.5224, 35.7761]},
+  {"id": "920460", "name": "Kingswood Elementary", "type": "elementary", "grades": "PK:05", "address": "200 E. Johnson Street, Cary, NC 27513", "county": "Wake", "charter": false, "coordinates": [-78.7782, 35.7932]},
   {"id": "920464", "name": "Knightdale Elementary", "type": "elementary", "grades": "PK:05", "address": "109 Ridge St, Knightdale, NC 27545", "county": "Wake", "charter": false, "coordinates": [-78.479, 35.78461]},
   {"id": "920466", "name": "Knightdale High", "type": "high", "grades": "09:12", "address": "100 Bryan Chalk Lane, Knightdale, NC 27545", "county": "Wake", "charter": false, "coordinates": [-78.4762, 35.8109]},
   {"id": "920474", "name": "Lake Myra Elementary", "type": "elementary", "grades": "PK:05", "address": "1300 Elk Falls Rd, Wendell, NC 27591", "county": "Wake", "charter": false, "coordinates": [-78.43015, 35.76146]},

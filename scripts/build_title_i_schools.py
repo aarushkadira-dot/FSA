@@ -30,6 +30,13 @@ DATA = Path(__file__).resolve().parent.parent / "src" / "data"
 OUT = DATA / "titleOneSchools.ts"
 # Small file so pages that only show the count don't pull in the full list.
 SUMMARY = DATA / "titleOneSummary.ts"
+# Schools FSA has confirmed as Title I for a newer school year than the latest DPI data set.
+# Remove an entry once the DPI data lists the school as Title I on its own.
+TITLE_I_OVERRIDES = {
+    "920416": "Fuller Elementary (Title I as of 2025-26, confirmed by FSA)",
+    "920460": "Kingswood Elementary (Title I as of 2025-26, confirmed by FSA)",
+}
+
 TYPE_BY_CATEGORY = {"E": "elementary", "M": "middle", "H": "high", "I": "combined", "A": "combined", "T": "combined"}
 
 
@@ -75,7 +82,7 @@ def main():
 
     out, missing = [], []
     for s in schools:
-        if s["title_i"] != "Y":
+        if s["title_i"] != "Y" and str(s["agency_code"]) not in TITLE_I_OVERRIDES:
             continue
         ccd = coords.get(str(s["agency_code"]))
         if not ccd:
@@ -102,6 +109,7 @@ def main():
         f"// Title I schools in North Carolina, {school_year} school year.",
         "// Title I status, names and addresses: NC DPI School Report Card data (rcd_location.title_i).",
         f"// Coordinates: NCES Common Core of Data school directory ({args.ccd_year}-{str(args.ccd_year + 1)[2:]}).",
+        "// Also includes schools confirmed Title I by FSA for a newer year (TITLE_I_OVERRIDES in the script).",
         "",
         'export type SchoolType = "elementary" | "middle" | "high" | "combined";',
         "",
