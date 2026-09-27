@@ -25,6 +25,7 @@ type GetInvolvedForm = HTMLFormElement & {
 
 const Team = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [openTutor, setOpenTutor] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const studentBoard = [
@@ -69,13 +70,29 @@ const Team = () => {
     },
   ];
 
-  const interns = [
+  // Each tutor's card opens a list of their accomplishments.
+  const tutors: {
+    name: string;
+    subject: string;
+    image?: string;
+    accomplishments: string[];
+  }[] = [
     {
       name: "Vedhanth",
-      role: "Educational Support Intern",
-      bio: "Providing tutoring and educational support to students, helping them achieve academic success and reach their full potential.",
+      subject: "Chemistry Tutor",
       image: "/vedhanth.jpg",
-      position: "object-center",
+      accomplishments: [],
+    },
+    {
+      name: "Femi",
+      subject: "Math Tutor",
+      accomplishments: [],
+    },
+    {
+      name: "Adi",
+      subject: "Speech & Communication Tutor",
+      image: "/adi.jpg",
+      accomplishments: [],
     },
   ];
 
@@ -227,66 +244,81 @@ const Team = () => {
         </div>
       </section>
 
-      {/* Interns */}
-      {interns.length > 0 && (
-        <section className="py-16 bg-background">
-          <div className="container mx-auto px-6">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Interns</h2>
-              <p className="text-xl text-muted-foreground">
-                Rising talent learning and contributing to our mission
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {interns.map((member, index) => (
-                <Card
-                  key={index}
-                  className="group relative overflow-hidden border-2 hover:border-primary/35 transition-all duration-300 hover:shadow-card bg-card/80 backdrop-blur-sm"
-                >
-                  <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                  
-                  <div className="p-6 space-y-4">
-                    {/* Profile Image Container */}
-                    <div className="relative mx-auto w-32 h-32">
-                      {/* Decorative rings */}
-                      <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse" />
-                      <div className="absolute inset-2 rounded-full border-2 border-primary/45" />
-                      
-                      {/* Profile Image */}
-                      <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-elegant">
-                        {member.image ? (
-                          <img
-                            src={member.image}
-                            alt={member.name}
-                            className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${member.position || ''}`}
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                            <span className="text-gray-500 font-semibold text-sm">N/A</span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="text-center space-y-2">
-                      <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                        {member.name}
-                      </h3>
-                      <p className="text-sm font-semibold text-primary uppercase tracking-wide">
-                        {member.role}
-                      </p>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {member.bio}
-                      </p>
-                    </div>
-                  </div>
-                </Card>
-              ))}
-            </div>
+      {/* Tutors */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Tutors</h2>
+            <p className="text-xl text-muted-foreground">Select a tutor to see their accomplishments.</p>
           </div>
-        </section>
-      )}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {tutors.map((tutor) => (
+              <button
+                key={tutor.name}
+                type="button"
+                onClick={() => setOpenTutor(tutor.name)}
+                className="group rounded-lg border-2 border-border bg-card p-6 text-center transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                aria-haspopup="dialog"
+              >
+                <div className="mx-auto h-32 w-32 overflow-hidden rounded-full border-4 border-background shadow-card">
+                  {tutor.image ? (
+                    <img src={tutor.image} alt="" className="h-full w-full object-cover" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center bg-primary text-3xl font-bold text-primary-foreground">
+                      {tutor.name[0]}
+                    </div>
+                  )}
+                </div>
+                <h3 className="mt-4 text-xl font-bold text-primary">{tutor.name}</h3>
+                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-primary">{tutor.subject}</p>
+                <p className="mt-3 text-sm font-medium text-muted-foreground group-hover:text-primary group-hover:underline">
+                  View accomplishments
+                </p>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {tutors.map((tutor) => (
+          <Dialog
+            key={tutor.name}
+            open={openTutor === tutor.name}
+            onOpenChange={(open) => setOpenTutor(open ? tutor.name : null)}
+          >
+            <DialogContent className="sm:max-w-[480px]">
+              <DialogHeader>
+                <div className="flex items-center gap-4">
+                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full">
+                    {tutor.image ? (
+                      <img src={tutor.image} alt="" className="h-full w-full object-cover" />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center bg-primary text-2xl font-bold text-primary-foreground">
+                        {tutor.name[0]}
+                      </div>
+                    )}
+                  </div>
+                  <div className="text-left">
+                    <DialogTitle className="text-2xl">{tutor.name}</DialogTitle>
+                    <DialogDescription className="font-semibold text-primary">{tutor.subject}</DialogDescription>
+                  </div>
+                </div>
+              </DialogHeader>
+              <div>
+                <h4 className="font-semibold text-foreground">Accomplishments</h4>
+                {tutor.accomplishments.length > 0 ? (
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/85">
+                    {tutor.accomplishments.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="mt-3 text-muted-foreground">Coming soon.</p>
+                )}
+              </div>
+            </DialogContent>
+          </Dialog>
+        ))}
+      </section>
 
       {/* Join Team CTA */}
       <section className="py-24 relative overflow-hidden bg-primary/5">
