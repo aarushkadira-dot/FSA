@@ -59,7 +59,7 @@ const Home = () => {
               <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary">
+              <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
               </Button>
             </div>
@@ -150,7 +150,7 @@ const Home = () => {
               <Button asChild className="bg-gold font-semibold text-gold-foreground hover:bg-gold/90">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
-              <Button asChild variant="outline" className="border-primary font-semibold text-primary">
+              <Button asChild variant="outline" className="border-primary font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to={TEACHER_REQUEST_PATH}>Submit a classroom request</Link>
               </Button>
             </div>
@@ -195,7 +195,6 @@ const Home = () => {
               </div>
             ))}
           </dl>
-          <p className="mt-8 text-sm text-muted-foreground">Figures since our founding in September 2025.</p>
         </div>
       </section>
 
@@ -236,8 +235,8 @@ const Home = () => {
             <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary">
-              <Link to="/team">Volunteer with us</Link>
+            <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
+              <Link to="/team">Join our mission</Link>
             </Button>
           </div>
         </div>
