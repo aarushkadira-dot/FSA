@@ -44,7 +44,7 @@ const Team = () => {
       name: "Pihu Khadkad",
       role: "Partnerships & Social Media Manager",
       bio: "Builds FSA's partnerships with schools and organizations and runs our social media.",
-      image: undefined as string | undefined,
+      image: "/pihu.jpg" as string | undefined,
     },
     {
       name: "Arvin Gupta",
