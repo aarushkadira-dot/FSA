@@ -40,7 +40,7 @@ const ScholarsDriveEvent = () => {
       <header className="grain-overlay relative overflow-hidden bg-gradient-hero text-primary-foreground">
         <div className="fsa-grid absolute inset-0 opacity-[0.12]" />
 
-        <div className="container relative z-10 mx-auto px-6 pb-44 pt-28 md:pt-32">
+        <div className="container relative z-10 mx-auto px-6 pb-44 pt-12 md:pt-16">
           <Link
             to="/"
             className="inline-flex items-center gap-2 text-sm font-medium text-primary-foreground/70 transition-colors hover:text-primary-foreground"

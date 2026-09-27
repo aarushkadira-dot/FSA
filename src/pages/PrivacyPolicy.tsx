@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="min-h-screen pt-20 bg-gradient-subtle">
+    <div className="min-h-screen bg-gradient-subtle">
       <div className="container mx-auto px-6 py-12">
         <Link to="/">
           <Button variant="ghost" className="mb-8 pl-0 hover:pl-2 transition-all text-primary">

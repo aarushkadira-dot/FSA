@@ -82,7 +82,7 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-subtle pb-20 pt-32">
+      <section className="relative overflow-hidden border-b border-slate-200 bg-gradient-subtle pb-20 pt-12">
         <div className="absolute inset-0 fsa-grid opacity-20" />
         <div className="container relative z-10 mx-auto px-6">
           <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-12">

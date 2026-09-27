@@ -131,7 +131,7 @@ const Projects = () => {
   const schoolsRepresented = 1;
 
   return (
-    <div className="min-h-screen bg-gradient-subtle pb-14 pt-28">
+    <div className="min-h-screen bg-gradient-subtle pb-14 pt-12">
       <section className="container mx-auto px-6">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="space-y-5 lg:col-span-8">

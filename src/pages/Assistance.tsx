@@ -82,7 +82,7 @@ const Assistance = () => {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen pt-20 flex items-center justify-center bg-secondary/40">
+      <div className="min-h-screen flex items-center justify-center bg-secondary/40">
         <Card className="max-w-2xl mx-6 p-12 text-center space-y-8 border-2 border-accent/50 shadow-glow animate-slide-up relative overflow-hidden">
           {/* Decorative Elements */}
           
@@ -123,7 +123,7 @@ const Assistance = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section with Pattern */}
       <section className="relative py-32 bg-gradient-hero overflow-hidden">
         {/* SVG Pattern Background */}

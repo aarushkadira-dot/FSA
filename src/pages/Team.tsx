@@ -82,7 +82,7 @@ const Team = () => {
   ];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative py-24 bg-gradient-hero overflow-hidden">
         <div className="absolute inset-0 opacity-20">

@@ -304,7 +304,7 @@ const About = () => {
   });
 
   return (
-    <div className="min-h-screen pt-20 bg-gradient-subtle">
+    <div className="min-h-screen bg-gradient-subtle">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-subtle text-foreground">
         <div className="absolute inset-0 fsa-grid opacity-20" />
