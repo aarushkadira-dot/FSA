@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
+import { PARTNER_SCHOOLS } from "@/data/organization";
 import {
   AlertCircle,
   ArrowUpRight,
@@ -128,7 +129,7 @@ const Projects = () => {
 
   // Canonical org-wide stats — kept consistent across Home, About, and Projects.
   const totalRaised = 1450;
-  const schoolsRepresented = 6;
+  const schoolsRepresented = PARTNER_SCHOOLS.length;
 
   return (
     <div className="min-h-screen bg-gradient-subtle pb-14 pt-12">

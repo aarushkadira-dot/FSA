@@ -23,6 +23,8 @@ import event3 from "@/assets/event3.jpg";
 import event4 from "@/assets/event4.jpg";
 import founded2 from "@/assets/founded2.jpg";
 import tj1 from "@/assets/tj1.jpg";
+import { PARTNER_SCHOOLS } from "@/data/organization";
+import WhereWeWork from "@/components/WhereWeWork";
 import tj2 from "@/assets/tj2.jpg";
 
 type AnimatedNumberProps = {
@@ -113,7 +115,7 @@ const stats = [
   {
     id: "schools",
     icon: BookOpen,
-    value: 6,
+    value: PARTNER_SCHOOLS.length,
     label: "Partner Schools",
   },
   {
@@ -454,6 +456,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <WhereWeWork className="border-t border-border bg-white" />
 
       {/* Timeline Section */}
       <section className="bg-background py-16 md:py-24 relative overflow-hidden">

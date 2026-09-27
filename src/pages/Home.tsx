@@ -3,6 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import { titleOneSchools } from "@/data/titleOneSchools";
+import { CHAPTERS, PARTNER_SCHOOLS } from "@/data/organization";
+import WhereWeWork from "@/components/WhereWeWork";
 import classroomPhoto from "@/assets/event1.jpg";
 import suppliesPhoto from "@/assets/event2.jpg";
 import summitPhoto from "@/assets/summit4.jpg";
@@ -14,7 +16,7 @@ const trustPoints = [
   { title: "501(c)(3) nonprofit", detail: "Donations are tax-deductible." },
   { title: "Run by students", detail: "A student board leads every drive." },
   { title: "Teacher-requested", detail: "We fund what classrooms ask for." },
-  { title: "6 partner schools", detail: "Title I schools including Bugg Magnet Elementary" },
+  { title: `${PARTNER_SCHOOLS.length} partner schools`, detail: "Title I elementary schools in Wake County" },
 ];
 
 const steps = [
@@ -35,8 +37,8 @@ const steps = [
 const impact = [
   { value: "294", label: "students reached" },
   { value: "$1,450", label: "raised for classrooms" },
-  { value: "6", label: "Title I partner schools" },
-  { value: "4", label: "chapters" },
+  { value: String(PARTNER_SCHOOLS.length), label: "Title I partner schools" },
+  { value: String(CHAPTERS.length), label: "chapters" },
 ];
 
 const Home = () => {
@@ -197,6 +199,8 @@ const Home = () => {
           </dl>
         </div>
       </section>
+
+      <WhereWeWork className="border-t border-border" />
 
       {/* Recent event */}
       <section className="border-t border-border bg-secondary py-16 md:py-20">
