@@ -50,13 +50,13 @@ const Team = () => {
       name: "Arvin Gupta",
       role: "Website Manager",
       bio: "Builds and maintains the FSA website.",
-      image: undefined as string | undefined,
+      image: "/arvin.jpg" as string | undefined,
     },
     {
       name: "Aaron Gim",
       role: "Community Outreach Manager",
       bio: "Connects FSA with families, schools and community groups, and organizes outreach events.",
-      image: undefined as string | undefined,
+      image: "/aaron.jpg" as string | undefined,
     },
   ];
 
