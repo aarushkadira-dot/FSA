@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CLASSROOMS_PATH, DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
-import { titleOneSchools } from "@/data/titleOneSchools";
+import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
 import { CHAPTERS, PARTNER_SCHOOLS } from "@/data/organization";
 import WhereWeWork from "@/components/WhereWeWork";
 import classroomPhoto from "@/assets/event1.jpg";
@@ -42,7 +42,7 @@ const impact = [
 ];
 
 const Home = () => {
-  const schoolCount = titleOneSchools.length.toLocaleString();
+  const schoolCount = TITLE_I_SCHOOL_COUNT.toLocaleString();
 
   return (
     <div>

@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -10,7 +11,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import SubmitProject from "./pages/SubmitProject";
 import Team from "./pages/Team";
-import FindSchool from "./pages/FindSchool";
 import Assistance from "./pages/Assistance";
 import NotFound from "./pages/NotFound";
 import ScholarsDriveEvent from "./pages/ScholarsDriveEvent";
@@ -20,6 +20,9 @@ import StartChapter from "./pages/StartChapter";
 import { CLASSROOMS_PATH, FIND_SCHOOL_PATH, START_CHAPTER_PATH } from "./lib/links";
 
 const queryClient = new QueryClient();
+
+// The school map and its 1,600+ school list only load when someone opens this page.
+const FindSchool = lazy(() => import("./pages/FindSchool"));
 
 const AppRoutes = () => (
   <Routes>
@@ -31,7 +34,14 @@ const AppRoutes = () => (
     <Route path="/submit-project" element={<SubmitProject />} />
     <Route path="/team" element={<Team />} />
     <Route path={START_CHAPTER_PATH} element={<StartChapter />} />
-    <Route path={FIND_SCHOOL_PATH} element={<FindSchool />} />
+    <Route
+      path={FIND_SCHOOL_PATH}
+      element={
+        <Suspense fallback={<div className="min-h-[60vh]" />}>
+          <FindSchool />
+        </Suspense>
+      }
+    />
     <Route path="/assistance" element={<Assistance />} />
     <Route path="/events/scholars-drive" element={<ScholarsDriveEvent />} />
     <Route path="/privacy-policy" element={<PrivacyPolicy />} />

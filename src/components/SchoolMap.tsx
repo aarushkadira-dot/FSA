@@ -1,30 +1,52 @@
-import { Map, Marker, Overlay, ZoomControl } from "pigeon-maps";
+import { Map as PigeonMap, Marker, Overlay, ZoomControl } from "pigeon-maps";
 import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { Compass, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { titleOneSchools, type School } from "@/data/titleOneSchools";
+import { PARTNER_SCHOOL_LOCATIONS } from "@/data/organization";
+import { TITLE_I_SCHOOL_YEAR, titleOneSchools, type School, type SchoolType } from "@/data/titleOneSchools";
 
 // Viewport filtering keeps the marker count manageable; this caps it.
 const MAX_MARKERS = 500;
 const NC_CENTER: [number, number] = [35.5, -79.5];
 
-const SCHOOL_TYPES = [
-  { type: "elementary", label: "Elementary", color: "#3b82f6" },
-  { type: "middle", label: "Middle", color: "#2563eb" },
-  { type: "high", label: "High", color: "#1d4ed8" },
-] as const;
+const PARTNER_COLOR = "#f2b705";
+const SCHOOL_TYPES: { type: SchoolType; label: string; color: string }[] = [
+  { type: "elementary", label: "Elementary", color: "#2563eb" },
+  { type: "middle", label: "Middle", color: "#0d9488" },
+  { type: "high", label: "High", color: "#7c3aed" },
+  { type: "combined", label: "K–8 / K–12 / 6–12", color: "#475569" },
+];
 
 const TYPE_COUNTS = Object.fromEntries(
   SCHOOL_TYPES.map(({ type }) => [type, titleOneSchools.filter((school) => school.type === type).length]),
-) as Record<School["type"], number>;
+) as Record<SchoolType, number>;
 
-const colorFor = (type: School["type"]) => SCHOOL_TYPES.find((entry) => entry.type === type)?.color ?? "#6b7280";
+const colorFor = (type: SchoolType) => SCHOOL_TYPES.find((entry) => entry.type === type)?.color ?? "#6b7280";
+
+// "PK:05" -> "PK–5", "0K:12" -> "K–12"
+const formatGrades = (span: string) =>
+  span
+    .split(":")
+    .map((grade) => (grade === "0K" ? "K" : grade.replace(/^0(?=\d)/, "")))
+    .join("–");
+
+const PARTNER_IDS = new Set(PARTNER_SCHOOL_LOCATIONS.map((partner) => partner.id));
+const TITLE_I_BY_ID = new Map(titleOneSchools.map((school) => [school.id, school]));
+
+type Selected =
+  | { kind: "school"; school: School }
+  | { kind: "partner"; partner: (typeof PARTNER_SCHOOL_LOCATIONS)[number] };
+
+const anchorOf = (selected: Selected): [number, number] => {
+  const [lng, lat] = selected.kind === "school" ? selected.school.coordinates : selected.partner.coordinates;
+  return [lat, lng];
+};
 
 type LocationStatus = "idle" | "requesting" | "denied" | "error" | "granted";
 
 const SchoolMap = () => {
-  const [selected, setSelected] = useState<School | null>(null);
+  const [selected, setSelected] = useState<Selected | null>(null);
   const [mapCenter, setMapCenter] = useState<[number, number]>(NC_CENTER);
   const [zoom, setZoom] = useState(7);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(null);
@@ -40,17 +62,36 @@ const SchoolMap = () => {
     e.preventDefault();
     const name = searchName.trim().toLowerCase();
     const place = searchLocation.trim().toLowerCase();
-    const match = titleOneSchools.find(
-      (school) =>
-        (!name || school.name.toLowerCase().includes(name)) && (!place || school.address.toLowerCase().includes(place)),
+    // Place matches a county name ("Wake", "Wake County") or a city, never a street name.
+    const placeKey = place.replace(/\s+county$/, "");
+    const cityOf = (address: string) => {
+      const parts = address.split(", ");
+      return (parts[parts.length - 2] ?? "").toLowerCase();
+    };
+    const nameMatches = (candidate: string) => !name || candidate.toLowerCase().includes(name);
+
+    const partner = PARTNER_SCHOOL_LOCATIONS.find(
+      (p) => nameMatches(p.name) && (!placeKey || cityOf(p.address).includes(placeKey)),
     );
+    const candidates = titleOneSchools.filter((s) => nameMatches(s.name));
+    const school = !placeKey
+      ? candidates[0]
+      : (candidates.find((s) => s.county.toLowerCase() === placeKey) ??
+        candidates.find((s) => cityOf(s.address).includes(placeKey)));
+
+    const match: Selected | null = partner
+      ? { kind: "partner", partner }
+      : school
+        ? { kind: "school", school }
+        : null;
 
     if (match) {
-      setMapCenter([match.coordinates[1], match.coordinates[0]]);
-      setZoom(11);
+      setMapCenter(anchorOf(match));
+      setZoom(13);
       setSelected(match);
       setMessage(null);
     } else {
+      setSelected(null);
       setMessage({ text: "No schools match that search. Try a shorter name or a different city or county.", tone: "error" });
     }
   };
@@ -63,6 +104,7 @@ const SchoolMap = () => {
       const visible: School[] = [];
       for (let i = 0; i < titleOneSchools.length && visible.length < MAX_MARKERS; i++) {
         const school = titleOneSchools[i];
+        if (PARTNER_IDS.has(school.id)) continue;
         if (Math.abs(school.coordinates[1] - lat) < range && Math.abs(school.coordinates[0] - lng) < range) {
           visible.push(school);
         }
@@ -181,6 +223,10 @@ const SchoolMap = () => {
               </li>
             ))}
             <li className="flex items-center gap-1.5">
+              <span className="h-3 w-3 rounded-full" style={{ backgroundColor: PARTNER_COLOR }} />
+              Our partner schools
+            </li>
+            <li className="flex items-center gap-1.5">
               <span className="h-3 w-3 rounded-full bg-green-500" />
               You
             </li>
@@ -188,7 +234,7 @@ const SchoolMap = () => {
         </div>
 
         <div className="mt-3 overflow-hidden rounded-lg border border-border">
-          <Map
+          <PigeonMap
             center={mapCenter}
             defaultCenter={NC_CENTER}
             zoom={zoom}
@@ -205,30 +251,70 @@ const SchoolMap = () => {
                 width={zoom > 10 ? 32 : 20}
                 anchor={[school.coordinates[1], school.coordinates[0]]}
                 color={colorFor(school.type)}
-                onClick={() => setSelected(school)}
+                onClick={() => setSelected({ kind: "school", school })}
+              />
+            ))}
+
+            {PARTNER_SCHOOL_LOCATIONS.map((partner) => (
+              <Marker
+                key={partner.id}
+                width={zoom > 10 ? 40 : 30}
+                anchor={[partner.coordinates[1], partner.coordinates[0]]}
+                color={PARTNER_COLOR}
+                onClick={() => setSelected({ kind: "partner", partner })}
               />
             ))}
 
             {userLocation && <Marker anchor={userLocation} width={40} color="#22c55e" />}
 
             {selected && (
-              <Overlay anchor={[selected.coordinates[1], selected.coordinates[0]]} offset={[0, 30]}>
-                <div className="max-w-[250px] rounded-md border border-border bg-white p-3 text-sm shadow-lg">
+              <Overlay anchor={anchorOf(selected)} offset={[0, 30]}>
+                <div className="w-[260px] rounded-md border border-border bg-white p-3 text-sm shadow-lg">
                   <div className="flex items-start justify-between gap-2">
-                    <p className="font-semibold text-foreground">{selected.name}</p>
+                    <p className="font-semibold text-foreground">
+                      {selected.kind === "school" ? selected.school.name : selected.partner.name}
+                    </p>
                     <button type="button" aria-label="Close" onClick={() => setSelected(null)} className="text-muted-foreground hover:text-foreground">
                       <X className="h-4 w-4" />
                     </button>
                   </div>
-                  <p className="mt-0.5 text-xs capitalize text-muted-foreground">{selected.type} school</p>
-                  <p className="mt-1 text-xs text-muted-foreground">{selected.address}</p>
+                  {selected.kind === "partner" ? (
+                    <>
+                      <p className="mt-1 inline-block rounded bg-gold/20 px-1.5 py-0.5 text-xs font-semibold text-foreground">
+                        FSA partner school
+                      </p>
+                      {(() => {
+                        const listed = TITLE_I_BY_ID.get(selected.partner.id);
+                        return listed ? (
+                          <p className="mt-1 text-xs text-muted-foreground">
+                            Title I · Grades {formatGrades(listed.grades)} · {listed.county} County
+                          </p>
+                        ) : null;
+                      })()}
+                      <p className="mt-1 text-xs text-muted-foreground">{selected.partner.address}</p>
+                    </>
+                  ) : (
+                    <>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        Title I · Grades {formatGrades(selected.school.grades)}
+                        {selected.school.charter ? " · Charter" : ""}
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {selected.school.address} · {selected.school.county} County
+                      </p>
+                    </>
+                  )}
                 </div>
               </Overlay>
             )}
 
             <ZoomControl />
-          </Map>
+          </PigeonMap>
         </div>
+        <p className="mt-3 text-xs text-muted-foreground">
+          Title I schools for the {TITLE_I_SCHOOL_YEAR} school year, from NC DPI school report card data. Locations from
+          the U.S. Department of Education (NCES).
+        </p>
       </div>
     </section>
   );
