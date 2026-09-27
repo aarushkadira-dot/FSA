@@ -162,7 +162,7 @@ const ScholarsDriveEvent = () => {
                   {guest.initials}
                 </div>
                 <p className="mt-5 text-xl font-bold text-foreground">{guest.name}</p>
-                <p className="mt-1 text-sm font-medium uppercase tracking-[0.12em] text-accent">
+                <p className="mt-1 text-sm font-medium uppercase tracking-[0.12em] text-primary">
                   {guest.role}
                 </p>
               </div>

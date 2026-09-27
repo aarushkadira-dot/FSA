@@ -3,8 +3,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import { titleOneSchools } from "@/data/titleOneSchools";
-import classroomPhoto from "@/assets/event1.png";
-import suppliesPhoto from "@/assets/event2.png";
+import classroomPhoto from "@/assets/event1.jpg";
+import suppliesPhoto from "@/assets/event2.jpg";
 import summitPhoto from "@/assets/summit4.jpg";
 
 const MISSION_STATEMENT =

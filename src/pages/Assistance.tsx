@@ -39,8 +39,8 @@ const Assistance = () => {
       icon: BookOpen,
       title: "Academic Mentorship",
       description: "One-on-one tutoring and study support from experienced mentors.",
-      gradient: "bg-accent/10",
-      iconColor: "text-accent",
+      gradient: "bg-primary/10",
+      iconColor: "text-primary",
     },
     {
       icon: Users,
@@ -83,12 +83,12 @@ const Assistance = () => {
   if (isSubmitted) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-secondary/40">
-        <Card className="max-w-2xl mx-6 p-12 text-center space-y-8 border-2 border-accent/50 shadow-glow animate-slide-up relative overflow-hidden">
+        <Card className="max-w-2xl mx-6 p-12 text-center space-y-8 border-2 border-primary/50 shadow-glow animate-slide-up relative overflow-hidden">
           {/* Decorative Elements */}
           
           <div className="relative">
             <div className="w-24 h-24 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-2 shadow-glow">
-              <CheckCircle2 className="w-14 h-14 text-accent-foreground animate-scale-in" />
+              <CheckCircle2 className="w-14 h-14 text-primary-foreground animate-scale-in" />
             </div>
           </div>
 
@@ -105,13 +105,13 @@ const Assistance = () => {
           <div className="flex gap-4 justify-center pt-4">
             <Button
               onClick={() => setIsSubmitted(false)}
-              className="bg-gradient-accent text-accent-foreground hover:shadow-glow"
+              className="bg-gradient-accent text-primary-foreground hover:shadow-glow"
             >
               Submit Another Request
             </Button>
             <Button
               variant="outline"
-              className="border-2 hover:bg-accent/5 hover:border-accent"
+              className="border-2 hover:bg-primary/5 hover:border-primary"
               onClick={() => window.location.href = '/'}
             >
               Back to Home
@@ -191,7 +191,7 @@ const Assistance = () => {
             {assistanceTypes.map((type, index) => (
               <Card
                 key={index}
-                className={`group relative p-8 text-center hover:shadow-glow transition-all duration-500 hover:-translate-y-3 border-2 hover:border-accent/50 animate-slide-up overflow-hidden`}
+                className={`group relative p-8 text-center hover:shadow-glow transition-all duration-500 hover:-translate-y-3 border-2 hover:border-primary/50 animate-slide-up overflow-hidden`}
                 style={{ 
                   animationDelay: `${index * 0.15}s`,
                   transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)`,
@@ -208,7 +208,7 @@ const Assistance = () => {
                     <type.icon className={`w-14 h-14 ${type.iconColor} transition-transform group-hover:scale-110 group-hover:rotate-12 relative z-10`} />
                     <div className={`absolute inset-0 ${type.iconColor} opacity-20 rounded-full blur-xl group-hover:opacity-40 transition-all`} />
                   </div>
-                  <h3 className="text-2xl font-bold group-hover:text-accent transition-colors">
+                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
                     {type.title}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -217,8 +217,8 @@ const Assistance = () => {
                 </div>
 
                 {/* Decorative Corner Brackets */}
-                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-accent/30 group-hover:border-accent transition-colors" />
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-accent/30 group-hover:border-accent transition-colors" />
+                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-primary/30 group-hover:border-primary transition-colors" />
+                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors" />
               </Card>
             ))}
           </div>
@@ -239,16 +239,16 @@ const Assistance = () => {
             </div>
             
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-8 border-2 hover:border-accent/50 transition-all hover:shadow-glow group">
+              <Card className="p-8 border-2 hover:border-primary/50 transition-all hover:shadow-glow group">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Mail className="w-8 h-8 text-accent-foreground" />
+                    <Mail className="w-8 h-8 text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="font-bold text-xl mb-2">Email Us</h3>
                     <a 
                       href="mailto:futurescholars.contact@gmail.com"
-                      className="text-accent hover:underline text-lg"
+                      className="text-primary hover:underline text-lg"
                     >
                       futurescholars.contact@gmail.com
                     </a>
@@ -256,7 +256,7 @@ const Assistance = () => {
                 </div>
               </Card>
               
-              <Card className="p-8 border-2 hover:border-accent/50 transition-all hover:shadow-glow group">
+              <Card className="p-8 border-2 hover:border-primary/50 transition-all hover:shadow-glow group">
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                     <Phone className="w-8 h-8 text-gold-foreground" />
@@ -265,7 +265,7 @@ const Assistance = () => {
                     <h3 className="font-bold text-xl mb-2">Call Us</h3>
                     <a 
                       href="tel:9194548249"
-                      className="text-accent hover:underline text-lg"
+                      className="text-primary hover:underline text-lg"
                     >
                       (919) 454-8249
                     </a>
@@ -284,7 +284,7 @@ const Assistance = () => {
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="form-grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="1" className="text-accent" />
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="1" className="text-primary" />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#form-grid)" />
@@ -310,7 +310,7 @@ const Assistance = () => {
                     cy="32"
                     r="28"
                     fill="none"
-                    stroke="hsl(var(--accent))"
+                    stroke="hsl(var(--primary))"
                     strokeWidth="4"
                     strokeDasharray={`${completionPercentage * 1.76} 176`}
                     className="transition-all duration-300"
@@ -319,7 +319,7 @@ const Assistance = () => {
                     x="32"
                     y="38"
                     textAnchor="middle"
-                    className="text-xs font-bold fill-accent"
+                    className="text-xs font-bold fill-primary"
                     transform="rotate(90 32 32)"
                   >
                     {Math.round(completionPercentage)}%
@@ -330,7 +330,7 @@ const Assistance = () => {
               <div className="text-center mb-10">
                 <div className="inline-flex items-center gap-3 mb-4">
                   <div className="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-accent-foreground" />
+                    <Heart className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <h2 className="text-3xl font-bold">Application Form</h2>
                 </div>
@@ -341,11 +341,11 @@ const Assistance = () => {
 
               <form onSubmit={handleSubmit} className="space-y-8">
                 {/* Step Indicator */}
-                <div className="flex items-center justify-center gap-3 pb-6 border-b-2 border-accent/20">
+                <div className="flex items-center justify-center gap-3 pb-6 border-b-2 border-primary/20">
                   <div className="flex items-center gap-2">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                       formData.name && formData.email && formData.phone 
-                        ? 'bg-accent text-accent-foreground' 
+                        ? 'bg-primary text-primary-foreground' 
                         : 'bg-muted text-muted-foreground'
                     }`}>
                       1
@@ -356,7 +356,7 @@ const Assistance = () => {
                   <div className="flex items-center gap-2">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                       formData.assistanceType 
-                        ? 'bg-accent text-accent-foreground' 
+                        ? 'bg-primary text-primary-foreground' 
                         : 'bg-muted text-muted-foreground'
                     }`}>
                       2
@@ -367,7 +367,7 @@ const Assistance = () => {
                   <div className="flex items-center gap-2">
                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
                       formData.description 
-                        ? 'bg-accent text-accent-foreground' 
+                        ? 'bg-primary text-primary-foreground' 
                         : 'bg-muted text-muted-foreground'
                     }`}>
                       3
@@ -380,14 +380,14 @@ const Assistance = () => {
                 <div className="space-y-6">
                   <div className="relative">
                     <Label htmlFor="name" className="text-base font-semibold flex items-center gap-2">
-                      Full Name <span className="text-accent">*</span>
+                      Full Name <span className="text-primary">*</span>
                     </Label>
                     <Input
                       id="name"
                       required
                       value={formData.name}
                       onChange={(e) => handleChange("name", e.target.value)}
-                      className="mt-2 border-2 focus:border-accent"
+                      className="mt-2 border-2 focus:border-primary"
                       placeholder="John Doe"
                     />
                   </div>
@@ -395,7 +395,7 @@ const Assistance = () => {
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="relative">
                       <Label htmlFor="email" className="text-base font-semibold flex items-center gap-2">
-                        Email <span className="text-accent">*</span>
+                        Email <span className="text-primary">*</span>
                       </Label>
                       <Input
                         id="email"
@@ -403,14 +403,14 @@ const Assistance = () => {
                         required
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
-                        className="mt-2 border-2 focus:border-accent"
+                        className="mt-2 border-2 focus:border-primary"
                         placeholder="john@example.com"
                       />
                     </div>
 
                     <div className="relative">
                       <Label htmlFor="phone" className="text-base font-semibold flex items-center gap-2">
-                        Phone <span className="text-accent">*</span>
+                        Phone <span className="text-primary">*</span>
                       </Label>
                       <Input
                         id="phone"
@@ -418,7 +418,7 @@ const Assistance = () => {
                         required
                         value={formData.phone}
                         onChange={(e) => handleChange("phone", e.target.value)}
-                        className="mt-2 border-2 focus:border-accent"
+                        className="mt-2 border-2 focus:border-primary"
                         placeholder="(555) 123-4567"
                       />
                     </div>
@@ -426,7 +426,7 @@ const Assistance = () => {
 
                   <div className="relative">
                     <Label htmlFor="assistanceType" className="text-base font-semibold flex items-center gap-2">
-                      Type of Assistance <span className="text-accent">*</span>
+                      Type of Assistance <span className="text-primary">*</span>
                     </Label>
                     <Select
                       required
@@ -447,14 +447,14 @@ const Assistance = () => {
 
                   <div className="relative">
                     <Label htmlFor="description" className="text-base font-semibold flex items-center gap-2">
-                      Tell Us Your Story <span className="text-accent">*</span>
+                      Tell Us Your Story <span className="text-primary">*</span>
                     </Label>
                     <Textarea
                       id="description"
                       required
                       value={formData.description}
                       onChange={(e) => handleChange("description", e.target.value)}
-                      className="mt-2 min-h-36 border-2 focus:border-accent"
+                      className="mt-2 min-h-36 border-2 focus:border-primary"
                       placeholder="Please describe your situation and how we can best support you..."
                     />
                   </div>
@@ -464,7 +464,7 @@ const Assistance = () => {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-accent text-accent-foreground hover:shadow-glow transition-all text-lg"
+                  className="w-full bg-gradient-accent text-primary-foreground hover:shadow-glow transition-all text-lg"
                 >
                   {isSubmitting ? "Sending..." : "Submit Application"}
                   {!isSubmitting && <Zap className="ml-2 w-5 h-5" />}
@@ -508,10 +508,10 @@ const Assistance = () => {
               ].map((faq, index) => (
                 <Card 
                   key={index} 
-                  className="p-6 border-2 hover:border-accent/50 transition-all hover:shadow-glow group"
+                  className="p-6 border-2 hover:border-primary/50 transition-all hover:shadow-glow group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <h3 className="font-bold text-lg mb-3 group-hover:text-accent transition-colors">
+                  <h3 className="font-bold text-lg mb-3 group-hover:text-primary transition-colors">
                     {faq.question}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">

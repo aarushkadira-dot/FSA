@@ -38,26 +38,26 @@ const Team = () => {
       name: "Joshua Castelino",
       role: "Secretary",
       bio: "Organizational expert ensuring smooth operations and effective communication across all initiatives.",
-      image: "/FSA/joshua.jpeg",
+      image: "/joshua.jpg",
     },
     {
       name: "Saatvik Santosh",
       role: "Vice President",
       bio: "Vice President and lead architect behind FSA's digital ecosystem, pairing strategic leadership with polished execution to scale outreach, fundraising, and student impact.",
-      image: "/FSA/saatvik.jpeg",
+      image: "/saatvik.jpg",
     },
     {
       name: "Ketav Karthikeyan",
       role: "Community and Partnership Manager",
       bio: "Building meaningful relationships and strategic partnerships to expand our reach and community impact.",
-      image: "/FSA/ketav.png",
+      image: "/ketav.jpg",
       position: "object-top",
     },
     {
       name: "Aarit Srivastava",
       role: "Social Media Co-Manager",
       bio: "Supporting social media strategy and content creation to expand FSA's digital presence and community engagement.",
-      image: "/FSA/aarit.png",
+      image: "/aarit.jpg",
       position: "object-top",
     },
   ];
@@ -67,7 +67,7 @@ const Team = () => {
       name: "TJ Cawley",
       role: "Advisory Board Member",
       bio: "Bringing expertise and mentorship to guide FSA's initiatives and strategic growth.",
-      image: "/FSA/tjcawley.png",
+      image: "/tjcawley.jpg",
     },
   ];
 
@@ -76,7 +76,7 @@ const Team = () => {
       name: "Vedhanth",
       role: "Educational Support Intern",
       bio: "Providing tutoring and educational support to students, helping them achieve academic success and reach their full potential.",
-      image: "/FSA/vedhanth.png",
+      image: "/vedhanth.jpg",
       position: "object-center",
     },
   ];
@@ -122,7 +122,7 @@ const Team = () => {
             {studentBoard.map((member, index) => (
               <Card
                 key={index}
-                className="group relative overflow-hidden border-2 hover:border-accent/50 transition-all duration-300 hover:shadow-glow bg-card/80 backdrop-blur-sm"
+                className="group relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-glow bg-card/80 backdrop-blur-sm"
               >
                 <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
                 
@@ -130,8 +130,8 @@ const Team = () => {
                   {/* Profile Image Container */}
                   <div className="relative mx-auto w-32 h-32">
                     {/* Decorative rings */}
-                    <div className="absolute inset-0 rounded-full border-4 border-accent/20 animate-pulse" />
-                    <div className="absolute inset-2 rounded-full border-2 border-accent/40" />
+                    <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse" />
+                    <div className="absolute inset-2 rounded-full border-2 border-primary/40" />
                     
                     {/* Profile Image */}
                     <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-elegant">
@@ -148,7 +148,7 @@ const Team = () => {
                     <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
                       {member.name}
                     </h3>
-                    <p className="text-sm font-semibold text-accent uppercase tracking-wide">
+                    <p className="text-sm font-semibold text-primary uppercase tracking-wide">
                       {member.role}
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed">
@@ -238,7 +238,7 @@ const Team = () => {
                     <div className="relative mx-auto w-32 h-32">
                       {/* Decorative rings */}
                       <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse" />
-                      <div className="absolute inset-2 rounded-full border-2 border-accent/45" />
+                      <div className="absolute inset-2 rounded-full border-2 border-primary/45" />
                       
                       {/* Profile Image */}
                       <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-elegant">
@@ -292,7 +292,7 @@ const Team = () => {
             </p>
             <Button
               size="lg"
-              className="bg-gradient-accent text-accent-foreground hover:shadow-glow transition-all"
+              className="bg-gradient-accent text-primary-foreground hover:shadow-glow transition-all"
               onClick={() => setIsDialogOpen(true)}
             >
               Get Involved
@@ -424,7 +424,7 @@ const Team = () => {
                     </Button>
                     <Button
                       type="submit"
-                      className="flex-1 bg-gradient-accent text-accent-foreground hover:shadow-glow"
+                      className="flex-1 bg-gradient-accent text-primary-foreground hover:shadow-glow"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Sending..." : "Submit Application"}

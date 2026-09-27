@@ -17,13 +17,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Timeline } from "@/components/ui/timeline";
-import event1 from "@/assets/event1.png";
-import event2 from "@/assets/event2.png";
-import event3 from "@/assets/event3.png";
-import event4 from "@/assets/event4.png";
-import founded2 from "@/assets/founded2.png";
-import tj1 from "@/assets/tj1.png";
-import tj2 from "@/assets/tj2.png";
+import event1 from "@/assets/event1.jpg";
+import event2 from "@/assets/event2.jpg";
+import event3 from "@/assets/event3.jpg";
+import event4 from "@/assets/event4.jpg";
+import founded2 from "@/assets/founded2.jpg";
+import tj1 from "@/assets/tj1.jpg";
+import tj2 from "@/assets/tj2.jpg";
 
 type AnimatedNumberProps = {
   value: number;
@@ -113,13 +113,13 @@ const stats = [
   {
     id: "schools",
     icon: BookOpen,
-    value: 1,
+    value: 6,
     label: "Partner Schools",
   },
   {
     id: "raised",
     icon: Heart,
-    value: 450,
+    value: 1450,
     prefix: "$",
     label: "Funds Donated",
   },
@@ -343,7 +343,6 @@ const About = () => {
                           <AnimatedNumber
                             value={stat.value}
                             prefix={stat.prefix}
-                            suffix={stat.suffix}
                           />
                         </p>
                         <p className="text-sm text-muted-foreground">{stat.label}</p>

@@ -127,8 +127,8 @@ const Projects = () => {
   }, [filteredProjects, sortBy]);
 
   // Canonical org-wide stats — kept consistent across Home, About, and Projects.
-  const totalRaised = 450;
-  const schoolsRepresented = 1;
+  const totalRaised = 1450;
+  const schoolsRepresented = 6;
 
   return (
     <div className="min-h-screen bg-gradient-subtle pb-14 pt-12">
