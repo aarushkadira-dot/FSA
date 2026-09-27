@@ -71,12 +71,12 @@ const Home = () => {
           />
         </div>
 
-        <div className="bg-navy text-white">
+        <div className="border-t border-border bg-white">
           <ul className="container mx-auto grid grid-cols-2 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-4">
             {trustPoints.map((point) => (
               <li key={point.title} className="border-l-4 border-gold pl-4">
-                <p className="font-semibold">{point.title}</p>
-                <p className="mt-1 text-sm text-white/80">{point.detail}</p>
+                <p className="font-semibold text-foreground">{point.title}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{point.detail}</p>
               </li>
             ))}
           </ul>
