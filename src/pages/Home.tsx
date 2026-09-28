@@ -65,8 +65,8 @@ const Home = () => {
           </div>
           <img
             src={heroPhoto}
-            alt="A student high-fiving a volunteer in a school hallway"
-            className="aspect-[4/3] w-full rounded-lg object-cover"
+            alt="Five smiling elementary students standing arm in arm in their classroom"
+            className="aspect-[694/288] w-full rounded-lg object-cover"
           />
         </div>
 
