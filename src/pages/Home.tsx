@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CLASSROOMS_PATH, DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
-import { CHAPTERS, IMPACT, MISSION_STATEMENT, PARTNER_SCHOOLS } from "@/data/organization";
+import { CHAPTERS, IMPACT, MISSION_STATEMENT, PARTNER_SCHOOLS, PICKLEBALL_TOURNAMENT, isUpcoming } from "@/data/organization";
 import WhereWeWork from "@/components/WhereWeWork";
 import heroPhoto from "@/assets/home-hero.jpg";
 import suppliesPhoto from "@/assets/event2.jpg";
@@ -81,6 +81,26 @@ const Home = () => {
           </ul>
         </div>
       </section>
+
+      {/* Next event (hides itself after the event ends) */}
+      {isUpcoming(PICKLEBALL_TOURNAMENT) && (
+        <section className="bg-primary text-primary-foreground">
+          <div className="container mx-auto flex flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <p className="text-sm font-semibold text-gold">
+                Upcoming fundraiser with {PICKLEBALL_TOURNAMENT.partner.name}
+              </p>
+              <p className="mt-1 text-xl font-bold">
+                {PICKLEBALL_TOURNAMENT.name} · {PICKLEBALL_TOURNAMENT.date}, {PICKLEBALL_TOURNAMENT.time} ·{" "}
+                {PICKLEBALL_TOURNAMENT.location}
+              </p>
+            </div>
+            <Button asChild size="lg" className="shrink-0 bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+              <Link to={PICKLEBALL_TOURNAMENT.path}>Event details</Link>
+            </Button>
+          </div>
+        </section>
+      )}
 
       {/* Mission */}
       <section className="py-16 md:py-20">

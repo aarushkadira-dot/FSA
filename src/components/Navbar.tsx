@@ -9,9 +9,9 @@ import logo from "@/assets/logo.png";
 const navLinks = [
   { name: "About", path: "/about" },
   { name: "Find a School", path: "/find-school" },
-  { name: "Team", path: "/team" },
-  { name: "Partners", path: "/partners" },
   { name: "Impact", path: "/impact" },
+  { name: "Partners", path: "/partners" },
+  { name: "Team", path: "/team" },
 ];
 
 
