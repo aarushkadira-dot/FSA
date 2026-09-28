@@ -135,7 +135,7 @@ const SummitRecap = () => (
             asChild
             size="lg"
             variant="outline"
-            className="border-white bg-transparent text-white hover:bg-white/10"
+            className="border-white bg-transparent text-white hover:bg-white/10 hover:text-white"
           >
             <Link to={CLASSROOMS_PATH}>Find a school</Link>
           </Button>

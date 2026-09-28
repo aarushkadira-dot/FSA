@@ -73,7 +73,7 @@ const FindSchool = () => (
             <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
               <a href="#map">Search the map</a>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white/10">
+            <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white/10 hover:text-white">
               <a href="#classrooms">See classroom requests</a>
             </Button>
           </div>
