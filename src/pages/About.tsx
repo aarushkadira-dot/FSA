@@ -7,7 +7,7 @@ import { ADVISORY_BOARD, STUDENT_BOARD } from "@/data/team";
 import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
 import { DONATE_PATH, START_CHAPTER_PATH } from "@/lib/links";
 import founderPhoto from "@/assets/aarush.jpg";
-import classroomPhoto from "@/assets/about-classroom.jpg";
+import classroomPhoto from "@/assets/event1.jpg";
 import trophiesPhoto from "@/assets/trophies.jpg";
 
 const facts = [
@@ -64,8 +64,8 @@ const About = () => (
           <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-gold" aria-hidden="true" />
           <img
             src={classroomPhoto}
-            alt="Five smiling elementary students standing arm in arm in their classroom"
-            className="relative aspect-[694/288] w-full rounded-lg object-cover"
+            alt="Students at Bugg Elementary celebrating in their classroom"
+            className="relative aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[4/5]"
           />
         </div>
       </div>
