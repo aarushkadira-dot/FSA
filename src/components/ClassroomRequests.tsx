@@ -17,7 +17,7 @@ const selectClass =
   "h-11 w-full rounded-md border border-input bg-background px-3 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-sm";
 
 const DonateButton = ({ href, label = "Donate", className }: { href: string; label?: string; className?: string }) => (
-  <Button asChild className={`bg-gold font-semibold text-gold-foreground hover:bg-gold/90 ${className ?? ""}`}>
+  <Button asChild className={`bg-gold font-semibold text-gold-foreground hover:brightness-95 ${className ?? ""}`}>
     <a href={href} {...(isExternal(href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
       {label}
     </a>
@@ -108,7 +108,7 @@ const ClassroomRequests = () => {
   return (
     <>
       {/* Open requests */}
-      <section id="classrooms" className="scroll-mt-20 border-t border-border bg-secondary py-12 md:py-16">
+      <section id="classrooms" className="scroll-mt-32 border-t border-border bg-secondary py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -160,7 +160,7 @@ const ClassroomRequests = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary text-primary hover:bg-primary/5"
                 >
                   <Link to={TEACHER_REQUEST_PATH}>Teachers: submit a request</Link>
                 </Button>
@@ -204,46 +204,6 @@ const ClassroomRequests = () => {
           </div>
         </section>
       )}
-
-      {/* Where your money goes */}
-      <section className="border-t border-border py-12 md:py-16">
-        <div className="container mx-auto grid grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-bold text-primary md:text-4xl">Where your money goes</h2>
-            <ol className="mt-8 space-y-6">
-              {[
-                "You donate to a classroom request.",
-                "Our student volunteers buy the exact items the teacher asked for.",
-                "We deliver the supplies to the classroom.",
-              ].map((step, index) => (
-                <li key={step} className="flex gap-4">
-                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground">
-                    {index + 1}
-                  </span>
-                  <p className="pt-1.5 text-lg text-foreground">{step}</p>
-                </li>
-              ))}
-            </ol>
-            <p className="mt-6 text-muted-foreground">
-              FSA is a 501(c)(3) nonprofit. Donations are tax-deductible to the extent allowed by law.
-            </p>
-          </div>
-
-          <div className="self-start rounded-lg bg-primary p-8 text-primary-foreground md:p-10">
-            <h2 className="text-2xl font-bold md:text-3xl">Teach at one of our partner schools?</h2>
-            <p className="mt-3 text-lg leading-relaxed text-white/85">
-              Tell us what your classroom needs. We will turn it into a request and raise the money to cover it.
-            </p>
-            <Button
-              asChild
-              size="lg"
-              className="mt-6 h-auto min-h-11 whitespace-normal bg-gold py-3 text-gold-foreground hover:bg-gold/90"
-            >
-              <Link to={TEACHER_REQUEST_PATH}>Submit a classroom request</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
     </>
   );
 };

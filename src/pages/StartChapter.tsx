@@ -295,7 +295,7 @@ const StartChapter = () => {
               type="submit"
               size="lg"
               disabled={status === "sending"}
-              className="w-full bg-gold text-gold-foreground hover:bg-gold/90 sm:w-auto"
+              className="w-full bg-gold text-gold-foreground hover:brightness-95 sm:w-auto"
             >
               {status === "sending" ? "Sending…" : "Submit application"}
             </Button>

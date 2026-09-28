@@ -68,8 +68,7 @@ const Dashboard = () => {
       <div className="container mx-auto max-w-4xl px-4 sm:px-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-semibold text-primary">Teacher dashboard</p>
-            <h1 className="mt-1 text-3xl font-bold text-primary md:text-4xl">Hi, {profile.first_name || "there"}</h1>
+            <h1 className="text-3xl font-bold text-primary md:text-4xl">Hi, {profile.first_name || "there"}</h1>
           </div>
           <Button variant="outline" onClick={signOut} className={outlineButton}>
             Sign out

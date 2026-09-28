@@ -37,8 +37,7 @@ const About = () => (
     <section className="overflow-hidden bg-primary text-primary-foreground">
       <div className="container mx-auto grid items-center gap-12 px-4 py-14 sm:px-6 md:py-20 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
-          <p className="font-semibold text-gold">About the Future Scholars Association</p>
-          <h1 className="mt-4 text-4xl font-bold leading-[1.1] md:text-6xl md:leading-[1.05]">
+          <h1 className="text-4xl font-bold leading-[1.1] md:text-6xl md:leading-[1.05]">
             We make sure students in Title I schools have the supplies they need to{" "}
             <span className="text-gold">learn.</span>
           </h1>
@@ -47,14 +46,14 @@ const About = () => (
             growing through student chapters.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
+              className="border-white bg-transparent text-white hover:bg-white/10"
             >
               <Link to="/team">Meet the team</Link>
             </Button>
@@ -78,6 +77,22 @@ const About = () => (
             </div>
           ))}
         </dl>
+      </div>
+    </section>
+
+    {/* Numbers */}
+    <section className="border-b border-border py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Our impact so far</h2>
+          <Link to="/impact" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+            See our impact
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-10">
+          <ImpactStats />
+        </div>
       </div>
     </section>
 
@@ -182,22 +197,6 @@ const About = () => (
       </div>
     </section>
 
-    {/* Numbers */}
-    <section className="py-16 md:py-20">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <h2 className="text-3xl font-bold text-primary md:text-4xl">Our impact so far</h2>
-          <Link to="/impact" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
-            See our impact
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="mt-10">
-          <ImpactStats />
-        </div>
-      </div>
-    </section>
-
     {/* Call to action */}
     <section className="border-t border-border bg-secondary">
       <div className="container mx-auto flex flex-col items-start gap-6 px-4 py-14 sm:px-6 md:flex-row md:items-center md:justify-between">
@@ -206,14 +205,14 @@ const About = () => (
           <p className="mt-2 text-lg text-muted-foreground">Give supplies, or bring FSA to your school.</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            className="border-primary text-primary hover:bg-primary/5"
           >
             <Link to={START_CHAPTER_PATH}>Start a chapter</Link>
           </Button>

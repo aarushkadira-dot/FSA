@@ -126,7 +126,7 @@ const Assistance = () => {
                 </p>
                 <Button
                   variant="outline"
-                  className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="mt-6 border-primary text-primary hover:bg-primary/5"
                   onClick={() => {
                     setFormData({ name: "", email: "", phone: "", assistanceType: "", description: "" });
                     setIsSubmitted(false);
@@ -190,7 +190,7 @@ const Assistance = () => {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gold text-gold-foreground hover:bg-gold/90 sm:w-auto">
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gold text-gold-foreground hover:brightness-95 sm:w-auto">
                   {isSubmitting ? "Sending…" : "Submit application"}
                 </Button>
                 <p className="text-sm text-muted-foreground">Everything you share is kept confidential.</p>

@@ -227,7 +227,7 @@ const SchoolMap = () => {
             variant="outline"
             onClick={requestLocation}
             disabled={locationStatus === "requesting"}
-            className="h-11 border-primary text-primary hover:bg-primary hover:text-primary-foreground md:col-span-2"
+            className="h-11 border-primary text-primary hover:bg-primary/5 md:col-span-2"
           >
             <Compass className="h-4 w-4" aria-hidden="true" />
             {locationStatus === "requesting" ? "Locating…" : "Near me"}

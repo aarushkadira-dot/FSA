@@ -17,8 +17,7 @@ const Landing = () => {
     <div>
       <section className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
-          <p className="font-semibold text-gold">For teachers</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
+          <h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-5xl">
             Get supplies for your Title I classroom
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-white/80 md:text-xl">
@@ -41,7 +40,7 @@ const Landing = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
+                  className="border-white bg-transparent text-white hover:bg-white/10"
                 >
                   <Link to="/teachers/sign-in">Sign in</Link>
                 </Button>

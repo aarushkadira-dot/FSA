@@ -65,7 +65,7 @@ const Navbar = () => {
             Teachers
           </NavLink>
           <span className="h-5 border-l border-border" aria-hidden="true" />
-          <Button asChild className="ml-4 bg-gold text-gold-foreground hover:bg-gold/90">
+          <Button asChild className="ml-4 bg-gold text-gold-foreground hover:brightness-95">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
         </div>
@@ -104,7 +104,7 @@ const Navbar = () => {
               >
                 Teachers
               </Link>
-              <Button asChild className="bg-gold text-gold-foreground hover:bg-gold/90">
+              <Button asChild className="bg-gold text-gold-foreground hover:brightness-95">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
             </div>

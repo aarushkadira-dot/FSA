@@ -26,10 +26,7 @@ const PickleballEvent = () => {
       <section className="border-b border-border bg-secondary">
         <div className="container mx-auto grid items-center gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-7">
-            <p className="font-semibold text-primary">
-              {upcoming ? "Upcoming fundraiser" : "Past fundraiser"} · with {event.partner.name}
-            </p>
-            <h1 className="mt-3 text-4xl font-bold leading-tight text-primary md:text-5xl">{event.name}</h1>
+            <h1 className="text-4xl font-bold leading-tight text-primary md:text-5xl">{event.name}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               We're teaming up with {event.partner.name} for an afternoon of pickleball. Money raised supports Title I
               schools, and the day helps spread awareness for breast cancer.
@@ -63,7 +60,7 @@ const PickleballEvent = () => {
 
             {upcoming && (
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
+                <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
                   <a href={calendarUrl} target="_blank" rel="noopener noreferrer">
                     <CalendarPlus className="mr-2 h-5 w-5" aria-hidden="true" />
                     Add to calendar
@@ -73,7 +70,7 @@ const PickleballEvent = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary text-primary hover:bg-primary/5"
                 >
                   <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Pickleball Tournament")}`}>Ask a question</a>
                 </Button>
@@ -109,7 +106,7 @@ const PickleballEvent = () => {
             <p className="mt-3 leading-relaxed text-muted-foreground">
               You can still help a Title I classroom get the supplies it needs.
             </p>
-            <Button asChild size="lg" className="mt-5 bg-gold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="mt-5 bg-gold text-gold-foreground hover:brightness-95">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Link to="/impact" className="mt-5 flex items-center gap-1 font-semibold text-primary hover:underline">

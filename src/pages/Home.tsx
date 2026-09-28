@@ -5,6 +5,7 @@ import { CLASSROOMS_PATH, DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links"
 import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
 import { CHAPTERS, IMPACT, MISSION_STATEMENT, PARTNER_SCHOOLS, PICKLEBALL_TOURNAMENT, isUpcoming } from "@/data/organization";
 import WhereWeWork from "@/components/WhereWeWork";
+import SuppliesCallout from "@/components/SuppliesCallout";
 import heroPhoto from "@/assets/home-hero.jpg";
 import suppliesPhoto from "@/assets/event2.jpg";
 import summitPhoto from "@/assets/summit4.jpg";
@@ -55,10 +56,10 @@ const Home = () => {
               the classroom.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
+              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
                 <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
               </Button>
             </div>
@@ -87,15 +88,14 @@ const Home = () => {
         <section className="bg-primary text-primary-foreground">
           <div className="container mx-auto flex flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-sm font-semibold text-gold">
-                Upcoming fundraiser with {PICKLEBALL_TOURNAMENT.partner.name}
+              <p className="font-display text-xl font-bold">
+                {PICKLEBALL_TOURNAMENT.name} with {PICKLEBALL_TOURNAMENT.partner.name}
               </p>
-              <p className="mt-1 text-xl font-bold">
-                {PICKLEBALL_TOURNAMENT.name} · {PICKLEBALL_TOURNAMENT.date}, {PICKLEBALL_TOURNAMENT.time} ·{" "}
-                {PICKLEBALL_TOURNAMENT.location}
+              <p className="mt-1 text-white/80">
+                {PICKLEBALL_TOURNAMENT.date}, {PICKLEBALL_TOURNAMENT.time} · {PICKLEBALL_TOURNAMENT.location}
               </p>
             </div>
-            <Button asChild size="lg" className="shrink-0 bg-gold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="shrink-0 bg-gold text-gold-foreground hover:brightness-95">
               <Link to={PICKLEBALL_TOURNAMENT.path}>Event details</Link>
             </Button>
           </div>
@@ -105,7 +105,7 @@ const Home = () => {
       {/* Mission */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6">
-          <h2 className="text-lg font-semibold text-primary">Our mission</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Our mission</h2>
           <p className="mt-4 font-display text-2xl font-medium leading-snug text-foreground md:text-3xl md:leading-snug">
             {MISSION_STATEMENT}
           </p>
@@ -166,16 +166,18 @@ const Home = () => {
               fund upcoming needs, or, if you teach at a Title I school, send us what your classroom needs.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild className="bg-gold text-gold-foreground hover:bg-gold/90">
+              <Button asChild className="bg-gold text-gold-foreground hover:brightness-95">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
-              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/5">
                 <Link to={TEACHER_REQUEST_PATH}>Submit a classroom request</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
+
+      <SuppliesCallout />
 
       {/* Why Title I */}
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
@@ -228,11 +230,10 @@ const Home = () => {
             className="aspect-[4/3] w-full rounded-lg object-cover"
           />
           <div>
-            <p className="font-semibold text-primary">Recent event · March 1, 2026</p>
-            <h2 className="mt-2 text-3xl font-bold text-primary md:text-4xl">Future Scholars Summit</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Future Scholars Summit</h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
-              Student teams, nonprofits, and researchers pitched their ideas to community and state leaders,
-              including Mayor TJ Cawley, Rep. Maria Cervania, and Councilwoman Sarika Bansal.
+              On March 1, 2026, student teams, nonprofits, and researchers pitched their ideas to community and state
+              leaders, including Mayor TJ Cawley, Rep. Maria Cervania, and Councilwoman Sarika Bansal.
             </p>
             <Link
               to="/events/summit"
@@ -253,10 +254,10 @@ const Home = () => {
             <p className="mt-2 text-lg text-muted-foreground">Give supplies, or give your time as a volunteer.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+            <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
               <Link to="/team">Join our mission</Link>
             </Button>
           </div>

@@ -73,11 +73,10 @@ const Impact = () => (
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <p className="font-semibold text-primary">March 1, 2026</p>
-            <h2 className="mt-1 text-3xl font-bold text-primary md:text-4xl">Future Scholars Summit</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Future Scholars Summit</h2>
             <p className="mt-3 max-w-3xl text-lg leading-relaxed text-muted-foreground">
-              Student teams, nonprofits and researchers pitched their ideas to community and state leaders, including
-              Mayor TJ Cawley, Rep. Maria Cervania and Councilwoman Sarika Bansal.
+              On March 1, 2026, student teams, nonprofits and researchers pitched their ideas to community and state
+              leaders, including Mayor TJ Cawley, Rep. Maria Cervania and Councilwoman Sarika Bansal.
             </p>
           </div>
           <Link
@@ -208,14 +207,14 @@ const Impact = () => (
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+            className="border-primary text-primary hover:bg-primary/5"
           >
             <Link to={START_CHAPTER_PATH}>Start a chapter</Link>
           </Button>

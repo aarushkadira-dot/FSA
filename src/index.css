@@ -140,3 +140,36 @@
   box-shadow: none !important;
   border: 1px solid hsl(var(--border)) !important;
 }
+
+/* Home page supplies callout: one supply slides in at a time (like DonorsChoose) */
+.supply-swap > * {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation: supply-swipe 12s cubic-bezier(0.2, 0, 0.04, 1) infinite;
+}
+.supply-swap > *:nth-child(2) { animation-delay: 4s; }
+.supply-swap > *:nth-child(3) { animation-delay: 8s; }
+
+@keyframes supply-swipe {
+  0% { opacity: 0; transform: translateX(-70%) rotate(-12deg); }
+  6% { opacity: 1; transform: translateX(0) rotate(0); }
+  28% { opacity: 1; transform: translateX(0) rotate(0); }
+  33% { opacity: 0; transform: translateX(70%) rotate(12deg); }
+  100% { opacity: 0; transform: translateX(70%) rotate(12deg); }
+}
+
+/* Edge supplies bob gently. `translate` stacks on top of each item's rotation. */
+.supply-float {
+  animation: supply-float 6s ease-in-out infinite;
+}
+@keyframes supply-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .supply-swap > *:first-child { opacity: 1; animation: none; }
+  .supply-swap > *:not(:first-child) { display: none; }
+  .supply-float { animation: none; }
+}
