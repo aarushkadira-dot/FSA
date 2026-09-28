@@ -12,7 +12,7 @@ import About from "./pages/About";
 import Team from "./pages/Team";
 import Assistance from "./pages/Assistance";
 import NotFound from "./pages/NotFound";
-import ScholarsDriveEvent from "./pages/ScholarsDriveEvent";
+import SummitRecap from "./pages/SummitRecap";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import StartChapter from "./pages/StartChapter";
@@ -58,7 +58,8 @@ const AppRoutes = () => (
     />
     <Route path="/assistance" element={<Assistance />} />
     <Route path="/events/pickleball" element={<PickleballEvent />} />
-    <Route path="/events/scholars-drive" element={<ScholarsDriveEvent />} />
+    <Route path="/events/summit" element={<SummitRecap />} />
+    <Route path="/events/scholars-drive" element={<Navigate to="/events/summit" replace />} />
     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     <Route path="/terms-of-service" element={<TermsOfService />} />
     <Route path="*" element={<NotFound />} />
