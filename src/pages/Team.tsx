@@ -23,6 +23,12 @@ type GetInvolvedForm = HTMLFormElement & {
   elements: GetInvolvedFormElements;
 };
 
+const initials = (name: string) =>
+  name
+    .split(" ")
+    .map((part) => part[0])
+    .join("");
+
 const Team = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [openTutor, setOpenTutor] = useState<string | null>(null);
@@ -77,23 +83,14 @@ const Team = () => {
     image?: string;
     accomplishments: string[];
   }[] = [
-    {
-      name: "Vedhanth",
-      subject: "Chemistry Tutor",
-      image: "/vedhanth.jpg",
-      accomplishments: [],
-    },
-    {
-      name: "Femi",
-      subject: "Math Tutor",
-      accomplishments: [],
-    },
-    {
-      name: "Adi",
-      subject: "Speech & Communication Tutor",
-      image: "/adi.jpg",
-      accomplishments: [],
-    },
+    { name: "Vedhanth", subject: "Chemistry Tutor", image: "/vedhanth.jpg", accomplishments: [] },
+    { name: "Arvin Gupta", subject: "Chemistry Tutor", image: "/arvin.jpg", accomplishments: [] },
+    { name: "Femi", subject: "Math Tutor", accomplishments: [] },
+    { name: "Lalit", subject: "Physics Tutor", accomplishments: [] },
+    { name: "Aaron Gim", subject: "English Tutor", image: "/aaron.jpg", accomplishments: [] },
+    { name: "Adi", subject: "Speech & Communication Tutor", image: "/adi.jpg", accomplishments: [] },
+    { name: "Yash Bafna", subject: "CAD Tutor", accomplishments: [] },
+    { name: "Joel Manuel", subject: "AI/ML Tutor", accomplishments: [] },
   ];
 
   return (
@@ -265,7 +262,7 @@ const Team = () => {
                     <img src={tutor.image} alt="" className="h-full w-full object-cover" />
                   ) : (
                     <div className="flex h-full w-full items-center justify-center bg-primary text-3xl font-bold text-primary-foreground">
-                      {tutor.name[0]}
+                      {initials(tutor.name)}
                     </div>
                   )}
                 </div>
@@ -293,7 +290,7 @@ const Team = () => {
                       <img src={tutor.image} alt="" className="h-full w-full object-cover" />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center bg-primary text-2xl font-bold text-primary-foreground">
-                        {tutor.name[0]}
+                        {initials(tutor.name)}
                       </div>
                     )}
                   </div>
