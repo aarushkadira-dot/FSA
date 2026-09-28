@@ -17,9 +17,9 @@ const columns = [
     span: "md:col-span-2",
     links: [
       { label: "About Us", to: "/about" },
-      { label: "Our Team", to: "/team" },
-      { label: "Partners", to: "/partners" },
       { label: "Impact", to: "/impact" },
+      { label: "Partners", to: "/partners" },
+      { label: "Our Team", to: "/team" },
       { label: "Future Scholars Summit", to: "/events/scholars-drive" },
     ],
   },

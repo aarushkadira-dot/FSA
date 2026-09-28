@@ -19,6 +19,7 @@ import TermsOfService from "./pages/TermsOfService";
 import StartChapter from "./pages/StartChapter";
 import Partners from "./pages/Partners";
 import Impact from "./pages/Impact";
+import PickleballEvent from "./pages/PickleballEvent";
 import { CLASSROOMS_PATH, FIND_SCHOOL_PATH, START_CHAPTER_PATH } from "./lib/links";
 
 const queryClient = new QueryClient();
@@ -47,6 +48,7 @@ const AppRoutes = () => (
       }
     />
     <Route path="/assistance" element={<Assistance />} />
+    <Route path="/events/pickleball" element={<PickleballEvent />} />
     <Route path="/events/scholars-drive" element={<ScholarsDriveEvent />} />
     <Route path="/privacy-policy" element={<PrivacyPolicy />} />
     <Route path="/terms-of-service" element={<TermsOfService />} />

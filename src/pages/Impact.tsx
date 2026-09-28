@@ -5,6 +5,8 @@ import ImpactStats from "@/components/ImpactStats";
 import {
   EIN,
   EVENTS,
+  PICKLEBALL_TOURNAMENT,
+  isUpcoming,
   FUNDS_USED,
   PARTNER_SCHOOLS,
   QUOTES,
@@ -100,6 +102,25 @@ const Impact = () => (
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our events</h2>
+        {isUpcoming(PICKLEBALL_TOURNAMENT) && (
+          <Link
+            to={PICKLEBALL_TOURNAMENT.path}
+            className="mt-8 flex flex-col gap-2 rounded-lg border-2 border-gold bg-gold/10 p-6 transition-colors hover:bg-gold/20 md:flex-row md:items-center md:justify-between"
+          >
+            <div>
+              <p className="text-sm font-semibold text-primary">
+                Coming up · {PICKLEBALL_TOURNAMENT.date}, {PICKLEBALL_TOURNAMENT.time}
+              </p>
+              <h3 className="mt-1 text-xl font-semibold text-foreground">
+                {PICKLEBALL_TOURNAMENT.name} with {PICKLEBALL_TOURNAMENT.partner.name}
+              </h3>
+            </div>
+            <span className="inline-flex items-center gap-1 font-semibold text-primary">
+              Event details
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </span>
+          </Link>
+        )}
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
           {EVENTS.map((event) => (
             <li key={event.name} className="rounded-lg border border-border p-6">

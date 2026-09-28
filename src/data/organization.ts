@@ -63,6 +63,27 @@ export const EVENTS = [
   },
 ];
 
+// The next event. The home page banner hides itself once `endsAt` has passed.
+// After the event, move it into EVENTS above and add photos to its page.
+export const PICKLEBALL_TOURNAMENT = {
+  name: "Pickleball Tournament",
+  path: "/events/pickleball",
+  partner: { name: "The Health Literacy Project", short: "HLP" },
+  date: "Sunday, October 4, 2026",
+  time: "2 to 6 PM",
+  location: "Pleasant Park",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Pleasant+Park+Apex+NC",
+  causes: ["Supporting Title I schools", "Spreading awareness for breast cancer"],
+  fees: [
+    { label: "Players", amount: "$8" },
+    { label: "Spectators", amount: "$5" },
+  ],
+  startsAt: "2026-10-04T14:00:00-04:00",
+  endsAt: "2026-10-04T18:00:00-04:00",
+};
+
+export const isUpcoming = (event: { endsAt: string }) => Date.now() < new Date(event.endsAt).getTime();
+
 // Organizations FSA partners with. `together` describes what FSA does with them; add it when ready.
 export const PARTNER_ORGANIZATIONS: { name: string; about: string; url: string; together?: string }[] = [
   {
