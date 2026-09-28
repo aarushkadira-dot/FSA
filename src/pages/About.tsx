@@ -1,484 +1,219 @@
-import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  Award,
-  ArrowRight,
-  Target,
-  Heart,
-  Users,
-  BookOpen,
-  Globe,
-  Lightbulb,
-  TrendingUp,
-  Star,
-  Sparkles,
-} from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Timeline } from "@/components/ui/timeline";
-import event1 from "@/assets/event1.jpg";
-import event2 from "@/assets/event2.jpg";
-import event3 from "@/assets/event3.jpg";
-import event4 from "@/assets/event4.jpg";
-import founded2 from "@/assets/founded2.jpg";
-import tj1 from "@/assets/tj1.jpg";
-import { PARTNER_SCHOOLS } from "@/data/organization";
+import ImpactStats from "@/components/ImpactStats";
 import WhereWeWork from "@/components/WhereWeWork";
-import tj2 from "@/assets/tj2.jpg";
+import { EIN, FOUNDED, MISSION_STATEMENT } from "@/data/organization";
+import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
+import { DONATE_PATH, START_CHAPTER_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
+import { CONTACT_EMAIL } from "@/lib/forms";
+import classroomPhoto from "@/assets/event1.jpg";
+import buggPhoto from "@/assets/event3.jpg";
+import advisorPhoto from "@/assets/tj2.jpg";
 
-type AnimatedNumberProps = {
-  value: number;
-  prefix?: string;
-  suffix?: string;
-  duration?: number;
-  format?: (value: number) => string;
-};
-
-const AnimatedNumber = ({
-  value,
-  prefix = "",
-  suffix = "",
-  duration = 1200,
-  format,
-}: AnimatedNumberProps) => {
-  const displayRef = useRef<HTMLSpanElement>(null);
-  const frameRef = useRef<number>();
-  const hasAnimatedRef = useRef(false);
-  const [displayValue, setDisplayValue] = useState(0);
-
-  useEffect(() => {
-    const element = displayRef.current;
-    if (!element) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimatedRef.current) {
-            hasAnimatedRef.current = true;
-            const start = performance.now();
-
-            const animate = (currentTime: number) => {
-              const elapsed = currentTime - start;
-              const progress = Math.min(elapsed / duration, 1);
-              const currentValue = Math.round(progress * value);
-              setDisplayValue(currentValue);
-
-              if (progress < 1) {
-                frameRef.current = requestAnimationFrame(animate);
-              } else {
-                setDisplayValue(value);
-              }
-            };
-
-            frameRef.current = requestAnimationFrame(animate);
-          }
-        });
-      },
-      { threshold: 0.4 },
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-      if (frameRef.current) cancelAnimationFrame(frameRef.current);
-    };
-  }, [duration, value]);
-
-  const formatted = format
-    ? format(displayValue)
-    : displayValue.toLocaleString();
-
-  return (
-    <span ref={displayRef}>
-      {prefix}
-      {formatted}
-      {suffix}
-    </span>
-  );
-};
-
-const heroImageUrl =
-  "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1600&q=80";
-
-const storyImageUrl =
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80";
-
-const stats = [
+const steps = [
   {
-    id: "students",
-    icon: Users,
-    value: 294,
-    label: "Students Impacted",
+    title: "A teacher asks for supplies",
+    body: "Teachers at Title I schools tell us exactly what their classroom needs, from pencils and notebooks to STEM kits.",
   },
   {
-    id: "schools",
-    icon: BookOpen,
-    value: PARTNER_SCHOOLS.length,
-    label: "Partner Schools",
+    title: "Donors fund the request",
+    body: "Your donation goes toward the items on that request, so you know what you are paying for.",
   },
   {
-    id: "raised",
-    icon: Heart,
-    value: 1450,
-    prefix: "$",
-    label: "Funds Donated",
-  },
-  {
-    id: "members",
-    icon: Users,
-    value: 3,
-    label: "Active Members",
+    title: "Supplies reach the classroom",
+    body: "Our student volunteers purchase the supplies and bring them to the school.",
   },
 ];
 
-const values = [
-  {
-    icon: Award,
-    title: "Excellence",
-    description:
-      "We strive for the highest standards in education and leadership development.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description:
-      "Embracing new ideas and creative solutions to empower students.",
-  },
-  {
-    icon: Heart,
-    title: "Community",
-    description:
-      "Building a supportive network where every member can thrive.",
-  },
-  {
-    icon: Target,
-    title: "Impact",
-    description:
-      "Creating meaningful change in the lives of students and communities.",
-  },
+const waysToGive = [
+  { title: "Donate", body: "Fund supplies for a Title I classroom.", to: DONATE_PATH, label: "Donate" },
+  { title: "Start a chapter", body: "Bring FSA to your school and community.", to: START_CHAPTER_PATH, label: "Apply" },
+  { title: "Join the team", body: "Volunteer, tutor, or help run our events.", to: "/team", label: "Meet the team" },
+  { title: "Become a partner", body: "Schools and organizations can work with us.", to: "/partners", label: "Our partners" },
 ];
 
-const milestones = [
-  {
-    year: "Sept 13, 2025",
-    title: "Founded",
-    description:
-      "Future Scholars Association (FSA) was officially founded with the mission of supporting Title I students and providing resources to help them succeed academically.",
-    highlight:
-      "This marked the beginning of our journey to create meaningful educational opportunities for underserved communities.",
-    metric: "Day One",
-    color: "bg-blue-500",
-    icon: Award,
-  },
-  {
-    year: "Oct 11, 2025",
-    title: "First Title I Partner School Secured",
-    description:
-      "We partnered with Bugg Elementary, our first Title I school. This partnership allowed us to begin directly supporting students with essential school supplies and STEM enrichment activities.",
-    highlight:
-      "Securing Bugg Elementary as our first partner was a key step in turning our vision into tangible impact.",
-    metric: "1 partner school",
-    color: "bg-emerald-500",
-    icon: BookOpen,
-  },
-  {
-    year: "Nov 18, 2025",
-    title: "TJ Cawley Joins Advisory Board",
-    description:
-      "TJ Cawley officially joined our advisory board, bringing his expertise and support to guide FSA's initiatives.",
-    highlight:
-      "His involvement strengthened our organizational strategy and provided valuable mentorship as we prepared to expand our programs and reach more students.",
-    metric: "Advisory board",
-    color: "bg-orange-500",
-    icon: Users,
-  },
-  {
-    year: "Jan 17, 2026",
-    title: "First Events Launched",
-    description:
-      "FSA hosted its inaugural events: the Support for Scholars Drive and the Future Innovators Expo at Cedar Fork Community Center.",
-    highlight:
-      "The Future Innovators Expo featured hands-on STEM challenge stations including paper airplane contests, slime chemistry, bridge building, and a live robotics demonstration. Combined with a school supply drive benefiting Bugg Elementary, this event provided Title I students with both resources and inspiration to thrive academically, marking a major milestone in bringing our mission to life.",
-    metric: "294 students",
-    color: "bg-rose-500",
-    icon: Sparkles,
-  },
-];
+const outlineButton =
+  "border-primary font-semibold text-primary hover:bg-primary hover:text-primary-foreground";
 
-
-const About = () => {
-  const missionRef = useRef<HTMLDivElement>(null);
-
-  const scrollToMission = () => {
-    missionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  // Handle direct navigation to mission section via hash
-  useEffect(() => {
-    if (window.location.hash === "#mission") {
-      setTimeout(() => {
-        missionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 100);
-    }
-  }, []);
-
-  // Image arrays for each milestone - relevant to their content
-  const milestoneImages = [
-    // Founded - education startup, vision, community
-    [
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=90", // Team collaboration
-      founded2, // Students learning
-      "https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=800&q=90", // Education vision
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=90", // Community
-    ],
-    // First Title I Partner School - LEGO Education, STEM activities, students learning
-    [
-      event1, // Kids Flexing / Bugg Sign / etc
-      event2,
-      event3,
-      event4, // Partnership handshake
-    ],
-    // TJ Cawley Joins Advisory Board - mentorship, leadership, strategy
-    [
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=90", // Business meeting
-      { src: tj1, position: "object-top" }, // Mentorship
-      tj2, // Leadership discussion
-      "https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=90", // Team strategy
-    ],
-    // First Events Launched - STEM activities, library, hands-on learning
-    [
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=90", // STEM activities hands-on
-      "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=800&q=90", // Library
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=90", // Hands-on learning
-      "https://images.unsplash.com/photo-1503676260728-1c00da94a157?auto=format&fit=crop&w=800&q=90", // Students engaged in activities
-    ],
-  ];
-
-  // Convert milestones to TimelineEntry format
-  const timelineData = milestones.map((milestone, index) => {
-    const Icon = milestone.icon;
-    const images = milestoneImages[index] || milestoneImages[0];
-    return {
-      title: milestone.year,
-      content: (
+const About = () => (
+  <div>
+    {/* Header */}
+    <section className="border-b border-border bg-secondary">
+      <div className="container mx-auto grid items-center gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-2 lg:gap-14">
         <div>
-          <div className="mb-6">
-            <div className={`inline-flex items-center gap-3 ${milestone.color} rounded-full px-4 py-2 mb-4`}>
-              <Icon className="h-5 w-5 text-white" />
-              <span className="text-sm font-bold text-white uppercase tracking-wider">
-                {milestone.metric}
-              </span>
-            </div>
-            <h4 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-              {milestone.title}
-            </h4>
-            <p className="text-foreground/85 text-sm md:text-base font-normal mb-4 leading-relaxed">
-              {milestone.description}
+          <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">About FSA</h1>
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            The Future Scholars Association is a student-run 501(c)(3) nonprofit. Since {FOUNDED}, we have been
+            getting school supplies into Title I classrooms in Wake County, North Carolina.
+          </p>
+        </div>
+        <img
+          src={classroomPhoto}
+          alt="Students at Bugg Elementary celebrating in their classroom"
+          className="aspect-[4/3] w-full rounded-lg object-cover"
+        />
+      </div>
+    </section>
+
+    {/* Mission */}
+    <section className="py-16 md:py-20">
+      <div className="container mx-auto max-w-4xl px-4 sm:px-6">
+        <h2 className="text-lg font-semibold text-primary">Our mission</h2>
+        <p className="mt-4 text-2xl font-medium leading-snug text-foreground md:text-3xl md:leading-snug">
+          {MISSION_STATEMENT}
+        </p>
+      </div>
+    </section>
+
+    {/* Who we serve */}
+    <section className="border-y border-border bg-secondary py-16 md:py-20">
+      <div className="container mx-auto grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
+        <div>
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Who we serve</h2>
+          <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted-foreground">
+            <p>
+              We focus on students in Title I schools. Title I is the federal program for schools where many students
+              come from low-income families. There are {TITLE_I_SCHOOL_COUNT.toLocaleString()} of these schools in
+              North Carolina.
             </p>
-            <div className="bg-primary/5 border-l-4 border-primary pl-4 py-3 rounded-r">
-              <p className="text-foreground/75 text-sm italic">
-                {milestone.highlight}
-              </p>
-            </div>
+            <p>
+              Title I schools receive extra federal funding, but many teachers still pay for basic classroom supplies
+              with their own money. We work with teachers at our partner schools to cover what their students need.
+            </p>
           </div>
-          <div className="grid grid-cols-2 gap-4">
-            {images.map((imageItem, imgIndex) => {
-              const src = typeof imageItem === 'string' ? imageItem : imageItem.src;
-              const position = typeof imageItem === 'string' ? 'object-center' : (imageItem.position || 'object-center');
-              
-              return (
-              <img
-                key={`${milestone.title}-img-${imgIndex}`}
-                src={src}
-                alt={`${milestone.title} - Image ${imgIndex + 1}`}
-                className={`rounded-lg object-cover ${position} h-32 md:h-44 lg:h-60 w-full shadow-lg`}
-                loading="lazy"
-                crossOrigin="anonymous"
-              />
-            );
-            })}
-          </div>
+          <Link to="/find-school" className="mt-6 inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+            Find a Title I school near you
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
-      ),
-    };
-  });
+        <img
+          src={buggPhoto}
+          alt="The sign outside Bugg Magnet Elementary, our first partner school"
+          className="aspect-[4/3] w-full rounded-lg object-cover"
+        />
+      </div>
+    </section>
 
-  return (
-    <div className="min-h-screen bg-gradient-subtle">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-subtle text-foreground">
-        <div className="absolute inset-0 fsa-grid opacity-20" />
-        <div className="container relative z-10 mx-auto px-6 py-24 md:py-32">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div className="space-y-6 animate-slide-in-left">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white px-4 py-2">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium">Our Story</span>
-              </div>
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-foreground">
-                  Building Brighter
-                  <br />
-                  <span className="text-primary/85">Futures Together</span>
-                </h1>
-                <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-xl">
-                  From a small group of students with a vision to a thriving
-                  community making real change—discover how we're breaking down
-                  barriers and opening doors for the next generation.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 pt-4 sm:gap-5 lg:max-w-xl">
-                {stats.map((stat) => (
-                  <div
-                    key={stat.id}
-                    className="rounded-2xl border border-primary/10 bg-white p-5 hover:bg-primary/5 transition"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="rounded-full bg-primary/10 p-3">
-                        <stat.icon className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-3xl font-semibold text-foreground">
-                          <AnimatedNumber
-                            value={stat.value}
-                            prefix={stat.prefix}
-                          />
-                        </p>
-                        <p className="text-sm text-muted-foreground">{stat.label}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="flex flex-col items-start gap-4 pt-6 sm:flex-row sm:items-center">
-                <Button
-                  size="lg"
-                  className="bg-primary text-white hover:bg-primary/90 px-8 py-6"
-                  onClick={scrollToMission}
-                >
-                  <Heart className="mr-2 h-5 w-5" />
-                  Our Mission
-                </Button>
-                <Link to="/team">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-primary/40 text-primary hover:bg-primary/10 px-8 py-6"
-                  >
-                    Meet the Team
-                    <Users className="ml-2 h-5 w-5" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="relative overflow-hidden rounded-[2.5rem] border shadow-2xl">
-                <img
-                  src={heroImageUrl}
-                  alt="Students learning and growing together"
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-110"
-                />
-              </div>
-            </div>
-          </div>
+    {/* Our story */}
+    <section className="py-16 md:py-20">
+      <div className="container mx-auto max-w-3xl px-4 sm:px-6">
+        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our story</h2>
+        <div className="mt-5 space-y-4 text-lg leading-relaxed text-foreground/85">
+          <p>
+            Aarush Kadira founded the Future Scholars Association on {FOUNDED}. A month later, Bugg Elementary became
+            our first Title I partner school.
+          </p>
+          <p>
+            In January 2026 we held our first events: a school supply drive for Bugg and the Future Innovators Expo, a
+            hands-on STEM day. Together they reached 294 students. In March we hosted the Future Scholars Summit, where students,
+            nonprofits and researchers pitched ideas to community and state leaders.
+          </p>
+          <p>
+            Today we work with five Title I elementary schools in Wake County, and students have started FSA chapters
+            in Charlotte, Houston, India and Vietnam.
+          </p>
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* Mission Statement Section */}
-      <section 
-        ref={missionRef}
-        id="mission"
-        className="bg-background py-12 relative overflow-hidden"
-      >
-        <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
-        
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            {/* Header Section */}
-            <div className="mb-8 md:mb-12">
-              <span className="text-primary font-semibold tracking-widest uppercase text-sm mb-6 block">Our Mission</span>
-              <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-8 leading-tight">
-                Empowering Future Scholars to <span className="text-primary/90">Unlock Their Potential</span>
-              </h2>
-              <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed font-light max-w-3xl">
-                Future Scholars Association (FSA) is dedicated to supporting Title I students and providing essential resources to help them succeed.
-              </p>
-            </div>
-
-            {/* Narrative Section - No Box, Natural Flow */}
-            <div className="grid md:grid-cols-12 gap-8 md:gap-16 items-start">
-              {/* Main Text */}
-              <div className="md:col-span-7 lg:col-span-8 space-y-8 text-lg text-foreground/80 leading-relaxed">
-                <p>
-                  Our mission is to bridge the educational gap by connecting passionate teachers in Title I schools with the resources they need to create transformative learning experiences. We believe that every student, regardless of their socioeconomic background, deserves access to quality education, essential school supplies, and enriching STEM activities.
-                </p>
-                <p>
-                  Through strategic partnerships with schools, community engagement, and direct support programs, we work to ensure that underserved students have the tools and opportunities necessary to thrive academically and pursue their dreams.
-                  </p>
-                </div>
-
-              {/* Quote / Highlight - Offset */}
-              <div className="md:col-span-5 lg:col-span-4 relative mt-8 md:mt-2">
-                <div className="absolute -top-6 -left-4 text-6xl text-primary/20 font-serif">"</div>
-                <blockquote className="relative z-10 text-xl md:text-2xl font-medium text-foreground leading-snug">
-                  Building brighter futures together—one student, one classroom, one community at a time.
-                </blockquote>
-              </div>
-            </div>
-
-            {/* Core Values Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-24">
-              {values.map((value, index) => {
-                const Icon = value.icon;
-                return (
-                  <Card
-                    key={index}
-                    className="p-6 text-center hover:shadow-card transition-all duration-300 border-2 border-primary/10 hover:border-primary/30 bg-white/90"
-                  >
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-4">
-                      <Icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <h3 className="text-xl font-bold text-foreground mb-2">
-                      {value.title}
-                    </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      {value.description}
-                    </p>
-                  </Card>
-                );
-              })}
-            </div>
-          </div>
+    {/* Team */}
+    <section className="border-y border-border bg-secondary py-16 md:py-20">
+      <div className="container mx-auto grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
+        <img
+          src={advisorPhoto}
+          alt="Mayor TJ Cawley, a member of our advisory board"
+          className="aspect-[4/3] w-full rounded-lg object-cover object-top"
+        />
+        <div>
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our team</h2>
+          <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
+            FSA is run by students, with guidance from our advisory board, including Mayor TJ
+            Cawley. Our student tutors also help students in chemistry, math, physics, English, speaking, CAD and AI.
+          </p>
+          <Button asChild variant="outline" className={`mt-6 ${outlineButton}`}>
+            <Link to="/team">Meet the team</Link>
+          </Button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <WhereWeWork className="border-t border-border bg-white" />
+    {/* How it works */}
+    <section className="py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <h2 className="text-3xl font-bold text-foreground md:text-4xl">How it works</h2>
+        <ol className="mt-8 grid gap-8 md:grid-cols-3">
+          {steps.map((step, index) => (
+            <li key={step.title}>
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-lg font-bold text-primary-foreground">
+                {index + 1}
+              </span>
+              <h3 className="mt-4 text-xl font-semibold text-foreground">{step.title}</h3>
+              <p className="mt-2 leading-relaxed text-muted-foreground">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+        <Button asChild variant="outline" className={`mt-10 ${outlineButton}`}>
+          <Link to={TEACHER_REQUEST_PATH}>Teachers: request supplies</Link>
+        </Button>
+      </div>
+    </section>
 
-      {/* Timeline Section */}
-      <section className="bg-background py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 pointer-events-none" />
-        
-        <div className="container mx-auto px-6 mb-[68px]">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-white px-4 py-2 mb-6 shadow-sm">
-              <Sparkles className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium text-primary">Our Journey</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-0 leading-tight">
-              Milestones That Shaped Us
-            </h2>
-          </div>
+    {/* Impact at a glance */}
+    <section className="border-y border-border bg-secondary py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our impact so far</h2>
+          <Link to="/impact" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+            See our full impact
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
-        
-        <Timeline data={timelineData} />
-      </section>
-    </div>
-  );
-};
+        <div className="mt-10">
+          <ImpactStats />
+        </div>
+      </div>
+    </section>
+
+    <WhereWeWork />
+
+    {/* Ways to give */}
+    <section className="border-t border-border bg-secondary py-16 md:py-20">
+      <div className="container mx-auto px-4 sm:px-6">
+        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Ways to help</h2>
+        <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {waysToGive.map((way) => (
+            <li key={way.title} className="flex flex-col rounded-lg border border-border bg-white p-6">
+              <h3 className="text-xl font-semibold text-foreground">{way.title}</h3>
+              <p className="mt-2 flex-1 text-muted-foreground">{way.body}</p>
+              <Link to={way.to} className="mt-4 inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+                {way.label}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    {/* Accountability */}
+    <section className="py-12">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="rounded-lg border border-border p-6 md:p-8">
+          <h2 className="text-xl font-semibold text-foreground">Accountability</h2>
+          <p className="mt-2 leading-relaxed text-muted-foreground">
+            The Future Scholars Association is a 501(c)(3) nonprofit organization
+            {EIN ? ` (EIN ${EIN})` : ""}. Donations are tax-deductible to the extent allowed by law. Questions about
+            how we use donations? Email{" "}
+            <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-primary hover:underline">
+              {CONTACT_EMAIL}
+            </a>
+            .
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+);
 
 export default About;

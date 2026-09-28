@@ -1,16 +1,26 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import logo from "@/assets/logo.png";
 
-const navLinks = [
-  { name: "About", path: "/about" },
-  { name: "Find a School", path: "/find-school" },
+// Grouped under "About" on desktop, listed flat in the phone menu.
+const aboutLinks = [
+  { name: "About us", path: "/about" },
   { name: "Team", path: "/team" },
+  { name: "Partners", path: "/partners" },
+  { name: "Impact", path: "/impact" },
 ];
+
+const navLinks = [{ name: "Find a School", path: "/find-school" }];
 
 
 const Navbar = () => {
@@ -32,6 +42,26 @@ const Navbar = () => {
         </Link>
 
         <div className="hidden items-center gap-1 lg:flex">
+          <DropdownMenu modal={false}>
+            <DropdownMenuTrigger
+              className={cn(
+                "inline-flex items-center gap-1 rounded-md px-3 py-2 text-[0.95rem] font-medium outline-none transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-ring",
+                aboutLinks.some((link) => location.pathname.startsWith(link.path))
+                  ? "text-primary underline decoration-2 underline-offset-8"
+                  : "text-foreground/80",
+              )}
+            >
+              About
+              <ChevronDown className="h-4 w-4" aria-hidden="true" />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="start" className="min-w-44">
+              {aboutLinks.map((link) => (
+                <DropdownMenuItem key={link.path} asChild className="cursor-pointer text-[0.95rem]">
+                  <Link to={link.path}>{link.name}</Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
@@ -74,7 +104,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="border-t border-border bg-white lg:hidden">
           <div className="container mx-auto flex flex-col px-4 py-2 sm:px-6">
-            {navLinks.map((link) => (
+            {[...aboutLinks, ...navLinks].map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
