@@ -8,6 +8,7 @@ import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
 import { DONATE_PATH, START_CHAPTER_PATH } from "@/lib/links";
 import founderPhoto from "@/assets/aarush.jpg";
 import classroomPhoto from "@/assets/event1.jpg";
+import trophiesPhoto from "@/assets/trophies.jpg";
 
 const facts = [
   { label: "Founded", value: "September 2025" },
@@ -32,18 +33,48 @@ const initials = (name: string) =>
 
 const About = () => (
   <div>
-    {/* Mission */}
-    <section className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-14 sm:px-6 md:py-20">
-        <h1 className="text-lg font-semibold text-gold">About the Future Scholars Association</h1>
-        <p className="mt-5 max-w-4xl text-3xl font-bold leading-tight md:text-5xl md:leading-tight">
-          We make sure students in Title I schools have the supplies they need to learn.
-        </p>
-        <dl className="mt-12 grid grid-cols-2 gap-6 border-t border-white/20 pt-8 lg:grid-cols-4">
+    {/* Header */}
+    <section className="overflow-hidden bg-primary text-primary-foreground">
+      <div className="container mx-auto grid items-center gap-12 px-4 py-14 sm:px-6 md:py-20 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-7">
+          <p className="font-semibold text-gold">About the Future Scholars Association</p>
+          <h1 className="mt-4 text-4xl font-bold leading-[1.1] md:text-6xl md:leading-[1.05]">
+            We make sure students in Title I schools have the supplies they need to{" "}
+            <span className="text-gold">learn.</span>
+          </h1>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/80 md:text-xl">
+            A student-run nonprofit working with teachers at Title I schools in Wake County, North Carolina, and
+            growing through student chapters.
+          </p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+              <Link to={DONATE_PATH}>Donate</Link>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white bg-transparent text-base font-semibold text-white hover:bg-white hover:text-primary"
+            >
+              <Link to="/team">Meet the team</Link>
+            </Button>
+          </div>
+        </div>
+        <div className="relative lg:col-span-5">
+          <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-lg bg-gold" aria-hidden="true" />
+          <img
+            src={classroomPhoto}
+            alt="Students at Bugg Elementary celebrating in their classroom"
+            className="relative aspect-[4/3] w-full rounded-lg object-cover lg:aspect-[4/5]"
+          />
+        </div>
+      </div>
+      <div className="border-t border-white/15 bg-black/15">
+        <dl className="container mx-auto grid grid-cols-2 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-4">
           {facts.map((fact) => (
             <div key={fact.label}>
-              <dt className="text-sm text-white/70">{fact.label}</dt>
-              <dd className="mt-1 text-lg font-semibold">{fact.value}</dd>
+              <dt className="text-sm text-white/65">{fact.label}</dt>
+              <dd className="mt-1 font-semibold">{fact.value}</dd>
             </div>
           ))}
         </dl>
@@ -86,8 +117,8 @@ const About = () => (
     <section className="border-y border-border bg-secondary">
       <div className="container mx-auto grid items-center gap-10 px-4 py-16 sm:px-6 md:py-20 lg:grid-cols-2 lg:gap-16">
         <img
-          src={classroomPhoto}
-          alt="Students at Bugg Elementary celebrating in their classroom"
+          src={trophiesPhoto}
+          alt="Elementary students holding trophies"
           className="aspect-[4/3] w-full rounded-lg object-cover"
         />
         <div>
