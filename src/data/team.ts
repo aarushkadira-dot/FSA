@@ -28,6 +28,12 @@ export const STUDENT_BOARD: TeamMember[] = [
     bio: "Runs FSA's social media and shares our work with the community.",
   },
   {
+    name: "Kabir Baig",
+    role: "Design Manager",
+    bio: "Creates FSA's flyers, graphics and visual materials.",
+    image: "/kabir.jpg",
+  },
+  {
     name: "Arvin Gupta",
     role: "Website Manager",
     bio: "Builds and maintains the FSA website.",
