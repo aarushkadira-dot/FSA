@@ -47,7 +47,7 @@ const RequestCard = ({ request }: { request: ClassroomRequest }) => {
           {request.teacher} · {request.grade}
         </p>
         <p className="text-sm text-muted-foreground">{request.school}</p>
-        <h3 className="mt-3 text-xl font-bold leading-snug text-foreground">{request.title}</h3>
+        <h3 className="mt-3 text-xl font-bold leading-snug text-primary">{request.title}</h3>
         <p className="mt-2 leading-relaxed text-foreground/80">“{request.quote}”</p>
         <p className="mt-3 text-sm text-muted-foreground">
           <span className="font-semibold text-foreground">Needs:</span> {itemsPreview(request.items)}
@@ -112,7 +112,7 @@ const ClassroomRequests = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-foreground md:text-4xl">Find a classroom</h2>
+              <h2 className="text-3xl font-bold text-primary md:text-4xl">Find a classroom</h2>
               {openRequests.length > 0 && (
                 <p className="mt-2 text-lg text-muted-foreground">
                   {openRequests.length === 1 ? "1 open request" : `${openRequests.length} open requests`}
@@ -150,7 +150,7 @@ const ClassroomRequests = () => {
 
           {openRequests.length === 0 ? (
             <div className="rounded-lg border border-border bg-white p-8 md:p-10">
-              <h3 className="text-2xl font-semibold text-foreground">There are no open requests right now.</h3>
+              <h3 className="text-2xl font-semibold text-primary">There are no open requests right now.</h3>
               <p className="mt-2 max-w-2xl text-lg leading-relaxed text-muted-foreground">
                 Our partner teachers are putting together their next requests. You can donate now to help fund what
                 they need, or, if you teach at one of our partner schools, send us your request.
@@ -195,7 +195,7 @@ const ClassroomRequests = () => {
       {fundedRequests.length > 0 && (
         <section className="border-t border-border py-12 md:py-16">
           <div className="container mx-auto px-4 sm:px-6">
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Recently funded</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Recently funded</h2>
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {fundedRequests.map((request) => (
                 <RequestCard key={request.id} request={request} />
@@ -209,7 +209,7 @@ const ClassroomRequests = () => {
       <section className="border-t border-border py-12 md:py-16">
         <div className="container mx-auto grid grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Where your money goes</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Where your money goes</h2>
             <ol className="mt-8 space-y-6">
               {[
                 "You donate to a classroom request.",

@@ -31,7 +31,7 @@ export const AuthCard = ({ title, intro, children }: { title: string; intro?: Re
   <div className="bg-secondary py-12 md:py-16">
     <div className="container mx-auto max-w-lg px-4 sm:px-6">
       <div className="rounded-lg border border-border bg-white p-6 md:p-8">
-        <h1 className="text-3xl font-bold text-foreground">{title}</h1>
+        <h1 className="text-3xl font-bold text-primary">{title}</h1>
         {intro && <div className="mt-2 text-muted-foreground">{intro}</div>}
         <div className="mt-6">{children}</div>
       </div>

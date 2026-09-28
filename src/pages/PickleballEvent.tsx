@@ -29,7 +29,7 @@ const PickleballEvent = () => {
             <p className="font-semibold text-primary">
               {upcoming ? "Upcoming fundraiser" : "Past fundraiser"} · with {event.partner.name}
             </p>
-            <h1 className="mt-3 text-4xl font-bold leading-tight text-foreground md:text-5xl">{event.name}</h1>
+            <h1 className="mt-3 text-4xl font-bold leading-tight text-primary md:text-5xl">{event.name}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               We're teaming up with {event.partner.name} for an afternoon of pickleball. Money raised supports Title I
               schools, and the day helps spread awareness for breast cancer.
@@ -56,7 +56,7 @@ const PickleballEvent = () => {
               {event.fees.map((fee) => (
                 <div key={fee.label}>
                   <dt className="text-sm text-muted-foreground">{fee.label}</dt>
-                  <dd className="mt-0.5 font-display text-2xl font-bold text-foreground">{fee.amount}</dd>
+                  <dd className="mt-0.5 font-display text-2xl font-bold text-primary">{fee.amount}</dd>
                 </div>
               ))}
             </dl>
@@ -92,7 +92,7 @@ const PickleballEvent = () => {
       <section className="py-16 md:py-20">
         <div className="container mx-auto grid gap-10 px-4 sm:px-6 md:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">What it supports</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">What it supports</h2>
             <ul className="mt-6 space-y-4 text-lg leading-relaxed text-foreground/85">
               <li className="border-l-4 border-gold pl-4">
                 <span className="font-semibold text-foreground">Title I schools.</span> Money raised helps get supplies into
@@ -105,7 +105,7 @@ const PickleballEvent = () => {
             </ul>
           </div>
           <div className="rounded-lg border border-border bg-secondary p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">Can't make it?</h2>
+            <h2 className="text-2xl font-bold text-primary">Can't make it?</h2>
             <p className="mt-3 leading-relaxed text-muted-foreground">
               You can still help a Title I classroom get the supplies it needs.
             </p>

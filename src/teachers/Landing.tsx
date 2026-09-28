@@ -53,12 +53,12 @@ const Landing = () => {
 
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">How it works</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">How it works</h2>
           <ol className="mt-10 grid gap-10 md:grid-cols-3">
             {steps.map((step, index) => (
               <li key={step.title} className="border-t-4 border-gold pt-5">
                 <p className="text-sm font-semibold text-muted-foreground">Step {index + 1}</p>
-                <h3 className="mt-1 text-xl font-semibold text-foreground">{step.title}</h3>
+                <h3 className="mt-1 text-xl font-semibold text-primary">{step.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted-foreground">{step.body}</p>
               </li>
             ))}
@@ -69,7 +69,7 @@ const Landing = () => {
       <section className="border-t border-border bg-secondary py-16 md:py-20">
         <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Who can sign up</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Who can sign up</h2>
             <ul className="mt-6 space-y-3 text-lg text-muted-foreground">
               <li>• Teachers at a North Carolina Title I public school, including charter schools</li>
               <li>• Pre-K through 12th grade, any subject</li>
@@ -80,7 +80,7 @@ const Landing = () => {
             </Link>
           </div>
           <div className="rounded-lg border border-border bg-white p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">Already have an account?</h2>
+            <h2 className="text-2xl font-bold text-primary">Already have an account?</h2>
             <p className="mt-2 text-muted-foreground">Sign in to see your account and requests.</p>
             <Button asChild variant="outline" className={`mt-5 ${outlineButton}`}>
               <Link to={session ? "/teachers/dashboard" : "/teachers/sign-in"}>{session ? "Go to your dashboard" : "Sign in"}</Link>

@@ -358,7 +358,7 @@ const SchoolMap = () => {
 
         {nearest.length > 0 && (
           <div className="mt-8">
-            <h2 className="text-xl font-semibold text-foreground">Closest Title I schools to you</h2>
+            <h2 className="text-xl font-semibold text-primary">Closest Title I schools to you</h2>
             <ol className="mt-3 divide-y divide-border rounded-lg border border-border">
               {nearest.map(({ school, miles }) => (
                 <li key={school.id}>

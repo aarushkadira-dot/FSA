@@ -47,7 +47,7 @@ const Home = () => {
       <section className="border-b border-border bg-secondary">
         <div className="container mx-auto grid items-center gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-2 lg:gap-14">
           <div>
-            <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">
+            <h1 className="text-4xl font-bold leading-tight text-primary md:text-5xl">
               School supplies for Title I classrooms in Wake County
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
@@ -120,7 +120,7 @@ const Home = () => {
       <section className="border-y border-border bg-secondary py-16 md:py-20">
         <div className="container mx-auto grid items-center gap-12 px-4 sm:px-6 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">How it works</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">How it works</h2>
             <ol className="mt-8 space-y-8">
               {steps.map((step, index) => (
                 <li key={step.title} className="flex gap-5">
@@ -128,7 +128,7 @@ const Home = () => {
                     {index + 1}
                   </span>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground">{step.title}</h3>
+                    <h3 className="text-xl font-semibold text-primary">{step.title}</h3>
                     <p className="mt-1 leading-relaxed text-muted-foreground">{step.body}</p>
                   </div>
                 </li>
@@ -148,7 +148,7 @@ const Home = () => {
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-foreground md:text-4xl">Classroom requests</h2>
+              <h2 className="text-3xl font-bold text-primary md:text-4xl">Classroom requests</h2>
               <p className="mt-2 max-w-2xl text-lg text-muted-foreground">
                 Requests from Title I teachers we work with.
               </p>
@@ -160,7 +160,7 @@ const Home = () => {
           </div>
 
           <div className="mt-8 rounded-lg border border-border bg-secondary p-8 md:p-10">
-            <h3 className="text-xl font-semibold text-foreground">There are no open requests right now.</h3>
+            <h3 className="text-xl font-semibold text-primary">There are no open requests right now.</h3>
             <p className="mt-2 max-w-2xl leading-relaxed text-muted-foreground">
               We are lining up the next round of requests with our partner teachers. You can donate now to help
               fund upcoming needs, or, if you teach at a Title I school, send us what your classroom needs.
@@ -205,12 +205,12 @@ const Home = () => {
       {/* Impact */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our impact so far</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Our impact so far</h2>
           <dl className="mt-10 grid grid-cols-2 gap-8 lg:grid-cols-4">
             {impact.map((item) => (
               <div key={item.label} className="flex flex-col-reverse border-t-4 border-primary pt-4">
                 <dt className="mt-1 text-muted-foreground">{item.label}</dt>
-                <dd className="font-display text-4xl font-bold text-foreground md:text-5xl">{item.value}</dd>
+                <dd className="font-display text-4xl font-bold text-primary md:text-5xl">{item.value}</dd>
               </div>
             ))}
           </dl>
@@ -229,7 +229,7 @@ const Home = () => {
           />
           <div>
             <p className="font-semibold text-primary">Recent event · March 1, 2026</p>
-            <h2 className="mt-2 text-3xl font-bold text-foreground md:text-4xl">Future Scholars Summit</h2>
+            <h2 className="mt-2 text-3xl font-bold text-primary md:text-4xl">Future Scholars Summit</h2>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
               Student teams, nonprofits, and researchers pitched their ideas to community and state leaders,
               including Mayor TJ Cawley, Rep. Maria Cervania, and Councilwoman Sarika Bansal.
@@ -249,7 +249,7 @@ const Home = () => {
       <section className="py-16 md:py-20">
         <div className="container mx-auto flex flex-col items-start gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Help stock a Title I classroom</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Help stock a Title I classroom</h2>
             <p className="mt-2 text-lg text-muted-foreground">Give supplies, or give your time as a volunteer.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">

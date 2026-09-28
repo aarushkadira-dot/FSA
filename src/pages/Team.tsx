@@ -68,7 +68,7 @@ const Team = () => {
     <div>
       <section className="border-b border-border bg-secondary">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Our team</h1>
+          <h1 className="text-4xl font-bold leading-tight text-primary md:text-5xl">Our team</h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
             The students and advisors who run FSA, and the tutors who volunteer with us.
           </p>
@@ -78,12 +78,12 @@ const Team = () => {
       {/* Student Board */}
       <section className="py-14 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Student board</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Student board</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {studentBoard.map((member) => (
               <li key={member.name} className="rounded-lg border border-border bg-white p-6 text-center">
                 {photo(member.name, member.image)}
-                <h3 className="mt-4 text-xl font-bold text-foreground">{member.name}</h3>
+                <h3 className="mt-4 text-xl font-bold text-primary">{member.name}</h3>
                 <p className="mt-1 font-semibold text-primary">{member.role}</p>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{member.bio}</p>
               </li>
@@ -95,12 +95,12 @@ const Team = () => {
       {/* Advisory Board */}
       <section className="border-y border-border bg-secondary py-14 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Advisory board</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Advisory board</h2>
           <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {advisoryBoard.map((member) => (
               <li key={member.name} className="rounded-lg border border-border bg-white p-6 text-center">
                 {photo(member.name, member.image)}
-                <h3 className="mt-4 text-xl font-bold text-foreground">{member.name}</h3>
+                <h3 className="mt-4 text-xl font-bold text-primary">{member.name}</h3>
                 <p className="mt-1 font-semibold text-primary">{member.role}</p>
                 <p className="mt-3 leading-relaxed text-muted-foreground">{member.bio}</p>
               </li>
@@ -112,7 +112,7 @@ const Team = () => {
       {/* Tutors */}
       <section className="py-14 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Tutors</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Tutors</h2>
           <p className="mt-2 text-lg text-muted-foreground">Select a tutor to see their accomplishments.</p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {tutors.map((tutor) => (
@@ -124,7 +124,7 @@ const Team = () => {
                 aria-haspopup="dialog"
               >
                 {photo(tutor.name, tutor.image)}
-                <h3 className="mt-4 text-xl font-bold text-foreground">{tutor.name}</h3>
+                <h3 className="mt-4 text-xl font-bold text-primary">{tutor.name}</h3>
                 <p className="mt-1 font-semibold text-primary">{tutor.subject}</p>
                 <p className="mt-3 text-sm font-semibold text-muted-foreground group-hover:text-primary group-hover:underline">
                   View accomplishments
@@ -151,7 +151,7 @@ const Team = () => {
                 </div>
               </DialogHeader>
               <div>
-                <h4 className="font-semibold text-foreground">Accomplishments</h4>
+                <h4 className="font-semibold text-primary">Accomplishments</h4>
                 {tutor.accomplishments.length > 0 ? (
                   <ul className="mt-3 list-disc space-y-2 pl-5 text-foreground/85">
                     {tutor.accomplishments.map((item) => (

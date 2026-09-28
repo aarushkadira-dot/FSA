@@ -43,8 +43,8 @@
 
     /* Solid fills kept under the old gradient names so existing classes still resolve */
     --gradient-primary: linear-gradient(hsl(214 85% 26%), hsl(214 85% 26%));
-    --gradient-hero: linear-gradient(hsl(214 80% 18%), hsl(214 80% 18%));
-    --gradient-accent: linear-gradient(hsl(214 80% 18%), hsl(214 80% 18%));
+    --gradient-hero: linear-gradient(hsl(214 85% 26%), hsl(214 85% 26%));
+    --gradient-accent: linear-gradient(hsl(214 85% 26%), hsl(214 85% 26%));
     --gradient-gold: linear-gradient(hsl(43 90% 50%), hsl(43 90% 50%));
     --gradient-subtle: linear-gradient(hsl(40 33% 97%), hsl(40 33% 97%));
 

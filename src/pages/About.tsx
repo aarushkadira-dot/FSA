@@ -69,7 +69,7 @@ const About = () => (
           />
         </div>
       </div>
-      <div className="border-t border-white/15 bg-black/15">
+      <div className="border-t border-white/15">
         <dl className="container mx-auto grid grid-cols-2 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-4">
           {facts.map((fact) => (
             <div key={fact.label}>
@@ -93,7 +93,7 @@ const About = () => (
           <p className="mt-3 text-sm text-muted-foreground">Aarush Kadira, founder</p>
         </div>
         <div className="lg:col-span-8">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our story</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Our story</h2>
           <div className="mt-6 space-y-5 text-lg leading-relaxed text-foreground/85">
             <p>
               Aarush Kadira started the Future Scholars Association in September 2025 with a simple goal: help the
@@ -122,7 +122,7 @@ const About = () => (
           className="aspect-[4/3] w-full rounded-lg object-cover"
         />
         <div>
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Why Title I schools</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Why Title I schools</h2>
           <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
             Title I schools serve many students from low-income families. North Carolina has{" "}
             {TITLE_I_SCHOOL_COUNT.toLocaleString()} of them. They receive extra federal funding, but teachers there
@@ -136,12 +136,12 @@ const About = () => (
     {/* How it works */}
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">How it works</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">How it works</h2>
         <ol className="mt-10 grid gap-10 md:grid-cols-3">
           {steps.map((step, index) => (
             <li key={step.title} className="border-t-4 border-gold pt-5">
               <p className="text-sm font-semibold text-muted-foreground">Step {index + 1}</p>
-              <h3 className="mt-1 text-xl font-semibold text-foreground">{step.title}</h3>
+              <h3 className="mt-1 text-xl font-semibold text-primary">{step.title}</h3>
               <p className="mt-2 leading-relaxed text-muted-foreground">{step.body}</p>
             </li>
           ))}
@@ -154,7 +154,7 @@ const About = () => (
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">The people behind FSA</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">The people behind FSA</h2>
             <p className="mt-2 text-lg text-muted-foreground">A student board, with guidance from our advisory board.</p>
           </div>
           <Link to="/team" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
@@ -174,7 +174,7 @@ const About = () => (
                   </span>
                 )}
               </div>
-              <p className="mt-3 font-semibold text-foreground">{person.name}</p>
+              <p className="mt-3 font-semibold text-primary">{person.name}</p>
               <p className="text-sm text-muted-foreground">{person.role}</p>
             </li>
           ))}
@@ -186,7 +186,7 @@ const About = () => (
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our impact so far</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Our impact so far</h2>
           <Link to="/impact" className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
             See our impact
             <ArrowRight className="h-4 w-4" />
@@ -202,7 +202,7 @@ const About = () => (
     <section className="border-t border-border bg-secondary">
       <div className="container mx-auto flex flex-col items-start gap-6 px-4 py-14 sm:px-6 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Help a Title I classroom</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Help a Title I classroom</h2>
           <p className="mt-2 text-lg text-muted-foreground">Give supplies, or bring FSA to your school.</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">

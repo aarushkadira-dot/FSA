@@ -109,7 +109,7 @@ const StartChapter = () => {
       <div className="bg-secondary py-20">
         <div className="container mx-auto max-w-2xl px-4 sm:px-6">
           <div className="rounded-lg border border-border bg-white p-8 md:p-10">
-            <h1 className="text-3xl font-bold text-foreground">Thanks, {form.firstName}. Your application is in.</h1>
+            <h1 className="text-3xl font-bold text-primary">Thanks, {form.firstName}. Your application is in.</h1>
             <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
               Our team will review it and reach out at <span className="font-semibold text-foreground">{form.email}</span>{" "}
               about next steps for a chapter in {form.city}.
@@ -128,7 +128,7 @@ const StartChapter = () => {
       <section className="border-b border-border bg-secondary">
         <div className="container mx-auto grid gap-10 px-4 py-12 sm:px-6 md:py-16 lg:grid-cols-2 lg:gap-14">
           <div>
-            <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Start a chapter</h1>
+            <h1 className="text-4xl font-bold leading-tight text-primary md:text-5xl">Start a chapter</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground md:text-xl">
               Bring FSA to your community. Chapters are run by students who get school supplies into Title I
               classrooms near them.
@@ -138,7 +138,7 @@ const StartChapter = () => {
             </p>
           </div>
           <div>
-            <h2 className="text-xl font-semibold text-foreground">What a chapter does</h2>
+            <h2 className="text-xl font-semibold text-primary">What a chapter does</h2>
             <ol className="mt-5 space-y-5">
               {steps.map((step, index) => (
                 <li key={step} className="flex gap-4">
@@ -155,7 +155,7 @@ const StartChapter = () => {
 
       <section className="py-12 md:py-16">
         <div className="container mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground">Chapter application</h2>
+          <h2 className="text-3xl font-bold text-primary">Chapter application</h2>
           <p className="mt-2 text-muted-foreground">It takes about 5 minutes. Fields marked * are required.</p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-10">

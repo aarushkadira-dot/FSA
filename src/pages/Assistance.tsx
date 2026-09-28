@@ -77,7 +77,7 @@ const Assistance = () => {
     <div>
       <section className="border-b border-border bg-secondary">
         <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-          <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Request assistance</h1>
+          <h1 className="text-4xl font-bold leading-tight text-primary md:text-5xl">Request assistance</h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
             Facing financial or academic challenges? Tell us what's going on and we'll see how we can help.
           </p>
@@ -86,11 +86,11 @@ const Assistance = () => {
 
       <section className="py-14 md:py-20">
         <div className="container mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">How we can help</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">How we can help</h2>
           <ul className="mt-8 grid gap-6 md:grid-cols-3">
             {assistanceTypes.map((type) => (
               <li key={type.title} className="border-l-4 border-gold pl-5">
-                <h3 className="text-xl font-semibold text-foreground">{type.title}</h3>
+                <h3 className="text-xl font-semibold text-primary">{type.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted-foreground">{type.description}</p>
               </li>
             ))}
@@ -101,7 +101,7 @@ const Assistance = () => {
       <section className="border-y border-border bg-secondary py-14 md:py-20">
         <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
-            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Apply</h2>
+            <h2 className="text-3xl font-bold text-primary md:text-4xl">Apply</h2>
             <p className="mt-3 text-lg leading-relaxed text-muted-foreground">Prefer to reach out directly?</p>
             <ul className="mt-3 space-y-2 text-lg">
               <li>
@@ -120,7 +120,7 @@ const Assistance = () => {
           <div className="rounded-lg border border-border bg-white p-6 md:p-8 lg:col-span-8">
             {isSubmitted ? (
               <div role="status">
-                <h3 className="text-2xl font-bold text-foreground">Application received</h3>
+                <h3 className="text-2xl font-bold text-primary">Application received</h3>
                 <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
                   Thank you for reaching out. Our team will review your request and reply by email within 48 hours.
                 </p>
@@ -202,7 +202,7 @@ const Assistance = () => {
 
       <section className="py-14 md:py-20">
         <div className="container mx-auto max-w-3xl px-4 sm:px-6">
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Questions</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Questions</h2>
           <dl className="mt-8 divide-y divide-border border-y border-border">
             {faqs.map((faq) => (
               <div key={faq.question} className="py-5">

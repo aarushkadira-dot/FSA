@@ -8,7 +8,7 @@ const Partners = () => (
   <div>
     <section className="border-b border-border bg-secondary">
       <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
-        <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Our partners</h1>
+        <h1 className="text-4xl font-bold leading-tight text-primary md:text-5xl">Our partners</h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
           We work with student organizations and schools to get supplies into Title I classrooms.
         </p>
@@ -17,11 +17,11 @@ const Partners = () => (
 
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Student organizations</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">Student organizations</h2>
         <ul className="mt-8 grid gap-6 md:grid-cols-2">
           {PARTNER_ORGANIZATIONS.map((partner) => (
             <li key={partner.name} className="flex flex-col rounded-lg border border-border p-6 md:p-8">
-              <h3 className="text-2xl font-bold text-foreground">{partner.name}</h3>
+              <h3 className="text-2xl font-bold text-primary">{partner.name}</h3>
               <p className="mt-3 leading-relaxed text-muted-foreground">{partner.about}</p>
               {partner.together && (
                 <p className="mt-3 leading-relaxed text-foreground">
@@ -47,7 +47,7 @@ const Partners = () => (
 
     <section className="border-y border-border bg-secondary py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Partner schools</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">Partner schools</h2>
         <p className="mt-2 text-lg text-muted-foreground">Title I elementary schools in Wake County, North Carolina.</p>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {PARTNER_SCHOOLS.map((school) => (
@@ -63,7 +63,7 @@ const Partners = () => (
     <section className="py-12 md:py-16">
       <div className="container mx-auto flex flex-col items-start gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between">
         <div>
-          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Become a partner</h2>
+          <h2 className="text-3xl font-bold text-primary md:text-4xl">Become a partner</h2>
           <p className="mt-2 max-w-2xl text-lg text-muted-foreground">
             Schools, clubs and organizations can run drives with us, host events, or connect us with classrooms in need.
           </p>

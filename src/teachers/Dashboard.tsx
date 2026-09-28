@@ -69,7 +69,7 @@ const Dashboard = () => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-semibold text-primary">Teacher dashboard</p>
-            <h1 className="mt-1 text-3xl font-bold text-foreground md:text-4xl">Hi, {profile.first_name || "there"}</h1>
+            <h1 className="mt-1 text-3xl font-bold text-primary md:text-4xl">Hi, {profile.first_name || "there"}</h1>
           </div>
           <Button variant="outline" onClick={signOut} className={outlineButton}>
             Sign out
@@ -77,13 +77,13 @@ const Dashboard = () => {
         </div>
 
         <div className={`mt-8 rounded-lg border-l-4 bg-white p-6 ${status.tone}`} role="status">
-          <h2 className="text-xl font-semibold text-foreground">{status.title}</h2>
+          <h2 className="text-xl font-semibold text-primary">{status.title}</h2>
           <p className="mt-1 text-muted-foreground">{status.body}</p>
         </div>
 
         {profile.status === "approved" && (
           <section className="mt-8 rounded-lg border border-border bg-white p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">Your supply requests</h2>
+            <h2 className="text-2xl font-bold text-primary">Your supply requests</h2>
             <p className="mt-2 text-muted-foreground">
               Online requests are coming soon. Until then, email what your classroom needs and we'll set it up for you.
             </p>
@@ -97,7 +97,7 @@ const Dashboard = () => {
 
         <section className="mt-8 rounded-lg border border-border bg-white p-6 md:p-8">
           <div className="flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-bold text-foreground">Your profile</h2>
+            <h2 className="text-2xl font-bold text-primary">Your profile</h2>
             {!editing && (
               <button type="button" onClick={startEditing} className="font-semibold text-primary hover:underline">
                 Edit

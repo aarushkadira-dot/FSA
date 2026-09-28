@@ -60,7 +60,7 @@ const Admin = () => {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="font-semibold text-primary">FSA admin</p>
-            <h1 className="mt-1 text-3xl font-bold text-foreground md:text-4xl">Teacher accounts</h1>
+            <h1 className="mt-1 text-3xl font-bold text-primary md:text-4xl">Teacher accounts</h1>
           </div>
           <Button variant="outline" onClick={signOut} className={outlineButton}>
             Sign out

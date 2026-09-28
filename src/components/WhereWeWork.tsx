@@ -8,7 +8,7 @@ const WhereWeWork = ({ className }: { className?: string }) => (
   <section className={cn("py-16 md:py-20", className)}>
     <div className="container mx-auto grid gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
       <div>
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our partner schools</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">Our partner schools</h2>
         <p className="mt-2 text-lg text-muted-foreground">Title I elementary schools in Wake County, North Carolina.</p>
         <ul className="mt-6 divide-y divide-border border-y border-border">
           {PARTNER_SCHOOLS.map((school) => (
@@ -21,7 +21,7 @@ const WhereWeWork = ({ className }: { className?: string }) => (
       </div>
 
       <div>
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Our chapters</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">Our chapters</h2>
         <p className="mt-2 text-lg text-muted-foreground">
           FSA started in Wake County. Students have since launched chapters in {CHAPTERS.length} more places.
         </p>

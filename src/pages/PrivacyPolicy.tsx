@@ -4,7 +4,7 @@ const PrivacyPolicy = () => {
     <div className="bg-white">
       <div className="container mx-auto px-6 py-12">
 
-        <div className="max-w-3xl mx-auto prose prose-lg prose-headings:text-foreground prose-h2:text-primary prose-h3:text-primary/90 prose-strong:text-foreground">
+        <div className="max-w-3xl mx-auto prose prose-lg prose-headings:text-primary prose-h2:text-primary prose-h3:text-primary prose-strong:text-foreground">
           <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
           
           <p className="text-muted-foreground mb-8">

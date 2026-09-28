@@ -14,7 +14,7 @@ const NotFound = () => {
     <section className="bg-secondary">
       <div className="container mx-auto px-4 py-20 sm:px-6 md:py-28">
         <p className="font-semibold text-primary">Error 404</p>
-        <h1 className="mt-2 text-4xl font-bold text-foreground md:text-5xl">Page not found</h1>
+        <h1 className="mt-2 text-4xl font-bold text-primary md:text-5xl">Page not found</h1>
         <p className="mt-4 max-w-xl text-lg text-muted-foreground">
           There's no page at <span className="font-semibold text-foreground">{location.pathname}</span>. It may have moved.
         </p>

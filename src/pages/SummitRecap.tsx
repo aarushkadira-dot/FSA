@@ -43,7 +43,7 @@ const SummitRecap = () => (
           All events
         </Link>
         <p className="mt-6 font-semibold text-primary">Event recap</p>
-        <h1 className="mt-2 text-4xl font-bold leading-tight text-foreground md:text-5xl">Future Scholars Summit</h1>
+        <h1 className="mt-2 text-4xl font-bold leading-tight text-primary md:text-5xl">Future Scholars Summit</h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
           Student teams, nonprofits and researchers pitched their ideas, live, to community and state leaders who can
           help make them happen.
@@ -68,7 +68,7 @@ const SummitRecap = () => (
 
     <section className="py-16 md:py-20">
       <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl lg:col-span-4">About the event</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl lg:col-span-4">About the event</h2>
         <div className="space-y-5 text-lg leading-relaxed text-foreground/85 lg:col-span-8">
           <p>
             The Future Scholars Summit was a morning for ambitious ideas and the people working on them. Student teams,
@@ -85,7 +85,7 @@ const SummitRecap = () => (
 
     <section className="border-y border-border bg-secondary py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Guests of honor</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">Guests of honor</h2>
         <ul className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-3">
           {guests.map((guest) => (
             <li key={guest.name} className="flex items-center overflow-hidden rounded-lg border border-border bg-white sm:block">
@@ -103,17 +103,17 @@ const SummitRecap = () => (
 
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
-        <h2 className="text-3xl font-bold text-foreground md:text-4xl">Who pitched</h2>
+        <h2 className="text-3xl font-bold text-primary md:text-4xl">Who pitched</h2>
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
           {presenters.map((group) => (
             <li key={group.title} className="border-l-4 border-gold pl-5">
-              <h3 className="text-xl font-semibold text-foreground">{group.title}</h3>
+              <h3 className="text-xl font-semibold text-primary">{group.title}</h3>
               <p className="mt-2 leading-relaxed text-muted-foreground">{group.body}</p>
             </li>
           ))}
         </ul>
 
-        <h2 className="mt-16 text-3xl font-bold text-foreground md:text-4xl">Photos</h2>
+        <h2 className="mt-16 text-3xl font-bold text-primary md:text-4xl">Photos</h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           {gallery.map((photo) => (
             <img key={photo.alt} src={photo.src} alt={photo.alt} className="aspect-[4/3] w-full rounded-lg object-cover" loading="lazy" />
