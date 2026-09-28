@@ -17,15 +17,10 @@ export const STUDENT_BOARD: TeamMember[] = [
     image: "/joshua.jpg",
   },
   {
-    name: "Pihu Khadkad",
-    role: "Partner Relations Manager",
-    bio: "Works with our partner organizations, like Key Club, DECA, FCCLA, FBLA and The Health Literacy Project, on joint events and drives.",
-    image: "/pihu.jpg",
-  },
-  {
-    name: "Anay Cholpadi",
-    role: "Social Media Manager",
-    bio: "Runs FSA's social media and shares our work with the community.",
+    name: "Aaron Gim",
+    role: "Community Outreach Manager",
+    bio: "Connects FSA with local families and community groups, and organizes our outreach events.",
+    image: "/aaron.jpg",
   },
   {
     name: "Kabir Baig",
@@ -34,16 +29,21 @@ export const STUDENT_BOARD: TeamMember[] = [
     image: "/kabir.jpg",
   },
   {
+    name: "Pihu Khadkad",
+    role: "Partner Relations Manager",
+    bio: "Works with our partner organizations, like Key Club, DECA, FCCLA, FBLA and The Health Literacy Project, on joint events and drives.",
+    image: "/pihu.jpg",
+  },
+  {
     name: "Arvin Gupta",
     role: "Website Manager",
     bio: "Builds and maintains the FSA website.",
     image: "/arvin.jpg",
   },
   {
-    name: "Aaron Gim",
-    role: "Community Outreach Manager",
-    bio: "Connects FSA with local families and community groups, and organizes our outreach events.",
-    image: "/aaron.jpg",
+    name: "Anay Cholpadi",
+    role: "Social Media Manager",
+    bio: "Runs FSA's social media and shares our work with the community.",
   },
 ];
 
