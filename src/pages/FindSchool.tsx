@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import ClassroomRequests from "@/components/ClassroomRequests";
 import SchoolMap from "@/components/SchoolMap";
 import { Button } from "@/components/ui/button";
-import { CrayonBox, Notebook, Pencil } from "@/components/SupplyArt";
+import { CrayonBox, DeliveryBox, Notebook } from "@/components/SupplyArt";
 import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
 import { CONTACT_EMAIL } from "@/lib/forms";
 import { DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
@@ -20,7 +20,7 @@ const sections = [
 const steps = [
   { Art: Notebook, title: "Teachers ask", body: "A teacher at a Title I school tells us what their classroom is missing." },
   { Art: CrayonBox, title: "You give", body: "Donations cover the cost of the supplies on the request." },
-  { Art: Pencil, title: "We deliver", body: "Our student volunteers buy the items and bring them to the school." },
+  { Art: DeliveryBox, title: "We deliver", body: "Our student volunteers buy the items and bring them to the school." },
 ];
 
 const faqs = [
@@ -113,22 +113,19 @@ const FindSchool = () => (
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-primary md:text-4xl">How it works</h2>
         <p className="mt-2 text-lg text-muted-foreground">You pick the classroom. We handle the shopping.</p>
-        <ol className="mx-auto mt-12 grid max-w-5xl gap-12 md:grid-cols-3">
+        <ol className="mx-auto mt-12 grid max-w-5xl gap-6 text-left md:grid-cols-3">
           {steps.map(({ Art, title, body }, index) => (
-            <li key={title} className="flex flex-col items-center">
-              <div className="flex h-32 w-32 items-center justify-center">
-                <Art className="max-h-full max-w-full" />
+            <li key={title} className="flex flex-col rounded-lg border border-border bg-white p-6 md:p-8">
+              <div className="flex h-24 items-center justify-center rounded-md bg-secondary">
+                <Art className="h-16 w-16" />
               </div>
-              <div className="relative mt-4">
-                <span
-                  className="absolute -top-8 left-1/2 -translate-x-1/2 font-display text-7xl font-bold text-gold/30"
-                  aria-hidden="true"
-                >
+              <div className="mt-6 flex items-center gap-3">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary font-display text-sm font-bold text-primary-foreground">
                   {index + 1}
                 </span>
-                <h3 className="relative text-2xl font-bold text-primary">{title}</h3>
+                <h3 className="text-xl font-bold text-primary">{title}</h3>
               </div>
-              <p className="mt-2 max-w-xs leading-relaxed text-muted-foreground">{body}</p>
+              <p className="mt-3 leading-relaxed text-muted-foreground">{body}</p>
             </li>
           ))}
         </ol>

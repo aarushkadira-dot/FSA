@@ -88,11 +88,12 @@ const Home = () => {
         <section className="bg-primary text-primary-foreground">
           <div className="container mx-auto flex flex-col gap-4 px-4 py-6 sm:px-6 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="font-display text-xl font-bold">
-                {PICKLEBALL_TOURNAMENT.name} with {PICKLEBALL_TOURNAMENT.partner.name}
+              <p className="text-sm font-semibold text-gold">
+                Upcoming fundraiser with {PICKLEBALL_TOURNAMENT.partner.name}
               </p>
-              <p className="mt-1 text-white/80">
-                {PICKLEBALL_TOURNAMENT.date}, {PICKLEBALL_TOURNAMENT.time} · {PICKLEBALL_TOURNAMENT.location}
+              <p className="mt-1 font-display text-xl font-bold">
+                {PICKLEBALL_TOURNAMENT.name} · {PICKLEBALL_TOURNAMENT.date}, {PICKLEBALL_TOURNAMENT.time} ·{" "}
+                {PICKLEBALL_TOURNAMENT.location}
               </p>
             </div>
             <Button asChild size="lg" className="shrink-0 bg-gold text-gold-foreground hover:brightness-95">

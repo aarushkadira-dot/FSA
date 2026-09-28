@@ -106,3 +106,13 @@ export const CrayonBox = ({ className }: ArtProps) => (
     <rect x="58" y="129" width="34" height="6" rx="3" fill="#f47a20" />
   </svg>
 );
+
+export const DeliveryBox = ({ className }: ArtProps) => (
+  <svg viewBox="0 0 170 150" className={className} aria-hidden="true">
+    <path d="M20 44 L85 14 L150 44 L85 74 Z" fill="#e2b77a" />
+    <path d="M20 44 V116 L85 146 V74 Z" fill="#c9965a" />
+    <path d="M150 44 V116 L85 146 V74 Z" fill="#d8a767" />
+    <path d="M50 30 L115 60 V82 L103 76 V56 L40 26 Z" fill="#f2d7ab" />
+    <path d="M100 98 L132 84 V100 L100 114 Z" fill="#ffffff" opacity="0.85" />
+  </svg>
+);
