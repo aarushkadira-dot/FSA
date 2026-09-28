@@ -3,14 +3,11 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CLASSROOMS_PATH, DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links";
 import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
-import { CHAPTERS, PARTNER_SCHOOLS } from "@/data/organization";
+import { CHAPTERS, IMPACT, MISSION_STATEMENT, PARTNER_SCHOOLS } from "@/data/organization";
 import WhereWeWork from "@/components/WhereWeWork";
 import classroomPhoto from "@/assets/event1.jpg";
 import suppliesPhoto from "@/assets/event2.jpg";
 import summitPhoto from "@/assets/summit4.jpg";
-
-const MISSION_STATEMENT =
-  "The Future Scholars Association is a student-run nonprofit working to make sure every student in a Title I school has the supplies they need to learn. We partner directly with teachers to find out what their classrooms are missing, raise the money to cover it, and get those supplies into students' hands.";
 
 const trustPoints = [
   { title: "501(c)(3) nonprofit", detail: "Donations are tax-deductible." },
@@ -35,8 +32,8 @@ const steps = [
 ];
 
 const impact = [
-  { value: "294", label: "students reached" },
-  { value: "$1,450", label: "raised for classrooms" },
+  { value: IMPACT.studentsReached.toLocaleString(), label: "students reached" },
+  { value: `$${IMPACT.dollarsRaised.toLocaleString()}`, label: "raised for classrooms" },
   { value: String(PARTNER_SCHOOLS.length), label: "Title I partner schools" },
   { value: String(CHAPTERS.length), label: "chapters" },
 ];

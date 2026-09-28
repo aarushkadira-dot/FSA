@@ -28,3 +28,66 @@ export const PARTNER_SCHOOL_LOCATIONS: {
   { name: "Fuller Magnet Elementary", id: "920416", address: "806 Calloway Drive, Raleigh, NC 27610", coordinates: [-78.62445, 35.75466] },
   { name: "Kingswood Elementary", id: "920460", address: "200 E. Johnson Street, Cary, NC 27513", coordinates: [-78.7782, 35.7932] },
 ];
+
+export const MISSION_STATEMENT =
+  "The Future Scholars Association is a student-run nonprofit working to make sure every student in a Title I school has the supplies they need to learn. We partner directly with teachers to find out what their classrooms are missing, raise the money to cover it, and get those supplies into students' hands.";
+
+export const FOUNDED = "September 13, 2025";
+
+// Headline numbers used on Home, About and Impact. Update here.
+export const IMPACT = {
+  studentsReached: 294,
+  dollarsRaised: 1450,
+};
+
+// Add the IRS Employer Identification Number (e.g. "12-3456789") to show it on About and Impact.
+export const EIN = "";
+
+export const EVENTS = [
+  {
+    name: "Support for Scholars Drive",
+    date: "January 17, 2026",
+    summary: "A school supply drive for Bugg Elementary.",
+  },
+  {
+    name: "Future Innovators Expo",
+    date: "January 17, 2026",
+    summary:
+      "Hands-on STEM stations at Cedar Fork Community Center: paper airplanes, slime chemistry, bridge building and a live robotics demo.",
+  },
+  {
+    name: "Future Scholars Summit",
+    date: "March 1, 2026",
+    summary:
+      "Student teams, nonprofits and researchers pitched their ideas to community and state leaders, including Mayor TJ Cawley, Rep. Maria Cervania and Councilwoman Sarika Bansal.",
+  },
+];
+
+// Organizations FSA partners with. `together` describes what FSA does with them; add it when ready.
+export const PARTNER_ORGANIZATIONS: { name: string; about: string; url: string; together?: string }[] = [
+  {
+    name: "Key Club",
+    about: "Kiwanis International's service leadership program for high school students.",
+    url: "https://www.keyclub.org",
+  },
+  {
+    name: "NC DECA",
+    about: "North Carolina's association of DECA, which prepares students for careers in marketing, finance, hospitality and management.",
+    url: "https://www.ncdeca.org",
+  },
+  {
+    name: "NC FCCLA",
+    about: "North Carolina's association of Family, Career and Community Leaders of America, a student organization for family and consumer sciences education.",
+    url: "https://fcclainc.org",
+  },
+  {
+    name: "NC FBLA",
+    about: "North Carolina's association of Future Business Leaders of America, which prepares students for careers in business.",
+    url: "https://www.ncfbla.org",
+  },
+];
+
+// Impact page details. Each section stays hidden until it has data.
+export const SUPPLIES_DELIVERED: { item: string; count: number }[] = [];
+export const FUNDS_USED: { label: string; percent: number }[] = [];
+export const QUOTES: { quote: string; name: string; role: string }[] = [];

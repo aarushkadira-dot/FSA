@@ -17,6 +17,8 @@ import ScholarsDriveEvent from "./pages/ScholarsDriveEvent";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import StartChapter from "./pages/StartChapter";
+import Partners from "./pages/Partners";
+import Impact from "./pages/Impact";
 import { CLASSROOMS_PATH, FIND_SCHOOL_PATH, START_CHAPTER_PATH } from "./lib/links";
 
 const queryClient = new QueryClient();
@@ -33,6 +35,8 @@ const AppRoutes = () => (
     <Route path="/projects/*" element={<Navigate to={CLASSROOMS_PATH} replace />} />
     <Route path="/submit-project" element={<SubmitProject />} />
     <Route path="/team" element={<Team />} />
+    <Route path="/partners" element={<Partners />} />
+    <Route path="/impact" element={<Impact />} />
     <Route path={START_CHAPTER_PATH} element={<StartChapter />} />
     <Route
       path={FIND_SCHOOL_PATH}

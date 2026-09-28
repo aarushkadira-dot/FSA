@@ -18,6 +18,8 @@ const columns = [
     links: [
       { label: "About Us", to: "/about" },
       { label: "Our Team", to: "/team" },
+      { label: "Partners", to: "/partners" },
+      { label: "Impact", to: "/impact" },
       { label: "Future Scholars Summit", to: "/events/scholars-drive" },
     ],
   },
