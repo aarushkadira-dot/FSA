@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { Instagram } from "lucide-react";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/links";
 import logo from "@/assets/logo.png";
 
 const columns = [
@@ -68,6 +70,18 @@ const Footer = () => {
               <li>
                 <a href="tel:+19194548249" className="hover:text-white hover:underline">
                   (919) 454-8249
+                </a>
+              </li>
+              <li>
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:text-white hover:underline"
+                >
+                  <Instagram className="h-5 w-5" aria-hidden="true" />
+                  @{INSTAGRAM_HANDLE}
+                  <span className="sr-only">on Instagram (opens in a new tab)</span>
                 </a>
               </li>
             </ul>

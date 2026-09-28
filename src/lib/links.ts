@@ -15,3 +15,6 @@ export const GOFUNDME_URL = "";
 export const donationHref = (note?: string) =>
   GOFUNDME_URL ||
   `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(note ? `Donation: ${note}` : "I'd like to donate")}`;
+
+export const INSTAGRAM_HANDLE = "futurescholars.association";
+export const INSTAGRAM_URL = `https://www.instagram.com/${INSTAGRAM_HANDLE}/`;
