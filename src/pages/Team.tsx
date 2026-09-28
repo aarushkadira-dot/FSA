@@ -44,6 +44,7 @@ const Team = () => {
     { name: "Vedhanth", subject: "Chemistry Tutor", image: "/vedhanth.jpg", accomplishments: [] },
     { name: "Arvin Gupta", subject: "Chemistry Tutor", image: "/arvin.jpg", accomplishments: [] },
     { name: "Femi", subject: "Math Tutor", accomplishments: [] },
+    { name: "Ashvik Pal", subject: "Math Tutor", accomplishments: [] },
     { name: "Lalit", subject: "Physics Tutor", accomplishments: [] },
     { name: "Aaron Gim", subject: "English Tutor", image: "/aaron.jpg", accomplishments: [] },
     { name: "Adi", subject: "Speech & Communication Tutor", image: "/adi.jpg", accomplishments: [] },
