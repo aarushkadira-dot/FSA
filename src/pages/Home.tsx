@@ -5,7 +5,7 @@ import { CLASSROOMS_PATH, DONATE_PATH, TEACHER_REQUEST_PATH } from "@/lib/links"
 import { TITLE_I_SCHOOL_COUNT } from "@/data/titleOneSummary";
 import { CHAPTERS, IMPACT, MISSION_STATEMENT, PARTNER_SCHOOLS } from "@/data/organization";
 import WhereWeWork from "@/components/WhereWeWork";
-import classroomPhoto from "@/assets/event1.jpg";
+import heroPhoto from "@/assets/home-hero.jpg";
 import suppliesPhoto from "@/assets/event2.jpg";
 import summitPhoto from "@/assets/summit4.jpg";
 
@@ -64,8 +64,8 @@ const Home = () => {
             </div>
           </div>
           <img
-            src={classroomPhoto}
-            alt="Students at Bugg Magnet Elementary celebrating in their classroom"
+            src={heroPhoto}
+            alt="A student high-fiving a volunteer in a school hallway"
             className="aspect-[4/3] w-full rounded-lg object-cover"
           />
         </div>
