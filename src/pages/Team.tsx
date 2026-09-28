@@ -1,5 +1,4 @@
 import { Mail, Phone, User } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -52,182 +51,82 @@ const Team = () => {
     { name: "Joel Manuel", subject: "AI/ML Tutor", accomplishments: [] },
   ];
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative py-24 bg-gradient-hero overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
+  const photo = (name: string, image?: string, size = "h-28 w-28") => (
+    <div className={`mx-auto ${size} overflow-hidden rounded-full bg-secondary`}>
+      {image ? (
+        <img src={image} alt="" className="h-full w-full object-cover" loading="lazy" />
+      ) : (
+        // No photo yet: show initials until one is added
+        <div className="flex h-full w-full items-center justify-center bg-primary font-display text-3xl font-bold text-primary-foreground">
+          {initials(name)}
         </div>
+      )}
+    </div>
+  );
 
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-6 animate-slide-up">
-            <div className="inline-block">
-              <span className="px-4 py-2 rounded-full bg-gold/10 text-gold text-sm font-medium border border-gold/20">
-                Leadership Team
-              </span>
-            </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-primary-foreground">
-              Meet the{" "}
-              <span className="text-5xl md:text-6xl font-bold text-primary-foreground">
-                Dreamers & Doers
-              </span>
-            </h1>
-            <p className="text-xl text-primary-foreground/80 leading-relaxed">
-              Passionate individuals working together to make education accessible
-              and empower the next generation of leaders.
-            </p>
-          </div>
+  return (
+    <div>
+      <section className="border-b border-border bg-secondary">
+        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
+          <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Our team</h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            The students and advisors who run FSA, and the tutors who volunteer with us.
+          </p>
         </div>
       </section>
 
       {/* Student Board */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Student Board</h2>
-            <p className="text-xl text-muted-foreground">
-              The passionate students driving FSA's mission forward
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
-            {studentBoard.map((member, index) => (
-              <Card
-                key={index}
-                className="group relative overflow-hidden border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-glow bg-card/80 backdrop-blur-sm"
-              >
-                <div className="absolute inset-0 bg-gradient-accent opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                
-                <div className="p-8 space-y-5">
-                  {/* Profile Image Container */}
-                  <div className="relative mx-auto w-32 h-32">
-                    {/* Decorative rings */}
-                    <div className="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse" />
-                    <div className="absolute inset-2 rounded-full border-2 border-primary/40" />
-                    
-                    {/* Profile Image */}
-                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-elegant">
-                      {member.image ? (
-                        <img
-                          src={member.image}
-                          alt={member.name}
-                          className={`w-full h-full object-cover transition-transform duration-300 group-hover:scale-110 ${"position" in member ? member.position : ""}`}
-                        />
-                      ) : (
-                        // No photo yet: show initials until one is added
-                        <div
-                          role="img"
-                          aria-label={member.name}
-                          className="flex h-full w-full items-center justify-center bg-primary text-3xl font-bold text-primary-foreground"
-                        >
-                          {member.name
-                            .split(" ")
-                            .map((part) => part[0])
-                            .join("")}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="text-center space-y-3">
-                    <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-semibold text-primary uppercase tracking-wide">
-                      {member.role}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
-              </Card>
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Student board</h2>
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {studentBoard.map((member) => (
+              <li key={member.name} className="rounded-lg border border-border bg-white p-6 text-center">
+                {photo(member.name, member.image)}
+                <h3 className="mt-4 text-xl font-bold text-foreground">{member.name}</h3>
+                <p className="mt-1 font-semibold text-primary">{member.role}</p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{member.bio}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
       {/* Advisory Board */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Advisory Board</h2>
-            <p className="text-xl text-muted-foreground">
-              Expert guidance and mentorship for our organization
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {advisoryBoard.map((member, index) => (
-              <Card
-                key={index}
-                className="group relative overflow-hidden border-2 hover:border-gold/50 transition-all duration-300 hover:shadow-gold bg-card/80 backdrop-blur-sm"
-              >
-                <div className="absolute inset-0 bg-gradient-gold opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-                
-                <div className="p-6 space-y-4">
-                  {/* Profile Image Container */}
-                  <div className="relative mx-auto w-32 h-32">
-                    {/* Decorative rings */}
-                    <div className="absolute inset-0 rounded-full border-4 border-gold/20 animate-pulse" />
-                    <div className="absolute inset-2 rounded-full border-2 border-gold/40" />
-                    
-                    {/* Profile Image */}
-                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-background shadow-elegant">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="text-center space-y-2">
-                    <h3 className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
-                      {member.name}
-                    </h3>
-                    <p className="text-sm font-semibold text-gold uppercase tracking-wide">
-                      {member.role}
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {member.bio}
-                    </p>
-                  </div>
-                </div>
-              </Card>
+      <section className="border-y border-border bg-secondary py-14 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Advisory board</h2>
+          <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {advisoryBoard.map((member) => (
+              <li key={member.name} className="rounded-lg border border-border bg-white p-6 text-center">
+                {photo(member.name, member.image)}
+                <h3 className="mt-4 text-xl font-bold text-foreground">{member.name}</h3>
+                <p className="mt-1 font-semibold text-primary">{member.role}</p>
+                <p className="mt-3 leading-relaxed text-muted-foreground">{member.bio}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
       {/* Tutors */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Tutors</h2>
-            <p className="text-xl text-muted-foreground">Select a tutor to see their accomplishments.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Tutors</h2>
+          <p className="mt-2 text-lg text-muted-foreground">Select a tutor to see their accomplishments.</p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {tutors.map((tutor) => (
               <button
                 key={tutor.name}
                 type="button"
                 onClick={() => setOpenTutor(tutor.name)}
-                className="group rounded-lg border-2 border-border bg-card p-6 text-center transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="group rounded-lg border border-border bg-white p-6 text-center transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 aria-haspopup="dialog"
               >
-                <div className="mx-auto h-32 w-32 overflow-hidden rounded-full border-4 border-background shadow-card">
-                  {tutor.image ? (
-                    <img src={tutor.image} alt="" className="h-full w-full object-cover" />
-                  ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-primary text-3xl font-bold text-primary-foreground">
-                      {initials(tutor.name)}
-                    </div>
-                  )}
-                </div>
-                <h3 className="mt-4 text-xl font-bold text-primary">{tutor.name}</h3>
-                <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-primary">{tutor.subject}</p>
-                <p className="mt-3 text-sm font-medium text-muted-foreground group-hover:text-primary group-hover:underline">
+                {photo(tutor.name, tutor.image)}
+                <h3 className="mt-4 text-xl font-bold text-foreground">{tutor.name}</h3>
+                <p className="mt-1 font-semibold text-primary">{tutor.subject}</p>
+                <p className="mt-3 text-sm font-semibold text-muted-foreground group-hover:text-primary group-hover:underline">
                   View accomplishments
                 </p>
               </button>
@@ -244,15 +143,7 @@ const Team = () => {
             <DialogContent className="sm:max-w-[480px]">
               <DialogHeader>
                 <div className="flex items-center gap-4">
-                  <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full">
-                    {tutor.image ? (
-                      <img src={tutor.image} alt="" className="h-full w-full object-cover" />
-                    ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-primary text-2xl font-bold text-primary-foreground">
-                        {initials(tutor.name)}
-                      </div>
-                    )}
-                  </div>
+                  <div className="shrink-0">{photo(tutor.name, tutor.image, "h-16 w-16")}</div>
                   <div className="text-left">
                     <DialogTitle className="text-2xl">{tutor.name}</DialogTitle>
                     <DialogDescription className="font-semibold text-primary">{tutor.subject}</DialogDescription>
@@ -277,27 +168,22 @@ const Team = () => {
       </section>
 
       {/* Join Team CTA */}
-      <section className="py-24 relative overflow-hidden bg-primary/5">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8 animate-slide-up">
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Want to{" "}
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
-                Join Our Team?
-              </span>
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              We're always looking for passionate individuals who want to make a
-              difference in students' lives.
-            </p>
+      <section className="bg-primary py-14 text-primary-foreground md:py-16">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold md:text-3xl">Want to join the team?</h2>
+              <p className="mt-2 text-lg text-white/80">
+                We're always looking for students who want to help Title I classrooms.
+              </p>
+            </div>
             <Button
               size="lg"
-              className="bg-gradient-accent text-primary-foreground hover:shadow-glow transition-all"
+              className="shrink-0 bg-gold text-gold-foreground hover:bg-gold/90"
               onClick={() => setIsDialogOpen(true)}
             >
-              Get Involved
+              Get involved
             </Button>
-            
             {/* Join Form Dialog */}
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogContent className="sm:max-w-[500px]">
@@ -424,7 +310,7 @@ const Team = () => {
                     </Button>
                     <Button
                       type="submit"
-                      className="flex-1 bg-gradient-accent text-primary-foreground hover:shadow-glow"
+                      className="flex-1 bg-gold text-gold-foreground hover:bg-gold/90"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Sending..." : "Submit Application"}

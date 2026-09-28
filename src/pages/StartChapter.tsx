@@ -114,7 +114,7 @@ const StartChapter = () => {
               Our team will review it and reach out at <span className="font-semibold text-foreground">{form.email}</span>{" "}
               about next steps for a chapter in {form.city}.
             </p>
-            <Button asChild className="mt-8 font-semibold">
+            <Button asChild className="mt-8">
               <Link to="/">Back to home</Link>
             </Button>
           </div>
@@ -295,7 +295,7 @@ const StartChapter = () => {
               type="submit"
               size="lg"
               disabled={status === "sending"}
-              className="w-full bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90 sm:w-auto"
+              className="w-full bg-gold text-gold-foreground hover:bg-gold/90 sm:w-auto"
             >
               {status === "sending" ? "Sending…" : "Submit application"}
             </Button>

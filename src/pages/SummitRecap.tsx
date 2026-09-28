@@ -129,14 +129,14 @@ const SummitRecap = () => (
           <p className="mt-2 text-lg text-white/80">Help us keep supporting Title I classrooms.</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="border-white bg-transparent text-base font-semibold text-white hover:bg-white hover:text-primary"
+            className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
           >
             <Link to={CLASSROOMS_PATH}>Find a school</Link>
           </Button>

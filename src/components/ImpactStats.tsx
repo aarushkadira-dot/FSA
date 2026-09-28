@@ -13,7 +13,7 @@ const ImpactStats = ({ limit }: { limit?: number }) => (
     {stats.slice(0, limit).map((item) => (
       <div key={item.label} className="flex flex-col-reverse border-t-4 border-primary pt-4">
         <dt className="mt-1 text-muted-foreground">{item.label}</dt>
-        <dd className="text-4xl font-bold text-foreground md:text-5xl">{item.value}</dd>
+        <dd className="font-display text-4xl font-bold text-foreground md:text-5xl">{item.value}</dd>
       </div>
     ))}
   </dl>

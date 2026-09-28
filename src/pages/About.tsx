@@ -47,14 +47,14 @@ const About = () => (
             growing through student chapters.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Button
               asChild
               size="lg"
               variant="outline"
-              className="border-white bg-transparent text-base font-semibold text-white hover:bg-white hover:text-primary"
+              className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
             >
               <Link to="/team">Meet the team</Link>
             </Button>
@@ -169,7 +169,7 @@ const About = () => (
                 {person.image ? (
                   <img src={person.image} alt="" className="h-full w-full object-cover" loading="lazy" />
                 ) : (
-                  <span className="flex h-full w-full items-center justify-center text-2xl font-bold text-primary-foreground">
+                  <span className="flex h-full w-full items-center justify-center font-display text-2xl font-bold text-primary-foreground">
                     {initials(person.name)}
                   </span>
                 )}
@@ -206,14 +206,14 @@ const About = () => (
           <p className="mt-2 text-lg text-muted-foreground">Give supplies, or bring FSA to your school.</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
           >
             <Link to={START_CHAPTER_PATH}>Start a chapter</Link>
           </Button>

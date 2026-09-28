@@ -48,13 +48,14 @@
     --gradient-gold: linear-gradient(hsl(43 90% 50%), hsl(43 90% 50%));
     --gradient-subtle: linear-gradient(hsl(40 33% 97%), hsl(40 33% 97%));
 
-    --shadow-sm: 0 1px 2px hsl(224 45% 14% / 0.06);
-    --shadow-md: 0 2px 6px hsl(224 45% 14% / 0.08);
-    --shadow-lg: 0 4px 12px hsl(224 45% 14% / 0.1);
-    --shadow-elegant: 0 1px 3px hsl(224 45% 14% / 0.08);
-    --shadow-glow: 0 1px 3px hsl(224 45% 14% / 0.08);
-    --shadow-gold: 0 1px 3px hsl(224 45% 14% / 0.08);
-    --shadow-card: 0 1px 3px hsl(224 45% 14% / 0.08);
+    /* No drop shadows anywhere: flat design */
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: none;
+    --shadow-elegant: none;
+    --shadow-glow: none;
+    --shadow-gold: none;
+    --shadow-card: none;
 
     --transition-smooth: all 0.15s ease;
   }
@@ -77,7 +78,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -88,6 +89,7 @@
   h4,
   h5,
   h6 {
+    font-family: "Atkinson Hyperlegible Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     letter-spacing: -0.01em;
   }
 

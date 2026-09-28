@@ -41,7 +41,7 @@ const Landing = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-white bg-transparent text-base font-semibold text-white hover:bg-white hover:text-primary"
+                  className="border-white bg-transparent text-white hover:bg-white hover:text-primary"
                 >
                   <Link to="/teachers/sign-in">Sign in</Link>
                 </Button>

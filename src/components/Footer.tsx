@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="md:col-span-4">
             <Link to="/" className="inline-flex items-center gap-3">
               <img src={logo} alt="" className="h-12 w-12 object-contain" />
-              <span className="text-lg font-bold">Future Scholars Association</span>
+              <span className="font-display text-lg font-bold">Future Scholars Association</span>
             </Link>
             <p className="mt-4 max-w-sm leading-relaxed text-white/80">
               A student-run 501(c)(3) nonprofit getting school supplies into Title I classrooms.

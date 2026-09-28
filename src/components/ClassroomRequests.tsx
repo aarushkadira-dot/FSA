@@ -160,7 +160,7 @@ const ClassroomRequests = () => {
                 <Button
                   asChild
                   variant="outline"
-                  className="border-primary font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 >
                   <Link to={TEACHER_REQUEST_PATH}>Teachers: submit a request</Link>
                 </Button>
@@ -237,7 +237,7 @@ const ClassroomRequests = () => {
             <Button
               asChild
               size="lg"
-              className="mt-6 h-auto min-h-11 whitespace-normal bg-gold py-3 text-base font-semibold text-gold-foreground hover:bg-gold/90"
+              className="mt-6 h-auto min-h-11 whitespace-normal bg-gold py-3 text-gold-foreground hover:bg-gold/90"
             >
               <Link to={TEACHER_REQUEST_PATH}>Submit a classroom request</Link>
             </Button>

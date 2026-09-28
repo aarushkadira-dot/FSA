@@ -37,7 +37,7 @@ const WhereWeWork = ({ className }: { className?: string }) => (
           asChild
           size="lg"
           variant="outline"
-          className="mt-6 border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+          className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
         >
           <Link to={START_CHAPTER_PATH}>Start a chapter</Link>
         </Button>

@@ -59,7 +59,7 @@ const Impact = () => (
           <ul className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
             {SUPPLIES_DELIVERED.map((entry) => (
               <li key={entry.item} className="rounded-lg border border-border p-6">
-                <p className="text-4xl font-bold text-foreground">{entry.count.toLocaleString()}</p>
+                <p className="font-display text-4xl font-bold text-foreground">{entry.count.toLocaleString()}</p>
                 <p className="mt-1 text-muted-foreground">{entry.item}</p>
               </li>
             ))}
@@ -208,14 +208,14 @@ const Impact = () => (
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
           <Button
             asChild
             size="lg"
             variant="outline"
-            className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
           >
             <Link to={START_CHAPTER_PATH}>Start a chapter</Link>
           </Button>

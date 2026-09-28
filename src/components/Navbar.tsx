@@ -28,20 +28,22 @@ const Navbar = () => {
       <nav className="container mx-auto flex h-16 items-center justify-between gap-6 px-4 sm:px-6">
         <Link to="/" className="flex shrink-0 items-center gap-3">
           <img src={logo} alt="" className="h-10 w-10 object-contain" />
-          <span className="text-base font-bold leading-tight text-foreground sm:text-lg">
+          <span className="font-display text-base font-bold leading-tight text-foreground sm:text-lg">
             Future Scholars Association
           </span>
         </Link>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          {navLinks.map((link) => (
+        {/* Plain text links split by thin dividers, like DonorsChoose */}
+        <div className="hidden items-center lg:flex">
+          {navLinks.map((link, index) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) =>
                 cn(
-                  "rounded-md px-3 py-2 text-[0.95rem] font-medium transition-colors",
-                  isActive ? "text-primary underline decoration-2 underline-offset-8" : "text-foreground/80 hover:text-primary",
+                  "border-border px-4 text-[0.95rem] font-medium leading-5 transition-colors",
+                  index > 0 && "border-l",
+                  isActive ? "text-primary underline decoration-2 underline-offset-[10px]" : "text-foreground/80 hover:text-primary",
                 )
               }
             >
@@ -50,15 +52,20 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Button
-            asChild
-            variant="outline"
-            className="border-primary px-5 font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+        <div className="hidden items-center lg:flex">
+          <NavLink
+            to={TEACHER_REQUEST_PATH}
+            className={({ isActive }) =>
+              cn(
+                "px-4 text-[0.95rem] font-semibold leading-5 transition-colors",
+                isActive ? "text-primary underline decoration-2 underline-offset-[10px]" : "text-primary hover:underline",
+              )
+            }
           >
-            <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
-          </Button>
-          <Button asChild className="bg-gold px-5 font-semibold text-gold-foreground hover:bg-gold/90">
+            Teachers
+          </NavLink>
+          <span className="h-5 border-l border-border" aria-hidden="true" />
+          <Button asChild className="ml-4 bg-gold text-gold-foreground hover:bg-gold/90">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
         </div>
@@ -91,14 +98,13 @@ const Navbar = () => {
               </NavLink>
             ))}
             <div className="grid grid-cols-2 gap-3 pb-3 pt-4">
-              <Button
-                asChild
-                variant="outline"
-                className="border-primary font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+              <Link
+                to={TEACHER_REQUEST_PATH}
+                className="flex h-11 items-center justify-center font-display font-bold text-primary hover:underline"
               >
-                <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
-              </Button>
-              <Button asChild className="bg-gold font-semibold text-gold-foreground hover:bg-gold/90">
+                Teachers
+              </Link>
+              <Button asChild className="bg-gold text-gold-foreground hover:bg-gold/90">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
             </div>

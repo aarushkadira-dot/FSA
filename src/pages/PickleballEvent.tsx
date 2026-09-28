@@ -56,14 +56,14 @@ const PickleballEvent = () => {
               {event.fees.map((fee) => (
                 <div key={fee.label}>
                   <dt className="text-sm text-muted-foreground">{fee.label}</dt>
-                  <dd className="mt-0.5 text-2xl font-bold text-foreground">{fee.amount}</dd>
+                  <dd className="mt-0.5 font-display text-2xl font-bold text-foreground">{fee.amount}</dd>
                 </div>
               ))}
             </dl>
 
             {upcoming && (
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+                <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
                   <a href={calendarUrl} target="_blank" rel="noopener noreferrer">
                     <CalendarPlus className="mr-2 h-5 w-5" aria-hidden="true" />
                     Add to calendar
@@ -73,7 +73,7 @@ const PickleballEvent = () => {
                   asChild
                   size="lg"
                   variant="outline"
-                  className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground"
+                  className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 >
                   <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Pickleball Tournament")}`}>Ask a question</a>
                 </Button>
@@ -84,7 +84,7 @@ const PickleballEvent = () => {
           <img
             src={flyer}
             alt={`Flyer: ${event.partner.name} x Future Scholars Association ${event.name}, ${event.date}, ${event.time}, ${event.location}. Participation fee $8, spectator fee $5.`}
-            className="w-full max-w-md justify-self-center rounded-lg border border-border shadow-sm lg:col-span-5"
+            className="w-full max-w-md justify-self-center rounded-lg border border-border lg:col-span-5"
           />
         </div>
       </section>
@@ -109,7 +109,7 @@ const PickleballEvent = () => {
             <p className="mt-3 leading-relaxed text-muted-foreground">
               You can still help a Title I classroom get the supplies it needs.
             </p>
-            <Button asChild size="lg" className="mt-5 bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="mt-5 bg-gold text-gold-foreground hover:bg-gold/90">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Link to="/impact" className="mt-5 flex items-center gap-1 font-semibold text-primary hover:underline">

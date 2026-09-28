@@ -55,10 +55,10 @@ const Home = () => {
               the classroom.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to={TEACHER_REQUEST_PATH}>Teachers</Link>
               </Button>
             </div>
@@ -95,7 +95,7 @@ const Home = () => {
                 {PICKLEBALL_TOURNAMENT.location}
               </p>
             </div>
-            <Button asChild size="lg" className="shrink-0 bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="shrink-0 bg-gold text-gold-foreground hover:bg-gold/90">
               <Link to={PICKLEBALL_TOURNAMENT.path}>Event details</Link>
             </Button>
           </div>
@@ -106,7 +106,7 @@ const Home = () => {
       <section className="py-16 md:py-20">
         <div className="container mx-auto max-w-4xl px-4 sm:px-6">
           <h2 className="text-lg font-semibold text-primary">Our mission</h2>
-          <p className="mt-4 text-2xl font-medium leading-snug text-foreground md:text-3xl md:leading-snug">
+          <p className="mt-4 font-display text-2xl font-medium leading-snug text-foreground md:text-3xl md:leading-snug">
             {MISSION_STATEMENT}
           </p>
           <Link to="/about" className="mt-6 inline-flex items-center gap-1 font-semibold text-primary hover:underline">
@@ -166,10 +166,10 @@ const Home = () => {
               fund upcoming needs, or, if you teach at a Title I school, send us what your classroom needs.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild className="bg-gold font-semibold text-gold-foreground hover:bg-gold/90">
+              <Button asChild className="bg-gold text-gold-foreground hover:bg-gold/90">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
-              <Button asChild variant="outline" className="border-primary font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
+              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to={TEACHER_REQUEST_PATH}>Submit a classroom request</Link>
               </Button>
             </div>
@@ -196,7 +196,7 @@ const Home = () => {
             </Link>
           </div>
           <div className="rounded-lg border border-white/20 p-8 lg:col-span-2">
-            <p className="text-5xl font-bold text-gold">{schoolCount}</p>
+            <p className="font-display text-5xl font-bold text-gold">{schoolCount}</p>
             <p className="mt-2 text-lg text-white/85">Title I schools across North Carolina on our school map</p>
           </div>
         </div>
@@ -210,7 +210,7 @@ const Home = () => {
             {impact.map((item) => (
               <div key={item.label} className="flex flex-col-reverse border-t-4 border-primary pt-4">
                 <dt className="mt-1 text-muted-foreground">{item.label}</dt>
-                <dd className="text-4xl font-bold text-foreground md:text-5xl">{item.value}</dd>
+                <dd className="font-display text-4xl font-bold text-foreground md:text-5xl">{item.value}</dd>
               </div>
             ))}
           </dl>
@@ -253,10 +253,10 @@ const Home = () => {
             <p className="mt-2 text-lg text-muted-foreground">Give supplies, or give your time as a volunteer.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-base font-semibold text-gold-foreground hover:bg-gold/90">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-gold/90">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary text-base font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
+            <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               <Link to="/team">Join our mission</Link>
             </Button>
           </div>
