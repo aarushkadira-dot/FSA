@@ -9,7 +9,6 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import SubmitProject from "./pages/SubmitProject";
 import Team from "./pages/Team";
 import Assistance from "./pages/Assistance";
 import NotFound from "./pages/NotFound";
@@ -25,6 +24,8 @@ const queryClient = new QueryClient();
 
 // The school map and its 1,600+ school list only load when someone opens this page.
 const FindSchool = lazy(() => import("./pages/FindSchool"));
+// Teacher accounts (sign-up, sign-in, dashboard, admin) load only when someone visits /teachers.
+const TeacherApp = lazy(() => import("./teachers/TeacherApp"));
 
 const AppRoutes = () => (
   <Routes>
@@ -33,7 +34,15 @@ const AppRoutes = () => (
     {/* Classroom requests now live on the Find a School page */}
     <Route path="/classrooms" element={<Navigate to={CLASSROOMS_PATH} replace />} />
     <Route path="/projects/*" element={<Navigate to={CLASSROOMS_PATH} replace />} />
-    <Route path="/submit-project" element={<SubmitProject />} />
+    <Route
+      path="/teachers/*"
+      element={
+        <Suspense fallback={<div className="min-h-[60vh]" />}>
+          <TeacherApp />
+        </Suspense>
+      }
+    />
+    <Route path="/submit-project" element={<Navigate to="/teachers" replace />} />
     <Route path="/team" element={<Team />} />
     <Route path="/partners" element={<Partners />} />
     <Route path="/impact" element={<Impact />} />

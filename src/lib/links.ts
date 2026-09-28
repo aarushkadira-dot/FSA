@@ -5,7 +5,7 @@ export const FIND_SCHOOL_PATH = "/find-school";
 export const CLASSROOMS_PATH = `${FIND_SCHOOL_PATH}#classrooms`;
 // Site-wide Donate buttons point at the classroom list until the GoFundMe link is added below.
 export const DONATE_PATH = CLASSROOMS_PATH;
-export const TEACHER_REQUEST_PATH = "/submit-project";
+export const TEACHER_REQUEST_PATH = "/teachers";
 export const START_CHAPTER_PATH = "/start-a-chapter";
 
 // Paste the organization's GoFundMe URL here. Until then, donate buttons on the
