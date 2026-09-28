@@ -81,7 +81,7 @@ const Impact = () => (
             </p>
           </div>
           <Link
-            to="/events/scholars-drive"
+            to="/events/summit"
             className="inline-flex shrink-0 items-center gap-1 font-semibold text-primary hover:underline"
           >
             Read the recap
@@ -123,10 +123,19 @@ const Impact = () => (
         )}
         <ul className="mt-8 grid gap-6 md:grid-cols-3">
           {EVENTS.map((event) => (
-            <li key={event.name} className="rounded-lg border border-border p-6">
+            <li key={event.name} className="relative flex flex-col rounded-lg border border-border p-6 transition-colors has-[a:hover]:border-primary">
               <p className="text-sm font-semibold text-primary">{event.date}</p>
               <h3 className="mt-1 text-xl font-semibold text-foreground">{event.name}</h3>
               <p className="mt-2 leading-relaxed text-muted-foreground">{event.summary}</p>
+              {event.recapPath && (
+                <Link
+                  to={event.recapPath}
+                  className="mt-4 inline-flex items-center gap-1 self-start font-semibold text-primary hover:underline after:absolute after:inset-0"
+                >
+                  Read recap
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
+              )}
             </li>
           ))}
         </ul>

@@ -235,7 +235,7 @@ const Home = () => {
               including Mayor TJ Cawley, Rep. Maria Cervania, and Councilwoman Sarika Bansal.
             </p>
             <Link
-              to="/events/scholars-drive"
+              to="/events/summit"
               className="mt-6 inline-flex items-center gap-1 font-semibold text-primary hover:underline"
             >
               Read the summit recap

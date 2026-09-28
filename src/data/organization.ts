@@ -43,7 +43,8 @@ export const IMPACT = {
 // Add the IRS Employer Identification Number (e.g. "12-3456789") to show it on About and Impact.
 export const EIN = "";
 
-export const EVENTS = [
+// `recapPath` makes the event clickable on the Impact page.
+export const EVENTS: { name: string; date: string; summary: string; recapPath?: string }[] = [
   {
     name: "Support for Scholars Drive",
     date: "January 17, 2026",
@@ -58,6 +59,7 @@ export const EVENTS = [
   {
     name: "Future Scholars Summit",
     date: "March 1, 2026",
+    recapPath: "/events/summit",
     summary:
       "Student teams, nonprofits and researchers pitched their ideas to community and state leaders, including Mayor TJ Cawley, Rep. Maria Cervania and Councilwoman Sarika Bansal.",
   },

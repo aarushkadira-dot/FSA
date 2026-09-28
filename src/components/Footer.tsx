@@ -20,7 +20,7 @@ const columns = [
       { label: "Impact", to: "/impact" },
       { label: "Partners", to: "/partners" },
       { label: "Our Team", to: "/team" },
-      { label: "Future Scholars Summit", to: "/events/scholars-drive" },
+      { label: "Future Scholars Summit", to: "/events/summit" },
     ],
   },
 ];
