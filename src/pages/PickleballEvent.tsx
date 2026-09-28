@@ -60,7 +60,7 @@ const PickleballEvent = () => {
 
             {upcoming && (
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+                <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
                   <a href={calendarUrl} target="_blank" rel="noopener noreferrer">
                     <CalendarPlus className="mr-2 h-5 w-5" aria-hidden="true" />
                     Add to calendar
@@ -106,7 +106,7 @@ const PickleballEvent = () => {
             <p className="mt-3 leading-relaxed text-muted-foreground">
               You can still help a Title I classroom get the supplies it needs.
             </p>
-            <Button asChild size="lg" className="mt-5 bg-gold text-gold-foreground hover:brightness-95">
+            <Button asChild size="lg" className="mt-5 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Link to="/impact" className="mt-5 flex items-center gap-1 font-semibold text-primary hover:underline">

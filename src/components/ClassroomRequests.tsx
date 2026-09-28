@@ -17,7 +17,7 @@ const selectClass =
   "h-11 w-full rounded-md border border-input bg-background px-3 text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:text-sm";
 
 const DonateButton = ({ href, label = "Donate", className }: { href: string; label?: string; className?: string }) => (
-  <Button asChild className={`bg-gold font-semibold text-gold-foreground hover:brightness-95 ${className ?? ""}`}>
+  <Button asChild className={`bg-gold font-semibold text-gold-foreground hover:bg-[hsl(43_90%_45%)] ${className ?? ""}`}>
     <a href={href} {...(isExternal(href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
       {label}
     </a>

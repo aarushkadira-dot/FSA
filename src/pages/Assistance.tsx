@@ -190,7 +190,7 @@ const Assistance = () => {
                     required
                   />
                 </div>
-                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gold text-gold-foreground hover:brightness-95 sm:w-auto">
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)] sm:w-auto">
                   {isSubmitting ? "Sending…" : "Submit application"}
                 </Button>
                 <p className="text-sm text-muted-foreground">Everything you share is kept confidential.</p>

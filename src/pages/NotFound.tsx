@@ -18,7 +18,7 @@ const NotFound = () => {
           There's no page at <span className="font-semibold text-foreground">{location.pathname}</span>. It may have moved.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
             <Link to="/">Back to home</Link>
           </Button>
           <Button

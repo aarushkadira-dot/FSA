@@ -179,7 +179,7 @@ const Team = () => {
             </div>
             <Button
               size="lg"
-              className="shrink-0 bg-gold text-gold-foreground hover:brightness-95"
+              className="shrink-0 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]"
               onClick={() => setIsDialogOpen(true)}
             >
               Get involved
@@ -310,7 +310,7 @@ const Team = () => {
                     </Button>
                     <Button
                       type="submit"
-                      className="flex-1 bg-gold text-gold-foreground hover:brightness-95"
+                      className="flex-1 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]"
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? "Sending..." : "Submit Application"}

@@ -70,7 +70,7 @@ const FindSchool = () => (
             Explore {schoolCount} Title I schools across North Carolina, then see which classrooms need supplies.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
               <a href="#map">Search the map</a>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white bg-transparent text-white hover:bg-white/10 hover:text-white">
@@ -129,7 +129,7 @@ const FindSchool = () => (
             </li>
           ))}
         </ol>
-        <Button asChild size="lg" className="mt-12 bg-gold text-gold-foreground hover:brightness-95">
+        <Button asChild size="lg" className="mt-12 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
           <Link to={DONATE_PATH}>Donate</Link>
         </Button>
       </div>
@@ -157,7 +157,7 @@ const FindSchool = () => (
         <p className="mx-auto mt-3 max-w-xl text-lg text-muted-foreground">
           Create a free teacher account and tell us what your students need.
         </p>
-        <Button asChild size="lg" className="mt-6 bg-gold text-gold-foreground hover:brightness-95">
+        <Button asChild size="lg" className="mt-6 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
           <Link to={TEACHER_REQUEST_PATH}>Get started</Link>
         </Button>
       </div>

@@ -51,7 +51,7 @@ const SuppliesCallout = () => (
         <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
           Pencils, notebooks, glue sticks and crayons. The everyday things Title I teachers often buy themselves.
         </p>
-        <Button asChild size="lg" className="mt-6 bg-gold text-gold-foreground hover:brightness-95">
+        <Button asChild size="lg" className="mt-6 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
           <Link to={CLASSROOMS_PATH}>Find a classroom</Link>
         </Button>
       </div>

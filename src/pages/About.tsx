@@ -46,7 +46,7 @@ const About = () => (
             growing through student chapters.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Button
@@ -205,7 +205,7 @@ const About = () => (
           <p className="mt-2 text-lg text-muted-foreground">Give supplies, or bring FSA to your school.</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
             <Link to={DONATE_PATH}>Donate</Link>
           </Button>
           <Button

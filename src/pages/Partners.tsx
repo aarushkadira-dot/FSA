@@ -69,7 +69,7 @@ const Partners = () => (
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+          <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
             <a href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Partnering with FSA")}`}>Contact us</a>
           </Button>
           <Button

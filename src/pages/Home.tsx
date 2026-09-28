@@ -56,7 +56,7 @@ const Home = () => {
               the classroom.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+              <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
@@ -96,7 +96,7 @@ const Home = () => {
                 {PICKLEBALL_TOURNAMENT.location}
               </p>
             </div>
-            <Button asChild size="lg" className="shrink-0 bg-gold text-gold-foreground hover:brightness-95">
+            <Button asChild size="lg" className="shrink-0 bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
               <Link to={PICKLEBALL_TOURNAMENT.path}>Event details</Link>
             </Button>
           </div>
@@ -167,7 +167,7 @@ const Home = () => {
               fund upcoming needs, or, if you teach at a Title I school, send us what your classroom needs.
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild className="bg-gold text-gold-foreground hover:brightness-95">
+              <Button asChild className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
                 <Link to={DONATE_PATH}>Donate</Link>
               </Button>
               <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/5">
@@ -255,7 +255,7 @@ const Home = () => {
             <p className="mt-2 text-lg text-muted-foreground">Give supplies, or give your time as a volunteer.</p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:brightness-95">
+            <Button asChild size="lg" className="bg-gold text-gold-foreground hover:bg-[hsl(43_90%_45%)]">
               <Link to={DONATE_PATH}>Donate</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/5">
