@@ -18,12 +18,12 @@ export const STUDENT_BOARD: TeamMember[] = [
   },
   {
     name: "Pihu Khadkad",
-    role: "Partnerships Manager",
-    bio: "Builds FSA's partnerships with schools and organizations.",
+    role: "Partner Relations Manager",
+    bio: "Works with our partner organizations, like Key Club, DECA, FCCLA, FBLA and The Health Literacy Project, on joint events and drives.",
     image: "/pihu.jpg",
   },
   {
-    name: "Anay Kamath",
+    name: "Anay Cholpadi",
     role: "Social Media Manager",
     bio: "Runs FSA's social media and shares our work with the community.",
   },
@@ -36,7 +36,7 @@ export const STUDENT_BOARD: TeamMember[] = [
   {
     name: "Aaron Gim",
     role: "Community Outreach Manager",
-    bio: "Connects FSA with families, schools and community groups, and organizes outreach events.",
+    bio: "Connects FSA with local families and community groups, and organizes our outreach events.",
     image: "/aaron.jpg",
   },
 ];
