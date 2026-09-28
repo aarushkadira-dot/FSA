@@ -6,6 +6,9 @@ import summitGroup from "@/assets/summit2.jpg";
 import summitPitch from "@/assets/summit4.jpg";
 import summitRobotics from "@/assets/summit1.jpg";
 import summitPresenter from "@/assets/summit3.jpg";
+import cawleyPhoto from "@/assets/guest-tj-cawley.jpg";
+import cervaniaPhoto from "@/assets/guest-maria-cervania.jpg";
+import bansalPhoto from "@/assets/guest-sarika-bansal.jpg";
 
 const details = [
   { label: "Date", value: "March 1, 2026" },
@@ -14,9 +17,9 @@ const details = [
 ];
 
 const guests = [
-  { name: "TJ Cawley", role: "Mayor" },
-  { name: "Maria Cervania", role: "NC House Representative" },
-  { name: "Sarika Bansal", role: "Councilwoman" },
+  { name: "TJ Cawley", role: "Mayor", photo: cawleyPhoto },
+  { name: "Maria Cervania", role: "NC House Representative", photo: cervaniaPhoto },
+  { name: "Sarika Bansal", role: "Councilwoman", photo: bansalPhoto },
 ];
 
 const presenters = [
@@ -83,11 +86,14 @@ const SummitRecap = () => (
     <section className="border-y border-border bg-secondary py-16 md:py-20">
       <div className="container mx-auto px-4 sm:px-6">
         <h2 className="text-3xl font-bold text-foreground md:text-4xl">Guests of honor</h2>
-        <ul className="mt-8 grid gap-6 sm:grid-cols-3">
+        <ul className="mt-8 grid max-w-4xl gap-6 sm:grid-cols-3">
           {guests.map((guest) => (
-            <li key={guest.name} className="rounded-lg border border-border bg-white p-6">
-              <p className="text-xl font-semibold text-foreground">{guest.name}</p>
-              <p className="mt-1 text-muted-foreground">{guest.role}</p>
+            <li key={guest.name} className="flex items-center overflow-hidden rounded-lg border border-border bg-white sm:block">
+              <img src={guest.photo} alt={guest.name} className="aspect-square w-24 shrink-0 object-cover sm:w-full" loading="lazy" />
+              <div className="p-5">
+                <p className="text-xl font-semibold text-foreground">{guest.name}</p>
+                <p className="mt-1 text-muted-foreground">{guest.role}</p>
+              </div>
             </li>
           ))}
         </ul>
