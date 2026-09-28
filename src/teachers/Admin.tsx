@@ -75,7 +75,7 @@ const Admin = () => {
               role="tab"
               aria-selected={tab === entry.status}
               onClick={() => setTab(entry.status)}
-              className={`rounded-md border px-4 py-2 text-sm font-semibold ${
+              className={`rounded-full border px-4 py-2 text-sm font-semibold ${
                 tab === entry.status ? "border-primary bg-primary text-primary-foreground" : "border-border bg-white text-foreground hover:border-primary"
               }`}
             >

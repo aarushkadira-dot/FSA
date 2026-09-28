@@ -1,22 +1,11 @@
-import { ArrowLeft } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const TermsOfService = () => {
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="bg-white">
       <div className="container mx-auto px-6 py-12">
-        <Link to="/">
-          <Button variant="ghost" className="mb-8 pl-0 hover:pl-2 transition-all text-primary">
-            <ArrowLeft className="mr-2 h-4 w-4" />
-            Back to Home
-          </Button>
-        </Link>
 
-        <div className="max-w-4xl mx-auto rounded-3xl border border-primary/15 bg-white/95 shadow-card p-8 md:p-12 prose prose-lg prose-headings:text-foreground prose-h2:text-primary prose-h3:text-primary/90 prose-strong:text-foreground">
-          <p className="inline-flex items-center rounded-full border border-primary/25 bg-primary/5 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary mb-4">
-            Legal
-          </p>
+        <div className="max-w-3xl mx-auto prose prose-lg prose-headings:text-foreground prose-h2:text-primary prose-h3:text-primary/90 prose-strong:text-foreground">
           <h1 className="text-4xl font-bold mb-8">Terms of Service</h1>
           
           <p className="text-muted-foreground mb-8">

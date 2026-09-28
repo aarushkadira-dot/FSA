@@ -134,3 +134,9 @@
     position: relative;
   }
 }
+
+/* Flat map zoom buttons (no drop shadow) */
+.pigeon-zoom-buttons button {
+  box-shadow: none !important;
+  border: 1px solid hsl(var(--border)) !important;
+}

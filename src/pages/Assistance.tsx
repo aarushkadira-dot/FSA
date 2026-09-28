@@ -1,19 +1,45 @@
 import { useState } from "react";
-import { Heart, DollarSign, BookOpen, Users, CheckCircle2, Zap, Shield, Mail, Phone } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { sendAssistanceRequest } from "@/lib/emailjs";
+import { CONTACT_EMAIL } from "@/lib/forms";
+
+const PHONE = "(919) 454-8249";
+
+const assistanceTypes = [
+  {
+    title: "Financial support",
+    description: "Scholarships and emergency funds to help cover tuition, books, and living expenses.",
+  },
+  {
+    title: "Academic mentorship",
+    description: "One-on-one tutoring and study support from experienced mentors.",
+  },
+  {
+    title: "Career guidance",
+    description: "Resume reviews, interview prep, and professional networking opportunities.",
+  },
+];
+
+const faqs = [
+  {
+    question: "How long does the review process take?",
+    answer: "We typically review applications within 48 hours and will reach out via email with next steps.",
+  },
+  {
+    question: "Who is eligible for assistance?",
+    answer:
+      "All students facing financial, academic, or career-related challenges are welcome to apply. We evaluate each case individually.",
+  },
+  {
+    question: "Is my information kept confidential?",
+    answer: "Yes. Anything you share is kept confidential and only used for your assistance application.",
+  },
+];
 
 const Assistance = () => {
   const { toast } = useToast();
@@ -27,500 +53,164 @@ const Assistance = () => {
     description: "",
   });
 
-  const assistanceTypes = [
-    {
-      icon: DollarSign,
-      title: "Financial Support",
-      description: "Scholarships and emergency funds to help cover tuition, books, and living expenses.",
-      gradient: "bg-gold/10",
-      iconColor: "text-gold",
-    },
-    {
-      icon: BookOpen,
-      title: "Academic Mentorship",
-      description: "One-on-one tutoring and study support from experienced mentors.",
-      gradient: "bg-primary/10",
-      iconColor: "text-primary",
-    },
-    {
-      icon: Users,
-      title: "Career Guidance",
-      description: "Resume reviews, interview prep, and professional networking opportunities.",
-      gradient: "bg-primary/10",
-      iconColor: "text-primary",
-    },
-  ];
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
     const result = await sendAssistanceRequest(formData);
-    
     if (result.success) {
       setIsSubmitted(true);
-      toast({
-        title: "Application Submitted!",
-        description: "We'll review your request and get back to you within 48 hours.",
-      });
     } else {
       toast({
-        title: "Submission Failed",
-        description: "Please try contacting us directly at futurescholars.contact@gmail.com or (919) 454-8249",
+        title: "Submission failed",
+        description: `Please contact us directly at ${CONTACT_EMAIL} or ${PHONE}.`,
         variant: "destructive",
       });
     }
-    
     setIsSubmitting(false);
   };
 
-  const handleChange = (field: string, value: string) => {
+  const handleChange = (field: keyof typeof formData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  const completionPercentage = (Object.values(formData).filter((v) => v !== "").length / Object.keys(formData).length) * 100;
-
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-secondary/40">
-        <Card className="max-w-2xl mx-6 p-12 text-center space-y-8 border-2 border-primary/50 shadow-glow animate-slide-up relative overflow-hidden">
-          {/* Decorative Elements */}
-          
-          <div className="relative">
-            <div className="w-24 h-24 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-2 shadow-glow">
-              <CheckCircle2 className="w-14 h-14 text-primary-foreground animate-scale-in" />
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <h2 className="text-4xl font-bold bg-gradient-accent bg-clip-text text-transparent">
-              Application Received!
-            </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-md mx-auto">
-              Thank you for reaching out. Our team will carefully review your request
-              and respond within 48 hours. We're here to support you on your journey!
-            </p>
-          </div>
-
-          <div className="flex gap-4 justify-center pt-4">
-            <Button
-              onClick={() => setIsSubmitted(false)}
-              className="bg-gradient-accent text-primary-foreground hover:shadow-glow"
-            >
-              Submit Another Request
-            </Button>
-            <Button
-              variant="outline"
-              className="border-2 hover:bg-primary/5 hover:border-primary"
-              onClick={() => window.location.href = '/'}
-            >
-              Back to Home
-            </Button>
-          </div>
-        </Card>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen">
-      {/* Hero Section with Pattern */}
-      <section className="relative py-32 bg-gradient-hero overflow-hidden">
-        {/* SVG Pattern Background */}
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="assistance-pattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-                <circle cx="40" cy="40" r="2" fill="currentColor" className="text-primary-foreground" />
-                <circle cx="0" cy="40" r="2" fill="currentColor" className="text-primary-foreground" />
-                <circle cx="80" cy="40" r="2" fill="currentColor" className="text-primary-foreground" />
-                <circle cx="40" cy="0" r="2" fill="currentColor" className="text-primary-foreground" />
-                <circle cx="40" cy="80" r="2" fill="currentColor" className="text-primary-foreground" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#assistance-pattern)" />
-          </svg>
-        </div>
-
-        <div className="absolute inset-0 opacity-20">
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-slide-up">
-            <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gold/20 text-gold text-sm font-medium border-2 border-gold/40 backdrop-blur-sm">
-              <Heart className="w-4 h-4" />
-              We're Here to Help
-            </div>
-            <h1 className="text-6xl md:text-7xl font-bold text-primary-foreground leading-tight">
-              Request{" "}
-              <span className="bg-gradient-gold bg-clip-text text-transparent">
-                Assistance
-              </span>
-            </h1>
-            <p className="text-xl text-primary-foreground/90 leading-relaxed max-w-2xl mx-auto">
-              Don't let financial or academic challenges hold you back. We're committed
-              to supporting your educational journey every step of the way.
-            </p>
-          </div>
-        </div>
-
-        {/* Diagonal Divider */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg className="w-full h-20" preserveAspectRatio="none" viewBox="0 0 1200 120">
-            <path d="M0,0 L1200,40 L1200,120 L0,120 Z" fill="hsl(var(--background))" />
-          </svg>
+    <div>
+      <section className="border-b border-border bg-secondary">
+        <div className="container mx-auto px-4 py-12 sm:px-6 md:py-16">
+          <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">Request assistance</h1>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+            Facing financial or academic challenges? Tell us what's going on and we'll see how we can help.
+          </p>
         </div>
       </section>
 
-      {/* Types of Assistance - Organic Blob Cards */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16 animate-slide-up">
-            <h2 className="text-4xl font-bold mb-4">
-              How We Can{" "}
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
-                Support You
-              </span>
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We offer various forms of assistance tailored to your unique needs
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
-            {assistanceTypes.map((type, index) => (
-              <Card
-                key={index}
-                className={`group relative p-8 text-center hover:shadow-glow transition-all duration-500 hover:-translate-y-3 border-2 hover:border-primary/50 animate-slide-up overflow-hidden`}
-                style={{ 
-                  animationDelay: `${index * 0.15}s`,
-                  transform: `rotate(${index % 2 === 0 ? -2 : 2}deg)`,
-                }}
-              >
-                {/* Blob Background */}
-                <div className={`absolute inset-0 ${type.gradient} opacity-50 group-hover:opacity-70 transition-opacity`} 
-                     style={{ 
-                       clipPath: "polygon(0% 10%, 10% 0%, 90% 5%, 100% 20%, 95% 90%, 85% 100%, 10% 95%, 0% 80%)" 
-                     }} />
-                
-                <div className="relative space-y-6">
-                  <div className="relative inline-block">
-                    <type.icon className={`w-14 h-14 ${type.iconColor} transition-transform group-hover:scale-110 group-hover:rotate-12 relative z-10`} />
-                    <div className={`absolute inset-0 ${type.iconColor} opacity-20 rounded-full blur-xl group-hover:opacity-40 transition-all`} />
-                  </div>
-                  <h3 className="text-2xl font-bold group-hover:text-primary transition-colors">
-                    {type.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {type.description}
-                  </p>
-                </div>
-
-                {/* Decorative Corner Brackets */}
-                <div className="absolute top-4 left-4 w-6 h-6 border-t-2 border-l-2 border-primary/30 group-hover:border-primary transition-colors" />
-                <div className="absolute bottom-4 right-4 w-6 h-6 border-b-2 border-r-2 border-primary/30 group-hover:border-primary transition-colors" />
-              </Card>
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">How we can help</h2>
+          <ul className="mt-8 grid gap-6 md:grid-cols-3">
+            {assistanceTypes.map((type) => (
+              <li key={type.title} className="border-l-4 border-gold pl-5">
+                <h3 className="text-xl font-semibold text-foreground">{type.title}</h3>
+                <p className="mt-2 leading-relaxed text-muted-foreground">{type.description}</p>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      {/* Contact Information */}
-      <section className="py-16 bg-background border-y border-border">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold mb-4">
-                Prefer to Reach Out Directly?
-              </h2>
-              <p className="text-muted-foreground text-lg">
-                Contact us via email or phone
-              </p>
-            </div>
-            
-            <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-8 border-2 hover:border-primary/50 transition-all hover:shadow-glow group">
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Mail className="w-8 h-8 text-primary-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl mb-2">Email Us</h3>
-                    <a 
-                      href="mailto:futurescholars.contact@gmail.com"
-                      className="text-primary hover:underline text-lg"
-                    >
-                      futurescholars.contact@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </Card>
-              
-              <Card className="p-8 border-2 hover:border-primary/50 transition-all hover:shadow-glow group">
-                <div className="flex flex-col items-center text-center space-y-4">
-                  <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <Phone className="w-8 h-8 text-gold-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-xl mb-2">Call Us</h3>
-                    <a 
-                      href="tel:9194548249"
-                      className="text-primary hover:underline text-lg"
-                    >
-                      (919) 454-8249
-                    </a>
-                  </div>
-                </div>
-              </Card>
-            </div>
+      <section className="border-y border-border bg-secondary py-14 md:py-20">
+        <div className="container mx-auto grid gap-10 px-4 sm:px-6 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <h2 className="text-3xl font-bold text-foreground md:text-4xl">Apply</h2>
+            <p className="mt-3 text-lg leading-relaxed text-muted-foreground">Prefer to reach out directly?</p>
+            <ul className="mt-3 space-y-2 text-lg">
+              <li>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="break-words font-semibold text-primary hover:underline">
+                  {CONTACT_EMAIL}
+                </a>
+              </li>
+              <li>
+                <a href="tel:+19194548249" className="font-semibold text-primary hover:underline">
+                  {PHONE}
+                </a>
+              </li>
+            </ul>
           </div>
-        </div>
-      </section>
 
-      {/* Application Form - Wizard Style */}
-      <section className="py-24 bg-secondary/40 relative overflow-hidden">
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="form-grid" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="currentColor" strokeWidth="1" className="text-primary" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#form-grid)" />
-          </svg>
-        </div>
-
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="max-w-3xl mx-auto">
-            <Card className="p-8 md:p-12 border-2 shadow-elegant animate-slide-up relative overflow-hidden bg-card/95 backdrop-blur-sm">
-              {/* Progress Ring */}
-              <div className="absolute top-8 right-8 w-16 h-16">
-                <svg className="transform -rotate-90" viewBox="0 0 64 64">
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="28"
-                    fill="none"
-                    stroke="hsl(var(--muted))"
-                    strokeWidth="4"
-                  />
-                  <circle
-                    cx="32"
-                    cy="32"
-                    r="28"
-                    fill="none"
-                    stroke="hsl(var(--primary))"
-                    strokeWidth="4"
-                    strokeDasharray={`${completionPercentage * 1.76} 176`}
-                    className="transition-all duration-300"
-                  />
-                  <text
-                    x="32"
-                    y="38"
-                    textAnchor="middle"
-                    className="text-xs font-bold fill-primary"
-                    transform="rotate(90 32 32)"
-                  >
-                    {Math.round(completionPercentage)}%
-                  </text>
-                </svg>
-              </div>
-
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-accent rounded-full flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-primary-foreground" />
-                  </div>
-                  <h2 className="text-3xl font-bold">Application Form</h2>
-                </div>
-                <p className="text-muted-foreground">
-                  Fill out the form below and we'll get back to you soon
+          <div className="rounded-lg border border-border bg-white p-6 md:p-8 lg:col-span-8">
+            {isSubmitted ? (
+              <div role="status">
+                <h3 className="text-2xl font-bold text-foreground">Application received</h3>
+                <p className="mt-3 text-lg leading-relaxed text-muted-foreground">
+                  Thank you for reaching out. Our team will review your request and reply by email within 48 hours.
                 </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Step Indicator */}
-                <div className="flex items-center justify-center gap-3 pb-6 border-b-2 border-primary/20">
-                  <div className="flex items-center gap-2">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                      formData.name && formData.email && formData.phone 
-                        ? 'bg-primary text-primary-foreground' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      1
-                    </div>
-                    <span className="text-sm font-medium hidden sm:inline">Personal Info</span>
-                  </div>
-                  <div className="w-12 h-1 bg-muted" />
-                  <div className="flex items-center gap-2">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                      formData.assistanceType 
-                        ? 'bg-primary text-primary-foreground' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      2
-                    </div>
-                    <span className="text-sm font-medium hidden sm:inline">Assistance Type</span>
-                  </div>
-                  <div className="w-12 h-1 bg-muted" />
-                  <div className="flex items-center gap-2">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all ${
-                      formData.description 
-                        ? 'bg-primary text-primary-foreground' 
-                        : 'bg-muted text-muted-foreground'
-                    }`}>
-                      3
-                    </div>
-                    <span className="text-sm font-medium hidden sm:inline">Details</span>
-                  </div>
-                </div>
-
-                {/* Form Fields */}
-                <div className="space-y-6">
-                  <div className="relative">
-                    <Label htmlFor="name" className="text-base font-semibold flex items-center gap-2">
-                      Full Name <span className="text-primary">*</span>
-                    </Label>
-                    <Input
-                      id="name"
-                      required
-                      value={formData.name}
-                      onChange={(e) => handleChange("name", e.target.value)}
-                      className="mt-2 border-2 focus:border-primary"
-                      placeholder="John Doe"
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="relative">
-                      <Label htmlFor="email" className="text-base font-semibold flex items-center gap-2">
-                        Email <span className="text-primary">*</span>
-                      </Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => handleChange("email", e.target.value)}
-                        className="mt-2 border-2 focus:border-primary"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-
-                    <div className="relative">
-                      <Label htmlFor="phone" className="text-base font-semibold flex items-center gap-2">
-                        Phone <span className="text-primary">*</span>
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => handleChange("phone", e.target.value)}
-                        className="mt-2 border-2 focus:border-primary"
-                        placeholder="(555) 123-4567"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="relative">
-                    <Label htmlFor="assistanceType" className="text-base font-semibold flex items-center gap-2">
-                      Type of Assistance <span className="text-primary">*</span>
-                    </Label>
-                    <Select
-                      required
-                      value={formData.assistanceType}
-                      onValueChange={(value) => handleChange("assistanceType", value)}
-                    >
-                      <SelectTrigger className="mt-2 border-2">
-                        <SelectValue placeholder="Select assistance type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="financial">Financial Support</SelectItem>
-                        <SelectItem value="academic">Academic Mentorship</SelectItem>
-                        <SelectItem value="career">Career Guidance</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="relative">
-                    <Label htmlFor="description" className="text-base font-semibold flex items-center gap-2">
-                      Tell Us Your Story <span className="text-primary">*</span>
-                    </Label>
-                    <Textarea
-                      id="description"
-                      required
-                      value={formData.description}
-                      onChange={(e) => handleChange("description", e.target.value)}
-                      className="mt-2 min-h-36 border-2 focus:border-primary"
-                      placeholder="Please describe your situation and how we can best support you..."
-                    />
-                  </div>
-                </div>
-
                 <Button
-                  type="submit"
-                  size="lg"
-                  disabled={isSubmitting}
-                  className="w-full bg-gradient-accent text-primary-foreground hover:shadow-glow transition-all text-lg"
+                  variant="outline"
+                  className="mt-6 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  onClick={() => {
+                    setFormData({ name: "", email: "", phone: "", assistanceType: "", description: "" });
+                    setIsSubmitted(false);
+                  }}
                 >
-                  {isSubmitting ? "Sending..." : "Submit Application"}
-                  {!isSubmitting && <Zap className="ml-2 w-5 h-5" />}
+                  Submit another request
                 </Button>
-
-                <div className="flex items-center gap-2 justify-center text-sm text-muted-foreground">
-                  <Shield className="w-4 h-4" />
-                  <p>All information is confidential and secure</p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full name</Label>
+                  <Input id="name" value={formData.name} onChange={(e) => handleChange("name", e.target.value)} required autoComplete="name" />
                 </div>
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleChange("email", e.target.value)}
+                      required
+                      autoComplete="email"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="phone">Phone</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => handleChange("phone", e.target.value)}
+                      required
+                      autoComplete="tel"
+                    />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="assistanceType">Type of assistance</Label>
+                  <Select value={formData.assistanceType} onValueChange={(value) => handleChange("assistanceType", value)} required>
+                    <SelectTrigger id="assistanceType">
+                      <SelectValue placeholder="Select assistance type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="financial">Financial support</SelectItem>
+                      <SelectItem value="academic">Academic mentorship</SelectItem>
+                      <SelectItem value="career">Career guidance</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="description">Tell us your story</Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) => handleChange("description", e.target.value)}
+                    placeholder="Describe your situation and how we can best support you."
+                    className="min-h-[140px]"
+                    required
+                  />
+                </div>
+                <Button type="submit" size="lg" disabled={isSubmitting} className="w-full bg-gold text-gold-foreground hover:bg-gold/90 sm:w-auto">
+                  {isSubmitting ? "Sending…" : "Submit application"}
+                </Button>
+                <p className="text-sm text-muted-foreground">Everything you share is kept confidential.</p>
               </form>
-            </Card>
+            )}
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-3xl mx-auto animate-slide-up">
-            <h2 className="text-4xl font-bold text-center mb-16">
-              Frequently Asked{" "}
-              <span className="bg-gradient-accent bg-clip-text text-transparent">
-                Questions
-              </span>
-            </h2>
-
-            <div className="space-y-6">
-              {[
-                {
-                  question: "How long does the review process take?",
-                  answer: "We typically review applications within 48 hours and will reach out via email with next steps.",
-                },
-                {
-                  question: "Who is eligible for assistance?",
-                  answer: "All students facing financial, academic, or career-related challenges are welcome to apply. We evaluate each case individually.",
-                },
-                {
-                  question: "Is my information kept confidential?",
-                  answer: "Absolutely. All information shared is kept strictly confidential and will only be used for your assistance application.",
-                },
-              ].map((faq, index) => (
-                <Card 
-                  key={index} 
-                  className="p-6 border-2 hover:border-primary/50 transition-all hover:shadow-glow group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <h3 className="font-bold text-lg mb-3 group-hover:text-primary transition-colors">
-                    {faq.question}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </Card>
-              ))}
-            </div>
-          </div>
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-3xl font-bold text-foreground md:text-4xl">Questions</h2>
+          <dl className="mt-8 divide-y divide-border border-y border-border">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="py-5">
+                <dt className="text-lg font-semibold text-foreground">{faq.question}</dt>
+                <dd className="mt-2 leading-relaxed text-muted-foreground">{faq.answer}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
     </div>
