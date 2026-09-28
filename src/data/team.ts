@@ -18,9 +18,14 @@ export const STUDENT_BOARD: TeamMember[] = [
   },
   {
     name: "Pihu Khadkad",
-    role: "Partnerships & Social Media Manager",
-    bio: "Builds FSA's partnerships with schools and organizations and runs our social media.",
+    role: "Partnerships Manager",
+    bio: "Builds FSA's partnerships with schools and organizations.",
     image: "/pihu.jpg",
+  },
+  {
+    name: "Anay Kamath",
+    role: "Social Media Manager",
+    bio: "Runs FSA's social media and shares our work with the community.",
   },
   {
     name: "Arvin Gupta",
