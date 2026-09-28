@@ -44,6 +44,7 @@ export const STUDENT_BOARD: TeamMember[] = [
     name: "Anay Cholpadi",
     role: "Social Media Manager",
     bio: "Runs FSA's social media and shares our work with the community.",
+    image: "/anay.jpg",
   },
 ];
 

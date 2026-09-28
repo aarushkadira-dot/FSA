@@ -15,9 +15,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        // Body text uses each device's own system font, like DonorsChoose; headings and buttons use Atkinson.
+        // Body text uses each device's own system font, like DonorsChoose; headings and buttons use Plus Jakarta Sans.
         sans: ["-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
-        display: ["Atkinson Hyperlegible Next", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+        display: ["Plus Jakarta Sans", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
